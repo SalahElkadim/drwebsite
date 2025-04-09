@@ -41,7 +41,7 @@
             font-weight: 400;
             transition: 0.3s;
             border-radius: 20px;
-            padding-right: 5px;
+            padding-right: 3px;
         }
         
         .nav-list li a:hover {
