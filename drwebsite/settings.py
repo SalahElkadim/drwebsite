@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -68,14 +69,7 @@ WSGI_APPLICATION = 'drwebsite.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'drweb',       # اسم قاعدة البيانات
-        'USER': 'postgres',   # اسم المستخدم
-        'PASSWORD': 'ilmvm22@',   # كلمة المرور
-        'HOST': 'localhost',        # أو عنوان IP الخادم
-        'PORT': '5432',            # المنفذ الافتراضي لـ PostgreSQL
-    }
+    'default': dj_database_url.config(default=os.environ.get('postgresql://postgres:xAxOcttAoScLLqZZcyaaJdBRMJEXHAmC@postgres.railway.internal:5432/railway'))
 }
 
 
