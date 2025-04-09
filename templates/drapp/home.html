@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static%}
+<title>{% block title %}Sabr | الصفحة الرئيسية{% endblock %}</title>
+{% block content %}
+
+
+<div class="container">
+    <div class="consultation-cta">
+            <a href="{% url 'seminar' %}" class="cta-button1" id="consultBtn1" data-translate="req1" >
+            <i class="fas fa-handshake "></i>
+            <h class="translatable" data-translate="req1">Booking seminars for government and private entities</h>
+            </a>
+            <a href="{% url 'consult' %}" class="cta-button" id="consultBtn" data-translate="req" >
+            <i class="fas fa-handshake "></i>
+            <h class="translatable" data-translate="req">Request consultation now </h>
+            </a>
+        
+            <p class="cta-subtext translatable"  data-translate="spe">Specialized consultations in forensic linguistics and financial fraud   </p>
+    </div>
+</div>
+    <header class="hero">
+        <div class="hero-content">
+            <div class="logo">
+                <img src="{% static 'image/logo.png' %}" alt="">
+            </div>
+            <br></br>
+            <span class="title translatable" data-translate="cer">Certified experts in forensic linguistics</span>
+            <p class="translatable" data-translate="for">  Forensic linguistic analysis - Detection of forgery - Investigation of financial fraud crimes - Forensic expertise</p>
+            <a class="bta" href="https://wa.me/966500819191" class="translatable" data-translate="con"style="
+                display: inline-block;
+                background: #1a2c4a;
+                color: white;
+                padding: 12px 30px;
+                border-radius: 30px;
+                text-decoration: none;
+                font-weight: bold;
+                margin-top: 20px;
+                transition: all 0.3s;
+            ">Contact Us   </a>
+        </div>
+    </header>
+    <section style="background-color: #f9f9f9; padding: 40px 0; text-align: center;">
+  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px;">
+    
+
+<!-- وزارة الداخلية -->
+    <a href="https://www.moi.gov.sa" target="_blank" title="وزارة الداخلية">
+      <img src="{% static 'image/2.png' %}" alt="شعار وزارة الداخلية" style="width: 120px; height: auto;">
+    </a>
+
+    <!-- وزارة العدل -->
+    <a href="https://www.moj.gov.sa" target="_blank" title="وزارة العدل">
+      <img src="{% static 'image/1.png' %}" alt="شعار وزارة العدل" style="width: 120px; height: auto;">
+    </a>
+    
+    
+    
+    <!-- جامعة الملك خالد -->
+    <a href="https://www.kku.edu.sa" target="_blank" title="جامعة الملك خالد">
+    <img src="{% static 'image/3.png' %}" alt="شعار جامعة الملك خالد" style="width: 120px; height: auto;">
+    </a>
+    
+    <!-- المؤسسة العامة للتدريب التقني والمهني -->
+    <a href="https://tvtc.gov.sa" target="_blank" title="المؤسسة العامة للتدريب التقني والمهني">
+    <img src="{% static 'image/4.png' %}" alt="شعار التدريب التقني" style="width: 120px; height: auto;">
+    </a>
+
+    <!-- مكتب محاماة 1 -->
+    <a href="https://g.co/kgs/8zdykQy" style="text-decoration:none; margin-top: 20px;" target="_blank" title="مكتب المحامي والموثق عبدالرحيم الشهراني">
+    <img src="{% static 'image/5.jpg' %}" alt="شعار  " style="width: 60px; height: auto; border-radius: 50%;">
+    <p style=" color: black; font-size: 8px;">مكتب المحامي والموثق عبدالرحيم الشهراني</p>
+    </a>
+
+    <!--مكتب محاماة 2-->
+    <a href="https://www.tiktok.com/@abu_rand?_t=ZS-8vLSEIUQRsn&_r=1" style="text-decoration:none; margin-top: 20px; " target="_blank" title=" مكتب المحامي أحمد أبو زيفة ">
+    <img src="{% static 'image/5.jpg' %}" alt="شعار  " style="width: 60px; height: auto; border-radius: 50%;">
+    <p style=" color: black; font-size: 8px;"> مكتب المحامي أحمد أبو زيفة </p>
+    </a>
+  
+  </div>
+</section>
+    
+{% endblock %}
+        
+

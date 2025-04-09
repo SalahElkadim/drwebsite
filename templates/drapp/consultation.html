@@ -1,0 +1,109 @@
+
+{% extends "base.html" %}
+{% load static%}
+<title>{% block title %}Sabr | طلب استشارة{% endblock %}</title>
+
+{% block content %}
+   
+<section class="consultation">
+            <div class="consultation-form">
+            <div class="form-header">
+                <h2><i class="fas fa-comments"></i> طلب استشارة </h2>
+                <p>املأ النموذج وسيتواصل معك أحد خبرائنا خلال 24 ساعة</p>
+            </div>
+            
+            <form id="consultationForm">
+                <div class="form-group">
+                    <label for="name">الاسم الكامل</label>
+                    <input type="text" id="name" class="form-control" required placeholder="أدخل اسمك هنا">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <input type="email" id="email" class="form-control" required placeholder="example@domain.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف</label>
+                    <input type="tel" id="phone" class="form-control" required placeholder="05XXXXXXXX">
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">نوع الخدمة المطلوبة</label>
+                    <select id="service" class="form-control" required>
+                        <option value="" disabled selected>اختر خدمة</option>
+                        <option value="design">تحليل لغوي جنائي </option>
+                        <option value="marketing"> كشف احتيال مالي</option>
+                        <option value="content">قضايا الابتزاز الالكتروني </option>
+                        <option value="other"> قضايا التزوير الالكتروني</option>
+                        <option value="other"> غير ذلك</option>
+
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">تفاصيل الاستشارة</label>
+                    <textarea id="message" class="form-control" required placeholder="أخبرنا أكثر عن احتياجاتك..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> إرسال الطلب
+                </button>
+                
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle" style="font-size: 40px; margin-bottom: 10px;"></i>
+                    <h3>تم إرسال طلبك بنجاح!</h3>
+                    <p>سيتم التواصل معك خلال 24 ساعة عمل</p>
+                </div>
+            </form>
+        </div>
+    </section>
+        <script>
+        document.getElementById('consultationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        service: document.getElementById('service').value,
+        message: document.getElementById('message').value,
+        };
+
+        fetch('/submit-consultation/', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(res => {
+        if (res.status === 'success') {
+        document.getElementById('successMessage').style.display = 'block';
+        document.getElementById('consultationForm').reset();
+        } else {
+        alert('حدث خطأ أثناء الإرسال.');
+        }
+        });
+
+        function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+        }
+        }
+        }
+        return cookieValue;
+        }
+        });
+        </script>
+
+
+{% endblock %}

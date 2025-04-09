@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sabr{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="{% static 'image/favicon.png' %}" type="image/png">
+    <meta name="description" content="{% block meta_description %}
+موقع متخصص في اللغة الجنائية (Forensic Linguistics) وتحليل النصوص القانونية. نقدم خدمات فحص الانتحال، تحديد هوية الكاتب، تحليل التهديدات، والخبرة القضائية بدقة علمية. فريق خبراء معتمد لتحليل النصوص وتقديم أدلة لغوية قانونية.
+{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}اللغة الجنائية, تحليل الانتحال, تحليل التهديدات والابتزاز{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Sabr{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}وصف مفصل لهذه المقالة حول اللغة الجنائية...{% endblock %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body> 
+    <nav class="navbar">
+            <div class="nav-menu">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            <div class = "logo">
+                <img src="{% static 'image/logo.png' %}" alt="">
+            </div>
+            <ul class="nav-list">
+                <li><a href="{% url 'home' %}" class="translatable" data-translate="home">HOME</a></li>
+                <li><a href="{% url 'forensic' %}" class="translatable" data-translate="forensic">LINGUISTIC & FORENSIC CONSULTANCY</a></li>
+                <li><a href="{% url 'marketing' %}"class="translatable" data-translate="ling">TRADEMARK & MARKETING SOLUTIONS</a></li>
+                <li><a href="{% url 'academic' %}"class="translatable" data-translate="ling">ACADEMIC SOLUTIONS</a></li>                
+                <li><a href="{% url 'consult' %}" class="translatable" data-translate="book">BOOK A CONSULTATION</a></li>      
+                <li><a href="{% url 'helpcenter' %}"class="translatable" data-translate="help">HELP CENTER</a></li>
+                <li><a href="{% url 'privacy' %}"class="translatable" data-translate="privacy">PRIVACY</a></li>
+                <li><a href="{% url 'about' %}"class="translatable" data-translate="about" > ABOUT US </a></li>
+                <li><a href="https://wa.me/+966545392992"class="translatable" data-translate="contact">CONTACT US</a></li>
+            </ul>
+            <div class="dropdown">
+                <button class="dropdown-btn"id = "ar-btn">AR</button>
+                <div class="dropdown-content">
+                    <a href="{% url 'home' %}" id = "en-btn">EN</a>
+                </div>
+            </div>
+        </nav>  
+        {% block content %}
+        {% endblock %}
+
+
+<section class="services">
+                <a href="{% url 'consult' %}" class="consult-btn" id="consultBtn" aria-label="Request consultation">
+                    <i class="fas fa-headset"></i>
+                    <span class="consult-text translatable" data-translate="re">Request consultation</span>
+                </a>
+
+                <div class="whatsapp-btn" id="whatsappBtn">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+
+                <!-- نافذة الدردشة (اختياري) -->
+                <div class="whatsapp-chat" id="whatsappChat">
+                    <div class="chat-header">
+                        Contact Us
+                    </div>
+                    <div class="chat-body">
+                        <p>Hello How Can I Help You?  </p>
+                        <a href="https://wa.me/+966545392992" target="_blank" style="
+                            display: inline-block;
+                            background: #25D366;
+                            color: white;
+                            padding: 8px 15px;
+                            border-radius: 5px;
+                            margin-top: 10px;
+                            text-decoration: none;
+                        ">
+                            Start Conversation
+                        </a>
+                    </div>
+                </div>
+</section>
+<footer id="contact">
+        <h3>Contact Us Now</h3>
+        <p>To get a consultation or request professional services</p>
+        
+        <div class="social-links">
+            <a href="https://x.com/m_alzaifah?s=11&t=-UZ1PTwR-0AEBEC45XzcaA"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/mohammed-shahrani-phd-ceo-645a11252?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:CEO@sabrConsult.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://snapchat.com/t/mYvKbfn4"><i class="fab fa-snapchat"></i></a>
+        </div>
+        
+        <p>All Rights Reserved &copy; 2025 |Sabr</p>
+    </footer>
+<script src="{% static 'js/script.js' %}" ></script>
+</body>
+</html>

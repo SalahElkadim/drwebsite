@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load static%}
+<title>{% block title %}Sabr | الخدمات اللغوية والجنائية{% endblock %}</title>
+
+{% block content %}
+    <style>
+        header {
+            background-color: #252b48;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .intro {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 40px auto;
+            max-width: 1000px;
+        }
+        .service {
+            background-color: white;
+            width: 40%;
+            padding: 25px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h2, h3 {
+            color: #252b48;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        .cta {
+            text-align: center;
+            margin: 50px;
+        }
+        .cta a {
+            background-color: #445069;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+    </style>
+    <div class="translate-wrapper">
+    <span class="translate-label">🌐 Language:</span>
+    <div id="google_translate_element"></div>
+    </div>
+    <header>
+        <h1>Linguistic & Forensic Services</h1>
+        <p>Specialized services in forensic linguistics, fraud detection, authorship analysis, and document validation</p>
+    </header>
+
+    <div class="intro">
+        <p>Our linguistic and forensic expertise helps clients, legal professionals, and institutions uncover deception, detect forgery, and analyze language-based evidence in legal and investigative contexts.</p>
+    </div>
+
+    <div class="services">
+
+        <div class="service">
+            <h3>Forensic Linguistic Analysis</h3>
+            <ul>
+                <li>Authorship identification</li>
+                <li>Threat and ransom letter analysis</li>
+                <li>Discourse analysis in legal disputes</li>
+                <li>Linguistic profiling of anonymous messages</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>Fraud and Forgery Detection</h3>
+            <ul>
+                <li>Detection of manipulated or fake documents</li>
+                <li>Analysis of deceptive language patterns</li>
+                <li>Validation of written contracts and agreements</li>
+                <li>Email and communication authenticity review</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>Expert Witness Services</h3>
+            <ul>
+                <li>Certified forensic linguistic reports</li>
+                <li>Courtroom testimony and case consultation</li>
+                <li>Evidence documentation for legal use</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>Language-Based Investigations</h3>
+            <ul>
+                <li>Text comparison and plagiarism detection</li>
+                <li>Voice-to-text consistency analysis</li>
+                <li>Multilingual text analysis (Arabic, English, etc.)</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="cta">
+        <h2>Interested in our services?</h2>
+        <a href="https://wa.me/966500819191">Contact Us</a>
+    </div>
+
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,ar', // دعم اللغات: الإنجليزية والعربية فقط
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" 
+  src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+
+
+{% endblock %}

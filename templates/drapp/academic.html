@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load static%}
+<title>{% block title %}Sabr | حلول أكاديمية{% endblock %}</title>
+
+{% block content %}
+    <style>
+        
+        header {
+            background-color: #2e3c5d;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .intro {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 40px auto;
+            max-width: 1000px;
+        }
+        .service {
+            background-color: white;
+            width: 40%;
+            padding: 25px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h2, h3 {
+            color: #2e3c5d;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        .cta {
+            text-align: center;
+            margin: 50px;
+        }
+        .cta a {
+            background-color: #446eaa;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+    </style>
+<div class="translate-wrapper">
+    <span class="translate-label">🌐 Language:</span>
+    <div id="google_translate_element"></div>
+    </div>
+    <header>
+        <h1>Academic Solutions</h1>
+        <p>Professional academic support for students, researchers, and institutions</p>
+    </header>
+
+    <div class="intro">
+        <p>We provide a wide range of academic services designed to help learners and professionals succeed. Whether you're writing a thesis, analyzing data, or publishing research — we’re here to support you every step of the way.</p>
+    </div>
+
+    <div class="services">
+
+        <div class="service">
+            <h3>Academic Writing Support</h3>
+            <ul>
+                <li>Thesis and dissertation writing assistance</li>
+                <li>Research paper structuring and formatting</li>
+                <li>Proposal development</li>
+                <li>Plagiarism checking and editing</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>Proofreading & Editing</h3>
+            <ul>
+                <li>Academic proofreading by experts</li>
+                <li>Grammar and clarity improvements</li>
+                <li>APA, MLA, Chicago style corrections</li>
+                <li>Language polishing for publication</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>Academic Translation</h3>
+            <ul>
+                <li>Translation of research papers and abstracts</li>
+                <li>Arabic-English & English-Arabic academic translations</li>
+                <li>Terminology consistency checks</li>
+                <li>Multilingual content localization</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>Data Analysis & Visualization</h3>
+            <ul>
+                <li>SPSS, R, Python statistical analysis</li>
+                <li>Survey data interpretation</li>
+                <li>Graphs and academic charts for papers</li>
+                <li>Support for qualitative and quantitative methods</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="cta">
+        <h2>Need Expert Help with Your Academic Project?</h2>
+        <a href="https://wa.me/966500819191">Get in Touch</a>
+    </div>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,ar', // دعم اللغات: الإنجليزية والعربية فقط
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" 
+  src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+{% endblock %}

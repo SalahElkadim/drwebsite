@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static%}
+<title>{% block title %}Sabr | مركز المساعدة{% endblock %}</title>
+
+{% block content %}
+  <style>
+
+     header {
+      background-color: #0e2f44;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .search-bar {
+      text-align: center;
+      margin: 30px;
+    }
+    .search-bar input {
+      width: 60%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+    .category {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .faq-section {
+      padding: 40px;
+    }
+    .faq-item {
+      background-color: white;
+      margin-bottom: 15px;
+      padding: 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .faq-item:hover {
+      background-color: #eef2f3;
+    }
+    
+    .contact-links {
+      margin-top: 20px;
+    }
+    .contact-links a {
+      margin: 0 10px;
+      color: #ffd700;
+      text-decoration: none;
+    }
+  </style>
+
+  <header>
+    <h1>مركز المساعدة</h1>
+    <p>مرحبًا بك في مركز الدعم الخاص بنا – متخصصون في علم اللغة الجنائي وكشف التزوير والاحتيال</p>
+  </header>
+
+  <div class="search-bar">
+    <input type="text" placeholder="ابحث عن سؤال، خدمة أو موضوع...">
+  </div>
+
+  <section class="categories">
+    <div class="category">
+      <h3>الخدمات اللغوية الجنائية</h3>
+      <p>تعرف على خدمات تحليل النصوص، المقارنات اللغوية، وتحقيقات الانتحال.</p>
+    </div>
+    <div class="category">
+      <h3>التزوير والكشف عن الاحتيال</h3>
+      <p>شرح آليات كشف التزوير في الوثائق، التواقيع، والتحقق من الأصالة.</p>
+    </div>
+    <div class="category">
+      <h3>الحساب والإعدادات</h3>
+      <p>إدارة حسابك، تغيير البيانات، وتفعيل الإشعارات.</p>
+    </div>
+    <div class="category">
+      <h3>التقارير والاستشارات</h3>
+      <p>كيفية طلب تقارير رسمية، أو حجز جلسة استشارة مع خبير لغوي جنائي.</p>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <h2 style="text-align:center;">الأسئلة الشائعة</h2>
+    <div class="faq-item">
+      <strong>ما هو علم اللغة الجنائي؟</strong>
+      <p>هو استخدام علم اللغة لتحليل النصوص المكتوبة أو المنطوقة لأغراض التحقيق والقضاء.</p>
+    </div>
+    <div class="faq-item">
+      <strong>كيف أطلب خدمة تحليل نص؟</strong>
+      <p>يمكنك تقديم طلب من خلال صفحة " زر الواتساب السريع أو من خلال طلب استشارة" وسنقوم بالرد خلال 24 ساعة.</p>
+    </div>
+    <div class="faq-item">
+      <strong>هل يمكن الكشف عن تزوير الوثائق الرقمية؟</strong>
+      <p>نعم، لدينا أدوات وتقنيات لتحليل اللغة والبنية الرقمية للوثائق المرسلة.</p>
+    </div>
+  </section>
+{% endblock %}
