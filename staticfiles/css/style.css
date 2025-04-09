@@ -40,8 +40,11 @@
             font-size: 15px;
             font-weight: 400;
             transition: 0.3s;
-            padding: 5px 4px;
             border-radius: 20px;
+        }
+        .nav_list li{ 
+            margin-right: 3px;
+
         }
         
         .nav-list li a:hover {
@@ -361,7 +364,12 @@
         .chat-body p{
             color: #333;
         }
-
+.secondlogo img{
+    width: 120px;
+}
+.thirdlogo{
+    width: 60px;
+}
 @media (max-width: 768px) {
             .whatsapp-btn {
                 width: 50px;
@@ -371,11 +379,19 @@
                 left: 20px;
             }
         
-    .nav-list{ width: 200px;}}
+    .nav-list{ width: 200px;}
+    .secondlogo img{
+        width: 60px;
+        }
+    .thirdlogo{
+        width: 30px;
+    }
+}
     .nav-drop{
         left: 500px;
+        
     }
-@media(max-width:1200px){
+@media(max-width:1300px){
     .consultation-cta {
             top: 400px;
         }
@@ -452,6 +468,14 @@ margin-top: 10px;
 
 }
 @media(max-width:600px){
+    .cta-button1 {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .cta-button1 i {
+                font-size: 14px;
+            }  
     .nav-drop{
                 left: 360px;
                 top:310px;

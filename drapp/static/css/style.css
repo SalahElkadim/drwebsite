@@ -40,8 +40,11 @@
             font-size: 15px;
             font-weight: 400;
             transition: 0.3s;
-            padding: 5px 4px;
             border-radius: 20px;
+        }
+        .nav_list li{ 
+            margin-right: 3px;
+
         }
         
         .nav-list li a:hover {
