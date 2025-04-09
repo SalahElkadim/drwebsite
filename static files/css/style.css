@@ -371,9 +371,15 @@
                 left: 20px;
             }
         
-    .nav-list{ width: 200px;}}
+    .nav-list{ width: 200px;}
+    .secondlogo img{
+        width: 60px;
+        }
+
+}
     .nav-drop{
         left: 500px;
+        
     }
 @media(max-width:1300px){
     .consultation-cta {
