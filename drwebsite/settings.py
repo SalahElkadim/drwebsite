@@ -71,10 +71,11 @@ WSGI_APPLICATION = 'drwebsite.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('postgresql://postgres:pNBQtCNndiqoduItFiKINHbaLacphllb@interchange.proxy.rlwy.net:57493/railway') or 'sqlite:///db.sqlite3',
+        default='postgresql://postgres:pNBQtCNndiqoduItFiKINHbaLacphllb@interchange.proxy.rlwy.net:57493/railway',
         conn_max_age=600,
     )
 }
+
 
 
 # Password validation
