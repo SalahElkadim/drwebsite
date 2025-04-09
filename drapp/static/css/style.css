@@ -375,7 +375,7 @@
     .nav-drop{
         left: 500px;
     }
-@media(max-width:1400px){
+@media(max-width:1300px){
     .consultation-cta {
             top: 400px;
         }
@@ -452,6 +452,14 @@ margin-top: 10px;
 
 }
 @media(max-width:600px){
+    .cta-button1 {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .cta-button1 i {
+                font-size: 14px;
+            }  
     .nav-drop{
                 left: 360px;
                 top:310px;
