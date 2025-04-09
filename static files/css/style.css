@@ -361,7 +361,12 @@
         .chat-body p{
             color: #333;
         }
-
+.secondlogo img{
+    width: 120px;
+}
+.thirdlogo{
+    width: 60px;
+}
 @media (max-width: 768px) {
             .whatsapp-btn {
                 width: 50px;
@@ -375,7 +380,9 @@
     .secondlogo img{
         width: 60px;
         }
-
+    .thirdlogo{
+        width: 30px;
+    }
 }
     .nav-drop{
         left: 500px;
