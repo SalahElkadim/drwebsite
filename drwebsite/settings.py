@@ -71,7 +71,7 @@ WSGI_APPLICATION = 'drwebsite.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('postgresql://postgres:pNBQtCNndiqoduItFiKINHbaLacphllb@interchange.proxy.rlwy.net:57493/railway'),
+        default=os.environ.get('postgresql://postgres:pNBQtCNndiqoduItFiKINHbaLacphllb@interchange.proxy.rlwy.net:57493/railway') or 'sqlite:///db.sqlite3',
         conn_max_age=600,
     )
 }
