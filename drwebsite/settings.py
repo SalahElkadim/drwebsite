@@ -142,6 +142,3 @@ CACHES = {
     }
 }
 
-# ضغط الملفات الثابتة
-
-django_heroku.settings(locals())
