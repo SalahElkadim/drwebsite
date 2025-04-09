@@ -143,3 +143,7 @@ CACHES = {
     }
 }
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://web-production-c7bea.up.railway.app",
+]
+
