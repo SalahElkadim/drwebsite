@@ -15,11 +15,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-asc=zfl)y0xveh57ocuh0-=^xot#dx)a2rg5ri-rmd$_$=8rur'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['web-production-c7bea.up.railway.app',
     '127.0.0.1',
-    'localhost',]
+    'localhost','sabrconsult.com', 'www.sabrconsult.com']
+CSRF_TRUSTED_ORIGINS = ['https://sabrconsult.com', 'https://www.sabrconsult.com',"https://web-production-c7bea.up.railway.app"]
+
 
 
 # Application definition
@@ -114,7 +116,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -125,13 +127,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #ارسال الاستمارة للايميل
-MAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # Or whatever your SMTP server is
 EMAIL_PORT = 587  # Usually 587 for TLS
 EMAIL_USE_TLS = True  # Make sure TLS is enabled
-EMAIL_HOST_USER = 'medo891011@gmail.com'  # Your email
+EMAIL_HOST_USER = 'CEO@SabrConsult.com'  # Your email
 EMAIL_HOST_PASSWORD = 'utci ldrb albf rzjg'  # Use an app password if you have 2FA enabled
-DEFAULT_FROM_EMAIL = 'medo891011@gmail.com' 
+DEFAULT_FROM_EMAIL = 'CEO@SabrConsult.com' 
 
 # إعدادات التخزين المؤقت
 CACHE_TTL = 60 * 15  # 15 دقيقة
@@ -141,8 +143,8 @@ CACHES = {
         'LOCATION': 'C:\\path\\to\\cache\\folder',
     }
 }
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://web-production-c7bea.up.railway.app",
-]
 
