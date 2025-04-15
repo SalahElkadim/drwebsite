@@ -143,8 +143,13 @@ CACHES = {
         'LOCATION': 'C:\\path\\to\\cache\\folder',
     }
 }
-SECURE_SSL_REDIRECT = False
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
+# 🔐 تحويل كل الزيارات لـ HTTPS
+SECURE_SSL_REDIRECT = True
+
+# 🍪 ملفات الكوكيز تتنقل بس مع HTTPS
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+
 
 
