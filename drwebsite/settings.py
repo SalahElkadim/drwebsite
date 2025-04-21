@@ -116,7 +116,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+#STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -140,7 +140,8 @@ CACHE_TTL = 60 * 15  # 15 دقيقة
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': 'C:\\path\\to\\cache\\folder',
+        'LOCATION': os.path.join(BASE_DIR, 'cache_folder'),
+
     }
 }
 SECURE_SSL_REDIRECT = False
