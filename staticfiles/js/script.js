@@ -8,9 +8,6 @@ menu_1.classList.toggle("move")
 nav_list.classList.toggle("move_1");
 }
 
-
-
-
 const whatsappBtn = document.getElementById('whatsappBtn');
         const whatsappChat = document.getElementById('whatsappChat');
 
