@@ -88,6 +88,33 @@ document.addEventListener("DOMContentLoaded", function () {
     imp: "روابط قد تهمك",
 
     // أضف بقية النصوص هنا...
+
+    // الإضافات الجديدة الخاصة بالخدمات:
+    forensic_linguistic_services: "خدمات التحليل اللغوي الجنائي",
+    forensic_linguistic_analysis:"تحليل لغوي جنائي باللغتين العربية والإنجليزية",
+    authorship_identification: "تحديد الهوية اللغوية (البصمة اللغوية)",
+    threat_fraud_detection: "كشف الإشارات اللغوية الدالة على التهديد والاحتيال",
+    peer_review_content: "مراجعة الأقران للمحتوى القانوني والتجاري",
+    legal_language_simplification: "تبسيط اللغة القانونية في العقود",
+    legal_translation_services: "خدمات الترجمة القانونية",
+
+    fraud_forgery_detection: "كشف الاحتيال والتزوير",
+    verify_contracts: "التحقق من صحة العقود والاتفاقيات المكتوبة",
+    validate_email_communications:"التحقق من مصداقية البريد الإلكتروني والاتصالات",
+    review_financial_documents: "مراجعة شاملة للوثائق والسجلات المالية",
+    user_behavior_analysis: "تحليل سلوك المستخدم",
+
+    forensic_voice_analysis: "التحليل الصوتي الجنائي",
+    voiceprint_analysis: "تحليل بصمة الصوت والسياق الصوتي",
+    forensic_voice_reports: "إعداد تقارير خبرة جنائية صوتية",
+    recording_authenticity_verification:"التحقق من صحة التسجيلات وكشف التلاعب الصوتي",
+    confession_analysis: "تحليل الاعترافات المسجلة تحت الضغط",
+    voice_comparison_demographi:"مقارنة الأصوات والكشف عن الخصائص الديموغرافية",
+
+    expert_technical_services: "خدمات الخبراء الفنية للجهات القضائية",
+    written_expert_reports: "تقديم تقارير خبرة فنية مكتوبة",
+    expert_witness_testimony: "الشهادة كخبير أمام المحكمة",
+
   };
 
   
