@@ -62,7 +62,7 @@ def submit_consultation(request):
                 التفاصيل: {consultation.message}
             """,
             from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=['CEO@SabrConsult.com'],  # ← غيّر البريد
+            recipient_list=['ceo@sabrconsult.com'],  # ← غيّر البريد
         )
 
         return JsonResponse({'status': 'success'})
@@ -94,7 +94,7 @@ def submit_seminar(request):
                 التفاصيل: {consultation.message}
             """,
             from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=['CEO@SabrConsult.com'],  # ← غيّر البريد
+            recipient_list=['ceo@sabrconsult.com'],  # ← غيّر البريد
         )
 
         return JsonResponse({'status': 'success'})
