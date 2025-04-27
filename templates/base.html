@@ -98,13 +98,5 @@
         <p>All Rights Reserved &copy; 2025 |Sabr</p>
     </footer>
 <script src="{% static 'js/script.js' %}" ></script>
-<script>
-  document.getElementById('whatsapp-link').addEventListener('click', function(e) {
-    e.preventDefault();
-    var phone = "+966545392992"; // الرقم
-    var link = "https://api.whatsapp.com/send/?phone=" + encodeURIComponent(phone) + "&text&type=phone_number&app_absent=0";
-    window.open(link, '_blank');
-  });
-</script>
 </body>
 </html>

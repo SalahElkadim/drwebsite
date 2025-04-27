@@ -3,6 +3,9 @@
 from pathlib import Path
 import os
 import dj_database_url
+import os
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -147,5 +150,6 @@ CACHES = {
 SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
+WHATSAPP_PHONE = os.getenv('WHATSAPP_PHONE')
 
 

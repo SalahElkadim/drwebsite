@@ -36,6 +36,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 import json
 from .models import ConsultationRequest, seminarrequest
+from django.views.decorators.http import require_GET
 
 @csrf_exempt
 def submit_consultation(request):
@@ -99,3 +100,12 @@ def submit_seminar(request):
 
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
+
+@require_GET
+def get_whatsapp_link(request):
+    phone_number = settings.WHATSAPP_PHONE
+    if phone_number:
+        whatsapp_link = f"https://api.whatsapp.com/send/?phone={phone_number}&text&type=phone_number&app_absent=0"
+        return JsonResponse({"link": whatsapp_link})
+    else:
+        return JsonResponse({"error": "Phone number not configured"}, status=500)
