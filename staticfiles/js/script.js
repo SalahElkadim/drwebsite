@@ -60,8 +60,6 @@ setInterval(() => {
 }, 1500);
 
 document.addEventListener("DOMContentLoaded", function () {
-  const elementsToTranslate = document.querySelectorAll(".translatable");
-
   const arabicText = {
     home: "الرئيسية",
     about: "من نحن",
@@ -75,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     help: "المساعدة",
     privacy: "سياسة الخصوصية",
     contact: "تواصل معنا",
-    req: " اطلب استشارة الآن",
+    req: "اطلب استشارة الآن",
     spe: "استشارات متخصصة في مجال اللغويات الجنائية وتحليل الاحتيال المالي",
     re: "اطلب استشارة",
     cer: "متخصصون معتمدون في علم اللغة الجنائي",
@@ -115,19 +113,21 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   function translateToArabic() {
+    // نعيد اختيار العناصر كل مرة تضغط الزر
+    const elementsToTranslate = document.querySelectorAll(".translatable");
     elementsToTranslate.forEach((el) => {
       const key = el.getAttribute("data-translate");
       if (arabicText[key]) {
         el.textContent = arabicText[key];
       }
     });
+
     const dropdownBtn = document.querySelector(".dropdown-btn");
     if (dropdownBtn) {
       dropdownBtn.textContent = "AR";
     }
   }
 
-  // تأكد إن الزر موجود قبل تحطله حدث
   const arBtn = document.getElementById("ar-btn");
   if (arBtn) {
     arBtn.addEventListener("click", function (e) {
@@ -144,5 +144,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
 
 
