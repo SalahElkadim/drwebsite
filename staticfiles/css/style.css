@@ -1207,3 +1207,24 @@ margin-top: 10px;
 .bta:hover{
     transform: scale(1.1);
 }
+.footer-links {
+    list-style: none; /* يشيل النقط */
+    padding: 0;
+    margin: 0;
+    display: flex; /* يخلي العناصر جنب بعض */
+    justify-content: center; /* يخليهم بالوسط */
+    gap: 20px; /* مسافة بينهم */
+}
+
+.footer-links li a {
+    text-decoration: none; /* يشيل الخط تحت الرابط */
+    color: #333; /* لون النص */
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s, transform 0.3s; /* حركة ناعمة */
+}
+
+.footer-links li a:hover {
+    color: #007bff; /* لون عند المرور */
+    transform: scale(1.05); /* تكبير بسيط عند المرور */
+}
