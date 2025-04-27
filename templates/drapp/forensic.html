@@ -109,7 +109,8 @@
     </div>
 
 
-<div id="google_translate_element" style="display:none;"></div>
+<!-- سكربت الترجمة -->
+<div id="google_translate_element" style="display: none;"></div>
 
 <script type="text/javascript">
   function googleTranslateElementInit() {
@@ -125,31 +126,26 @@
   src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
 </script>
 
-<!-- سكربت ربط الأزرار -->
+<!-- سكربت التحكم في اللغة -->
 <script>
-  function changeLanguage(lang) {
-    var frame = document.querySelector('iframe.goog-te-menu-frame');
-    if (frame) {
-      var innerDoc = frame.contentDocument || frame.contentWindow.document;
-      var langItems = innerDoc.querySelectorAll('.goog-te-menu2-item span.text');
-      langItems.forEach(function(item) {
-        if (item.innerText.toLowerCase().indexOf(lang) > -1) {
-          item.click();
-        }
-      });
+  function setLanguage(lang) {
+    var select = document.querySelector('select.goog-te-combo');
+    if (select) {
+      select.value = lang;
+      select.dispatchEvent(new Event('change'));
     } else {
-      console.error("ترجمة Google لم تحمل بعد.");
+      console.error("Google Translate لم يحمل بعد.");
     }
   }
 
   document.getElementById('ar-btn').addEventListener('click', function(e) {
     e.preventDefault();
-    changeLanguage('arabic');
+    setLanguage('ar'); // Arabic
   });
 
   document.getElementById('en-btn').addEventListener('click', function(e) {
     e.preventDefault();
-    changeLanguage('english');
+    setLanguage('en'); // English
   });
 </script>
 
