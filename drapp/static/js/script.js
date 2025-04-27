@@ -9,21 +9,43 @@ nav_list.classList.toggle("move_1");
 }
 
 
-// إظهار/إخفاء محادثة واتساب
+
+
 const whatsappBtn = document.getElementById('whatsappBtn');
-const whatsappChat = document.getElementById('whatsappChat');
+        const whatsappChat = document.getElementById('whatsappChat');
 
-whatsappBtn.addEventListener("click", function () {
-  whatsappChat.style.display = whatsappChat.style.display === "block" ? "none" : "block";
-});
+        // عند النقر على الزر
+        whatsappBtn.addEventListener("click", function () {
+          // الطريقة 1: فتح محادثة مباشرة (الأفضل)
+        whatsappChat.style.display =
+            whatsappChat.style.display === "block" ? "none" : "block";
+        });
+document.getElementById('consultBtn').addEventListener('click', function() {
+            // هنا يمكنك:
+            // 1. فتح نموذج الاستشارة
+            // document.getElementById('consultationForm').style.display = 'block';
+            
+            // 2. التمرير إلى قسم الاستشارة في الصفحة
+            // document.getElementById('consultation-section').scrollIntoView();
+            
+            // 3. فتح رابط خارجي
+            window.location.href = '#consultation'});
 
-// عند الضغط على زر الاستشارة
+
 document.getElementById("consultBtn").addEventListener("click", function () {
-  alert("سيتم توجيهك إلى نموذج طلب الاستشارة");
+  // هنا يمكنك:
+  // 1. فتح نموذج الاستشارة
+  // 2. التمرير إلى قسم الاتصال
+  // 3. فتح نافذة دردشة
+
+  // مثال: فتح رابط خارجي
   window.open("#contact", "_self");
+
+  // أو عرض رسالة
+  alert("سيتم توجيهك إلى نموذج طلب الاستشارة");
 });
 
-// إنشاء تأثير دوائر متحركة
+// إنشاء دوائر متحركة إضافية
 setInterval(() => {
   const circle = document.createElement("div");
   circle.className = "pulse-circle";
@@ -34,58 +56,11 @@ setInterval(() => {
   circle.style.animationDelay = "0s";
   document.querySelector(".consultation-cta").appendChild(circle);
 
-  // إزالة الدوائر القديمة لمنع التراكم
+  // إزالة الدوائر القديمة لمنع تراكمها
   setTimeout(() => {
     circle.remove();
   }, 3000);
 }, 1500);
-
-// إضافة نص محسن لفتح نافذة الدردشة عند الضغط على زر الاتصال (استشارة)
-document.getElementById('consultBtn').addEventListener('click', function() {
-  // هنا يمكنك:
-  // 1. فتح نموذج الاستشارة
-  // 2. التمرير إلى قسم الاستشارة في الصفحة
-  // 3. فتح رابط خارجي
-  window.location.href = '#consultation';
-});
-
-// إضافة الكود الجديد الخاص بـ CSRF والـ WhatsApp
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            // هل الكوكي يبدأ بالاسم اللي نبحث عنه؟
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-
-// عند النقر على زر واتساب
-document.getElementById('whatsapp-btn').addEventListener('click', function() {
-    fetch('/api/whatsapp-link/', {
-        method: 'GET',
-        headers: {
-            'X-CSRFToken': getCookie('csrftoken')  // استخدام الـ CSRF Token هنا
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.link) {
-            window.open(data.link, '_blank');  // فتح الرابط في نافذة جديدة
-        } else {
-            alert('Failed to get WhatsApp link.');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-});
 
 
 document.addEventListener("DOMContentLoaded", function () {
