@@ -52,10 +52,6 @@
             text-decoration: none;
         }
     </style>
-    <div class="translate-wrapper">
-    <span class="translate-label">🌐 Language:</span>
-    <div id="google_translate_element"></div>
-    </div>
     <header>
         <h1>Linguistic & Forensic Services</h1>
         <p>Specialized services in forensic linguistics, fraud detection, authorship analysis, and document validation</p>
@@ -113,11 +109,13 @@
     </div>
 
 
+<div id="google_translate_element" style="display:none;"></div>
+
 <script type="text/javascript">
   function googleTranslateElementInit() {
     new google.translate.TranslateElement({
       pageLanguage: 'en',
-      includedLanguages: 'en,ar', // دعم اللغات: الإنجليزية والعربية فقط
+      includedLanguages: 'en,ar',
       layout: google.translate.TranslateElement.InlineLayout.SIMPLE
     }, 'google_translate_element');
   }
@@ -125,6 +123,34 @@
 
 <script type="text/javascript" 
   src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+
+<!-- سكربت ربط الأزرار -->
+<script>
+  function changeLanguage(lang) {
+    var frame = document.querySelector('iframe.goog-te-menu-frame');
+    if (frame) {
+      var innerDoc = frame.contentDocument || frame.contentWindow.document;
+      var langItems = innerDoc.querySelectorAll('.goog-te-menu2-item span.text');
+      langItems.forEach(function(item) {
+        if (item.innerText.toLowerCase().indexOf(lang) > -1) {
+          item.click();
+        }
+      });
+    } else {
+      console.error("ترجمة Google لم تحمل بعد.");
+    }
+  }
+
+  document.getElementById('ar-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    changeLanguage('arabic');
+  });
+
+  document.getElementById('en-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    changeLanguage('english');
+  });
 </script>
 
 
