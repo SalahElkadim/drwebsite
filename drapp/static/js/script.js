@@ -59,12 +59,9 @@ setInterval(() => {
   }, 3000);
 }, 1500);
 
-
 document.addEventListener("DOMContentLoaded", function () {
-  // العناصر التي تريد ترجمتها (أضف class="translatable" لها في HTML)
   const elementsToTranslate = document.querySelectorAll(".translatable");
 
-  // النصوص العربية (يمكنك إضافة المزيد)
   const arabicText = {
     home: "الرئيسية",
     about: "من نحن",
@@ -87,11 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
     req1: "حجز ندوة للمؤسسات الحكومية والخاصة",
     imp: "روابط قد تهمك",
 
-    // أضف بقية النصوص هنا...
-
-    // الإضافات الجديدة الخاصة بالخدمات:
     forensic_linguistic_services: "خدمات التحليل اللغوي الجنائي",
-    forensic_linguistic_analysis:"تحليل لغوي جنائي باللغتين العربية والإنجليزية",
+    forensic_linguistic_analysis:
+      "تحليل لغوي جنائي باللغتين العربية والإنجليزية",
     authorship_identification: "تحديد الهوية اللغوية (البصمة اللغوية)",
     threat_fraud_detection: "كشف الإشارات اللغوية الدالة على التهديد والاحتيال",
     peer_review_content: "مراجعة الأقران للمحتوى القانوني والتجاري",
@@ -100,37 +95,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fraud_forgery_detection: "كشف الاحتيال والتزوير",
     verify_contracts: "التحقق من صحة العقود والاتفاقيات المكتوبة",
-    validate_email_communications:"التحقق من مصداقية البريد الإلكتروني والاتصالات",
+    validate_email_communications:
+      "التحقق من مصداقية البريد الإلكتروني والاتصالات",
     review_financial_documents: "مراجعة شاملة للوثائق والسجلات المالية",
     user_behavior_analysis: "تحليل سلوك المستخدم",
 
     forensic_voice_analysis: "التحليل الصوتي الجنائي",
     voiceprint_analysis: "تحليل بصمة الصوت والسياق الصوتي",
     forensic_voice_reports: "إعداد تقارير خبرة جنائية صوتية",
-    recording_authenticity_verification:"التحقق من صحة التسجيلات وكشف التلاعب الصوتي",
+    recording_authenticity_verification:
+      "التحقق من صحة التسجيلات وكشف التلاعب الصوتي",
     confession_analysis: "تحليل الاعترافات المسجلة تحت الضغط",
-    voice_comparison_demographi:"مقارنة الأصوات والكشف عن الخصائص الديموغرافية",
+    voice_comparison_demographics:
+      "مقارنة الأصوات والكشف عن الخصائص الديموغرافية",
 
     expert_technical_services: "خدمات الخبراء الفنية للجهات القضائية",
     written_expert_reports: "تقديم تقارير خبرة فنية مكتوبة",
     expert_witness_testimony: "الشهادة كخبير أمام المحكمة",
-
   };
 
-  
-
-  // زر AR
-  document.getElementById("ar-btn").addEventListener("click", function (e) {
-    e.preventDefault();
-    translateToArabic();
-  });
-
-  // زر EN
-  document.getElementById("en-btn").addEventListener("click", function (e) {
-    location.reload();
-  });
-
-  // وظيفة الترجمة للعربية
   function translateToArabic() {
     elementsToTranslate.forEach((el) => {
       const key = el.getAttribute("data-translate");
@@ -138,9 +121,28 @@ document.addEventListener("DOMContentLoaded", function () {
         el.textContent = arabicText[key];
       }
     });
-    document.querySelector(".dropdown-btn").textContent = "AR";
+    const dropdownBtn = document.querySelector(".dropdown-btn");
+    if (dropdownBtn) {
+      dropdownBtn.textContent = "AR";
+    }
   }
 
-  
+  // تأكد إن الزر موجود قبل تحطله حدث
+  const arBtn = document.getElementById("ar-btn");
+  if (arBtn) {
+    arBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      translateToArabic();
+    });
+  }
+
+  const enBtn = document.getElementById("en-btn");
+  if (enBtn) {
+    enBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      location.reload();
+    });
+  }
 });
+
 
