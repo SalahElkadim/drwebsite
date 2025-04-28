@@ -132,7 +132,8 @@ EMAIL_HOST = 'smtp.gmail.com'  # Or whatever your SMTP server is
 EMAIL_PORT = 587  # Usually 587 for TLS
 EMAIL_USE_TLS = True  # Make sure TLS is enabled
 EMAIL_HOST_USER = 'sm249481@gmail.com'  # Your email
-EMAIL_HOST_PASSWORD = 'utci ldrb albf rzjg'  # Use an app password if you have 2FA enabled
+EMAIL_HOST_PASSWORD = 'kzdu pybm tspg fukk'
+  # Use an app password if you have 2FA enabled
 DEFAULT_FROM_EMAIL =  'sm249481@gmail.com' 
 
 # إعدادات التخزين المؤقت
