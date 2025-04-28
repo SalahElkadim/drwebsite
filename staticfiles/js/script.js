@@ -17,30 +17,15 @@ const whatsappBtn = document.getElementById('whatsappBtn');
         whatsappChat.style.display =
             whatsappChat.style.display === "block" ? "none" : "block";
         });
-document.getElementById('consultBtn').addEventListener('click', function() {
-            // هنا يمكنك:
-            // 1. فتح نموذج الاستشارة
-            // document.getElementById('consultationForm').style.display = 'block';
-            
-            // 2. التمرير إلى قسم الاستشارة في الصفحة
-            // document.getElementById('consultation-section').scrollIntoView();
-            
-            // 3. فتح رابط خارجي
-            window.location.href = '#consultation'});
 
-
-document.getElementById("consultBtn").addEventListener("click", function () {
-  // هنا يمكنك:
-  // 1. فتح نموذج الاستشارة
-  // 2. التمرير إلى قسم الاتصال
-  // 3. فتح نافذة دردشة
-
-  // مثال: فتح رابط خارجي
-  window.open("#contact", "_self");
-
-  // أو عرض رسالة
-  alert("سيتم توجيهك إلى نموذج طلب الاستشارة");
-});
+const consultBtn = document.getElementById("consultBtn");
+if (consultBtn) {
+  consultBtn.addEventListener("click", function () {
+    document
+      .getElementById("consultation-section")
+      ?.scrollIntoView({ behavior: "smooth" });
+  });
+}
 
 // إنشاء دوائر متحركة إضافية
 setInterval(() => {
