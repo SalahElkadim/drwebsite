@@ -36,7 +36,6 @@ setInterval(() => {
   circle.style.top = "0";
   circle.style.left = "0";
   circle.style.animationDelay = "0s";
-  document.querySelector(".consultation-cta").appendChild(circle);
 
   // إزالة الدوائر القديمة لمنع تراكمها
   setTimeout(() => {
