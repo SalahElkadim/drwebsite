@@ -7,7 +7,7 @@ from .sitemaps import StaticViewSitemap
 sitemaps = {
     'static': StaticViewSitemap,
 }
-from .views import submit_consultation
+from .views import submit_consultation , submit_seminar
 
 urlpatterns = [
     path('', views.home , name='home'),
@@ -20,6 +20,7 @@ urlpatterns = [
     path('academic', views.academic , name='academic'),
     path('seminar', views.seminar , name='seminar'),
     path('submit-consultation/', submit_consultation, name='submit_consultation'),
+    path('submit-seminar/', submit_seminar, name='submit_seminar'),
     path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
