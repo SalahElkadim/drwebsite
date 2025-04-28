@@ -131,12 +131,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #ارسال الاستمارة للايميل
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.sabrconsult.com'  # Or whatever your SMTP server is
+EMAIL_HOST = 'smtp.gmail.com'  # Or whatever your SMTP server is
 EMAIL_PORT = 587  # Usually 587 for TLS
 EMAIL_USE_TLS = True  # Make sure TLS is enabled
-EMAIL_HOST_USER = 'ceo@sabrconsult.com'  # Your email
+EMAIL_HOST_USER = 'sm249481@gmail.com'  # Your email
 EMAIL_HOST_PASSWORD = 'ilmvm22@'  # Use an app password if you have 2FA enabled
-DEFAULT_FROM_EMAIL = 'ceo@sabrconsult.com' 
+DEFAULT_FROM_EMAIL = 'sm249481@gmail.com' 
 
 # إعدادات التخزين المؤقت
 CACHE_TTL = 60 * 15  # 15 دقيقة
