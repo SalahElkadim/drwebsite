@@ -131,10 +131,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # Or whatever your SMTP server is
 EMAIL_PORT = 587  # Usually 587 for TLS
 EMAIL_USE_TLS = True  # Make sure TLS is enabled
-EMAIL_HOST_USER = 'sm249481@gmail.com'  # Your email
-EMAIL_HOST_PASSWORD = 'kzdu pybm tspg fukk'
+EMAIL_HOST_USER = 'M.abuzaifah@gmail.com'  # Your email
+EMAIL_HOST_PASSWORD = 'zuoc zlqs nyqm awhe'
   # Use an app password if you have 2FA enabled
-DEFAULT_FROM_EMAIL =  'sm249481@gmail.com' 
+DEFAULT_FROM_EMAIL =  'M.abuzaifah@gmail.com' 
 
 # إعدادات التخزين المؤقت
 CACHE_TTL = 60 * 15  # 15 دقيقة
