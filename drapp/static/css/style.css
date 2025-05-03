@@ -77,7 +77,7 @@
             display: none;
             position: absolute;
             background-color: black;
-            min-width: 60px;
+            min-width: 40px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
             border-radius: 4px;
@@ -85,7 +85,7 @@
         
         .dropdown-content a {
             color: #efe9e5;
-            padding: 8px 16px;
+            padding: 6px 12px;
             text-decoration: none;
             display: block;
         }
@@ -96,6 +96,7 @@
         
         .dropdown:hover .dropdown-content {
             display: block;
+            border-radius: 4px;
         }
         
         .dropdown:hover .dropdown-btn {
