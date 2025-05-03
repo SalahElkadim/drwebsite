@@ -19,84 +19,85 @@
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body> 
-    <nav class="navbar">
-            <div class="nav-menu">
-                    <div class="line1"></div>
-                    <div class="line2"></div>
-                    <div class="line3"></div>
-                </div>
-            <div class = "logo">
-                <img src="{% static 'image/logo.png' %}" alt="">
-            </div>
-            <ul class="nav-list">
-                <li><a href="{% url 'home' %}" class="translatable" data-translate="home">HOME</a></li>
-                <li><a href="{% url 'forensic' %}" class="translatable" data-translate="forensic">LINGUISTIC & FORENSIC CONSULTANCY</a></li>
-                <li><a href="{% url 'marketing' %}"class="translatable" data-translate="ling">TRADEMARK & MARKETING SOLUTIONS</a></li>
-                <li><a href="{% url 'academic' %}"class="translatable" data-translate="train">TRAINING & DEVELOPEMENT</a></li>                
-                <li><a href="{% url 'consult' %}" class="translatable" data-translate="book">BOOK A CONSULTATION</a></li>      
-            </ul>
-            <div class="dropdown">
-                <button class="dropdown-btn"id = "ar-btn">AR</button>
-                <div class="dropdown-content">
-                    <a href="{% url 'home' %}" id = "en-btn">EN</a>
-                </div>
-            </div>
-        </nav>  
-        {% block content %}
-        {% endblock %}
+<body dir="rtl"> 
+<nav class="navbar">
+    <div class="nav-menu">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+    <div class="logo">
+        <img src="{% static 'image/logo.png' %}" alt="">
+    </div>
+    <ul class="nav-list">
+        <li><a href="{% url 'home' %}" class="translatable" data-translate="home">الرئيسية</a></li>
+        <li><a href="{% url 'forensic' %}" class="translatable" data-translate="forensic">الخدمات الجنائية</a></li>
+        <li><a href="{% url 'marketing' %}" class="translatable" data-translate="ling">خدمات العلامات التجارية والتسويق</a></li>
+        <li><a href="{% url 'academic' %}" class="translatable" data-translate="train">التدريب والتطوير</a></li>
+        <li><a href="{% url 'consult' %}" class="translatable" data-translate="book">احجز استشارة</a></li>      
+    </ul>
+    <div class="dropdown">
+        <button class="dropdown-btn" id="en-btn">EN</button>
+        <div class="dropdown-content">
+            <a href="#" id="ar-btn">AR</a>
+        </div>
+    </div>
+</nav>  
 
+{% block content %}
+{% endblock %}
 
 <section class="services">
-                <a href="{% url 'consult' %}" class="consult-btn" id="consultBtn" aria-label="Request consultation">
-                    <i class="fas fa-headset"></i>
-                    <span class="consult-text translatable" data-translate="re">Request consultation</span>
-                </a>
+    <a href="{% url 'consult' %}" class="consult-btn" id="consultBtn" aria-label="اطلب استشارة">
+        <i class="fas fa-headset"></i>
+        <span class="consult-text translatable" data-translate="re">اطلب استشارة</span>
+    </a>
 
-                <div class="whatsapp-btn" id="whatsappBtn">
-                    <i class="fab fa-whatsapp"></i>
-                </div>
+    <div class="whatsapp-btn" id="whatsappBtn">
+        <i class="fab fa-whatsapp"></i>
+    </div>
 
-                <!-- نافذة الدردشة (اختياري) -->
-                <div class="whatsapp-chat" id="whatsappChat">
-                    <div class="chat-header">
-                        Contact Us
-                    </div>
-                    <div class="chat-body">
-                        <p>Hello How Can I Help You?  </p>
-                        <a href="https://wa.me/+966545392992" target="_blank" style="
-                            display: inline-block;
-                            background: #25D366;
-                            color: white;
-                            padding: 8px 15px;
-                            border-radius: 5px;
-                            margin-top: 10px;
-                            text-decoration: none;
-                        ">
-                            Start Conversation
-                        </a>
-                    </div>
-                </div>
-</section>
-<footer id="contact">
-        <h3>Contact Us Now</h3>
-        <p>To get a consultation or request professional services</p>
-        
-        <div class="social-links">
-            <a href="https://x.com/m_alzaifah?s=11&t=-UZ1PTwR-0AEBEC45XzcaA"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.linkedin.com/in/mohammed-shahrani-phd-ceo-645a11252?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:CEO@sabrConsult.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://snapchat.com/t/mYvKbfn4"><i class="fab fa-snapchat"></i></a>
+    <!-- نافذة الدردشة -->
+    <div class="whatsapp-chat" id="whatsappChat">
+        <div class="chat-header">
+            تواصل معنا
         </div>
-        <ul class="footer-links">
-            <li><a href="{% url 'helpcenter' %}" class="translatable" data-translate="help">HELP CENTER</a></li>
-            <li><a href="{% url 'privacy' %}" class="translatable" data-translate="privacy">PRIVACY</a></li>
-            <li><a href="{% url 'about' %}" class="translatable" data-translate="about">ABOUT US</a></li>
-            <li><a href="https://wa.me/+966545392992" class="translatable" data-translate="contact">CONTACT US</a></li>
-        </ul>
-        
-        <p>All Rights Reserved &copy; 2025 |Sabr</p>
-    </footer>
-<script src="{% static 'js/script.js' %}" ></script>
+        <div class="chat-body">
+            <p>مرحباً، كيف يمكنني مساعدتك؟</p>
+            <a href="https://wa.me/+966545392992" target="_blank" style="
+                display: inline-block;
+                background: #25D366;
+                color: white;
+                padding: 8px 15px;
+                border-radius: 5px;
+                margin-top: 10px;
+                text-decoration: none;
+            ">
+                ابدأ المحادثة
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer id="contact">
+    <h3>تواصل معنا الآن</h3>
+    <p>للحصول على استشارة أو طلب خدمات احترافية</p>
+    
+    <div class="social-links">
+        <a href="https://x.com/m_alzaifah?s=11&t=-UZ1PTwR-0AEBEC45XzcaA"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/mohammed-shahrani-phd-ceo-645a11252?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:CEO@sabrConsult.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://snapchat.com/t/mYvKbfn4"><i class="fab fa-snapchat"></i></a>
+    </div>
+    <ul class="footer-links">
+        <li><a href="{% url 'helpcenter' %}" class="translatable" data-translate="help">المساعدة</a></li>
+        <li><a href="{% url 'privacy' %}" class="translatable" data-translate="privacy">سياسة الخصوصية</a></li>
+        <li><a href="{% url 'about' %}" class="translatable" data-translate="about">من نحن</a></li>
+        <li><a href="https://wa.me/+966545392992" class="translatable" data-translate="contact">تواصل معنا</a></li>
+    </ul>
+    
+    <p>جميع الحقوق محفوظة &copy; 2025 | Sabr</p>
+</footer>
+
+<script src="{% static 'js/script.js' %}"></script>
 </body>
-</html>

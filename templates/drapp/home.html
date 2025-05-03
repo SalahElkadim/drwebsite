@@ -3,79 +3,80 @@
 <title>{% block title %}Sabr | الصفحة الرئيسية{% endblock %}</title>
 {% block content %}
 
-
 <div class="container">
     <div class="consultation-cta">
-            <a href="{% url 'seminar' %}" class="cta-button1" id="consultBtn1" data-translate="req1" >
-              <i class="fas fa-handshake "></i>
-              <h class="translatable" data-translate="req1">Booking seminars for government and private entities</h>
-            </a>
-            <a href="{% url 'consult' %}" class="cta-button" id="consultBtn" data-translate="req" >
-              <i class="fas fa-handshake "></i>
-              <h class="translatable" data-translate="req">Request consultation now </h>
-            </a>
-        
-            <p class="cta-subtext translatable"  data-translate="spe">Specialized consultations in forensic linguistics and financial fraud   </p>
+        <a href="{% url 'seminar' %}" class="cta-button1" id="consultBtn1" data-translate="req1">
+            <i class="fas fa-handshake "></i>
+            <h class="translatable" data-translate="req1">حجز الندوات للجهات الحكومية والخاصة</h>
+        </a>
+        <a href="{% url 'consult' %}" class="cta-button" id="consultBtn" data-translate="req">
+            <i class="fas fa-handshake "></i>
+            <h class="translatable" data-translate="req">اطلب استشارة الآن</h>
+        </a>
+
+        <p class="cta-subtext translatable" data-translate="spe">استشارات متخصصة في اللغويات الجنائية والاحتيال المالي</p>
     </div>
 </div>
-    <header class="hero">
-        <div class="hero-content">
-            <div class="logo">
-                <img src="{% static 'image/logo.png' %}" alt="">
-            </div>
-            <br></br>
-            <span class="title translatable" data-translate="cer">Certified experts in forensic linguistics</span>
-            <p class="translatable" data-translate="for">  Forensic linguistic analysis - Detection of forgery - Investigation of financial fraud crimes - Forensic expertise</p>
-            <a class="bta" href="https://wa.me/966500819191" class="translatable" data-translate="con"style="
-                display: inline-block;
-                background: #1a2c4a;
-                color: white;
-                padding: 12px 30px;
-                border-radius: 30px;
-                text-decoration: none;
-                font-weight: bold;
-                margin-top: 20px;
-                transition: all 0.3s;
-            ">Contact Us   </a>
-        </div> 
-      </header>
-      <section>
 
-        <h1 class="translatable" data-translate="imp">important links </h1>
-  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px;">
+<header class="hero">
+    <div class="hero-content">
+        <div class="logo">
+            <img src="{% static 'image/logo.png' %}" alt="">
+        </div>
+        <br></br>
+        <span class="title translatable" data-translate="cer">خبراء معتمدون في اللغويات الجنائية</span>
+        <p class="translatable" data-translate="for">تحليل لغوي جنائي - كشف التزوير - التحقيق في جرائم الاحتيال المالي - خبرات جنائية</p>
+        <a class="bta" href="https://wa.me/966500819191" class="translatable" data-translate="con" style="
+            display: inline-block;
+            background: #1a2c4a;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        ">تواصل معنا</a>
+    </div> 
+</header>
 
-    <a href="https://www.moj.gov.sa/ar/pages/default.aspx" class="secondlogo" target="_blank" title="جامعة الملك خالد">
-    <img src="{% static 'image/1.png' %}" alt="شعار جامعة الملك خالد" style=" width:200px; height: auto;">
-    </a>
+<section>
+    <h1 class="translatable" data-translate="imp">روابط مهمة</h1>
+    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px;">
 
-    <a href="https://www.moi.gov.sa/wps/portal/Home/Home/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLQPdnT08TIy83Q0dzQwcPc2N_A08TQ3dPY30wwkpiAJKG-AAjgZA_VFgJc7ujh4m5j4GBhY-7qYGno4eoUGWgcbGBo7GUAV4zCjIjTDIdFRUBAApuVo7/dz/d5/L0lDUmlTUSEhL3dHa0FKRnNBLzROV3FpQSEhL2Fy/" class="secondlogo" target="_blank" title="جامعة الملك خالد">
-    <img src="{% static 'image/2.png' %}" alt="شعار جامعة الملك خالد" style=" width:200px; height: auto;">
-    </a>
+        <a href="https://www.moj.gov.sa/ar/pages/default.aspx" class="secondlogo" target="_blank" title="وزارة العدل السعودية">
+            <img src="{% static 'image/1.png' %}" alt="شعار وزارة العدل" style=" width:200px; height: auto;">
+        </a>
 
-    <!-- جامعة الملك خالد -->
-    <a href="https://www.kku.edu.sa" class="secondlogo" target="_blank" title="جامعة الملك خالد">
-    <img src="{% static 'image/3.png' %}" alt="شعار جامعة الملك خالد" style=" width:200px; height: auto;">
-    </a>
-    
-    <!-- المؤسسة العامة للتدريب التقني والمهني -->
-    <a href="https://tvtc.gov.sa" class="secondlogo" target="_blank" title="المؤسسة العامة للتدريب التقني والمهني">
-    <img src="{% static 'image/4.png' %}" alt="شعار التدريب التقني" style=" width:200px; height: auto;">
-    </a>
+        <a href="https://www.moi.gov.sa" class="secondlogo" target="_blank" title="وزارة الداخلية السعودية">
+            <img src="{% static 'image/2.png' %}" alt="شعار وزارة الداخلية" style=" width:200px; height: auto;">
+        </a>
 
-    <!-- مكتب محاماة 1 -->
-    <a href="https://g.co/kgs/8zdykQy"  style="text-decoration:none; margin-top: 20px;" target="_blank" title="مكتب المحامي والموثق عبدالرحيم الشهراني">
-    <img src="{% static 'image/5.jpg' %}" alt="شعار  " class="thirdlogo "  style="width:200px; height: auto; border-radius: 50%;">
-    <p style=" color: black; font-size: 8px;">مكتب المحامي والموثق عبدالرحيم الشهراني</p>
-    </a>
+        <!-- جامعة الملك خالد -->
+        <a href="https://www.kku.edu.sa" class="secondlogo" target="_blank" title="جامعة الملك خالد">
+            <img src="{% static 'image/3.png' %}" alt="شعار جامعة الملك خالد" style=" width:200px; height: auto;">
+        </a>
 
-    <!--مكتب محاماة 2-->
-    <a href="https://www.tiktok.com/@abu_rand?_t=ZS-8vLSEIUQRsn&_r=1"  style="text-decoration:none; margin-top: 20px; " target="_blank" title=" مكتب المحامي أحمد أبو زيفة ">
-    <img src="{% static 'image/5.jpg' %}" alt="شعار" class="thirdlogo " style="width:200px; height: auto; border-radius: 50%;">
-    <p style=" color: black; font-size: 8px;"> مكتب المحامي أحمد أبو زيفة </p>
-    </a>
-  
-  </div>
+        <!-- المؤسسة العامة للتدريب التقني والمهني -->
+        <a href="https://tvtc.gov.sa" class="secondlogo" target="_blank" title="المؤسسة العامة للتدريب التقني والمهني">
+            <img src="{% static 'image/4.png' %}" alt="شعار التدريب التقني" style=" width:200px; height: auto;">
+        </a>
+
+        <!-- مكتب محاماة 1 -->
+        <a href="https://g.co/kgs/8zdykQy" style="text-decoration:none; margin-top: 20px;" target="_blank" title="مكتب المحامي والموثق عبدالرحيم الشهراني">
+            <img src="{% static 'image/5.jpg' %}" alt="شعار" class="thirdlogo" style="width:200px; height: auto; border-radius: 50%;">
+            <p style=" color: black; font-size: 8px;">مكتب المحامي والموثق عبدالرحيم الشهراني</p>
+        </a>
+
+        <!-- مكتب محاماة 2 -->
+        <a href="https://www.tiktok.com/@abu_rand?_t=ZS-8vLSEIUQRsn&_r=1" style="text-decoration:none; margin-top: 20px;" target="_blank" title="مكتب المحامي أحمد أبو زيفة">
+            <img src="{% static 'image/5.jpg' %}" alt="شعار" class="thirdlogo" style="width:200px; height: auto; border-radius: 50%;">
+            <p style=" color: black; font-size: 8px;">مكتب المحامي أحمد أبو زيفة</p>
+        </a>
+
+    </div>
 </section>
+
     
 {% endblock %}
         
