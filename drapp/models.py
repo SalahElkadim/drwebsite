@@ -23,12 +23,3 @@ class seminarrequest(models.Model):
     def __str__(self):
         return f"{self.name} - {self.service}"
 
-class Visitinglog(models.Model):
-    ip_address = models.CharField(max_length=50)
-    country = models.CharField(max_length=100)
-    user_agent = models.CharField(max_length=200)
-    path = models.CharField(max_length=200)
-    visit_time = models.DateTimeField(auto_now_add=True)
-    
-    def __str__(self):
-        return f"{self.ip_address} - {self.visit_time}"
