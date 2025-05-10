@@ -24,11 +24,11 @@ class seminarrequest(models.Model):
         return f"{self.name} - {self.service}"
 
 class Visitinglog(models.Model):
-    ip_adress = models.GenericIPAddressField()
-    user_agent = models.TextField(blank=True, null=True)
-    path = models.CharField(max_length=2048)
-    country =models.CharField(max_length=100, blank=True, null=True)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    ip_address = models.CharField(max_length=50)
+    country = models.CharField(max_length=100)
+    user_agent = models.CharField(max_length=200)
+    path = models.CharField(max_length=200)
+    visit_time = models.DateTimeField(auto_now_add=True)
     
-    def _str_(self):
-        return f"{self.ip_address} - {self.timestamp.strftime('%Y-%m-%d %H:%M:%S')}"
+    def __str__(self):
+        return f"{self.ip_address} - {self.visit_time}"
