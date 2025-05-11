@@ -123,4 +123,4 @@ def visitor_stats(request):
         'today': today,
     }
     
-    return render(request, 'drapp/visitor_stats.html', context)
+    return render(request, 'drapp/visitor.html', context)
