@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>إحصاءات الزوار ليوم {{ today }}</h1>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">إجمالي الزوار اليوم</h5>
+                    <p class="display-4">{{ visitors_today }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h2 class="mt-4">عناوين IP للزوار</h2>
+    <ul class="list-group">
+        {% for ip in ip_addresses_today %}
+        <li class="list-group-item">{{ ip }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h2 class="mt-4">الزوار حسب البلد</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>البلد</th>
+                <th>عدد الزوار</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for country in visitors_by_country %}
+            <tr>
+                <td>{{ country.country|default:"غير معروف" }}</td>
+                <td>{{ country.count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

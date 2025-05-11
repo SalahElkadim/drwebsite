@@ -45,8 +45,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_user_agents.middleware.UserAgentMiddleware',
+    'drapp.middleware.VisitorMiddleware',
     
 ]
+USER_AGENTS_CACHE = 'default'
+
+# مسار ملف GeoIP2
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+GEOIP_PATH = os.path.join(BASE_DIR, 'geoip')
+GEOIP_CITY = 'GeoLite2-City.mmdb'
 
 ROOT_URLCONF = 'drwebsite.urls'
 
