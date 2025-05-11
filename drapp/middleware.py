@@ -37,12 +37,25 @@ class VisitorMiddleware:
             ip = request.META.get('REMOTE_ADDR')
         return ip
 
+    # في middleware.py
     def get_country(self, ip_address):
         try:
-            # تأكد من وجود ملف GeoLite2-Country.mmbe في المسار الصحيح
-            geoip_path = os.path.join(settings.BASE_DIR, 'GeoLite2-Country.mmdb')
+            # تجاهل العناوين المحلية
+            if ip_address in ['127.0.0.1', '::1']:
+                return 'Localhost'
+                
+            geoip_path = os.path.join(settings.GEOIP_PATH, settings.GEOIP_CITY)
+            
+            if not os.path.exists(geoip_path):
+                print(f"GeoIP file not found at: {geoip_path}")
+                return 'GeoIP File Missing'
+                
             with geoip2.database.Reader(geoip_path) as reader:
-                response = reader.country(ip_address)
+                response = reader.city(ip_address)
                 return response.country.name
-        except:
-            return None
+                
+        except geoip2.errors.AddressNotFoundError:
+            return 'IP Not Found'
+        except Exception as e:
+            print(f"GeoIP Error for IP {ip_address}: {str(e)}")
+            return 'Unknown'
