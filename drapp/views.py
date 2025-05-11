@@ -7,6 +7,10 @@ import json
 from .models import ConsultationRequest, seminarrequest, Visitor
 from django.utils import timezone
 from datetime import timedelta
+from django.db.models import Count
+from django.db import models
+
+
 
 def home (request):
     return render(request, 'drapp/home.html')
