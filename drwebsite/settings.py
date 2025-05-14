@@ -14,8 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-asc=zfl)y0xveh57ocuh0-=^xot#dx)a2rg5ri-rmd$_$=8rur'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+
 
 ALLOWED_HOSTS = ['web-production-c7bea.up.railway.app',
     '127.0.0.1',
@@ -156,8 +155,16 @@ CACHES = {
 
     }
 }
-SECURE_SSL_REDIRECT = False
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
+
+
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+
+# إعدادات الأمان عند تفعيل HTTPS
+SECURE_SSL_REDIRECT = not DEBUG
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
+
+# مهم جداً مع Railway ونطاق مخصص
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
