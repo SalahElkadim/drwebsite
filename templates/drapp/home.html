@@ -4,17 +4,19 @@
 {% block content %}
 
 <div class="container">
+
     <div class="consultation-cta">
+        <p class="cta-subtext translatable" data-translate="spe">استشارات متخصصة في اللغويات الجنائية والاحتيال المالي</p>
+        <a href="{% url 'consult' %}" class="cta-button" id="consultBtn" data-translate="req">
+            <i class="fas fa-handshake "></i>
+            <h class="translatable" data-translate="req">احصل على استشارة مجانية من خبراء Sabr Revival  </h>
+        </a>
         <a href="{% url 'seminar' %}" class="cta-button1" id="consultBtn1" data-translate="req1">
             <i class="fas fa-handshake "></i>
             <h class="translatable" data-translate="req1">حجز الندوات للجهات الحكومية والخاصة</h>
         </a>
-        <a href="{% url 'consult' %}" class="cta-button" id="consultBtn" data-translate="req">
-            <i class="fas fa-handshake "></i>
-            <h class="translatable" data-translate="req">اطلب استشارة الآن</h>
-        </a>
+        
 
-        <p class="cta-subtext translatable" data-translate="spe">استشارات متخصصة في اللغويات الجنائية والاحتيال المالي</p>
     </div>
 </div>
 
