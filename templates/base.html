@@ -26,8 +26,12 @@
         <div class="line2"></div>
         <div class="line3"></div>
     </div>
-    <div class="logo">
-        <img src="{% static 'image/logo.png' %}" alt="">
+    <div class="dropdown">
+        <button class="dropdown-btn">EN</button>
+        <div class="dropdown-content">
+            <a href="#" id="ar-btn">AR</a>
+            <a href="#" id="en-btn">EN</a>
+        </div>
     </div>
     <ul class="nav-list">
         <li><a href="{% url 'home' %}" class="translatable" data-translate="home">الرئيسية</a></li>
@@ -37,13 +41,10 @@
         <li><a href="{% url 'consult' %}" class="translatable" data-translate="book">احجز استشارة</a></li>
         <li><a href="{% url 'about' %}" class="translatable" data-translate="about">من نحن</a></li>          
     </ul>
-    <div class="dropdown">
-        <button class="dropdown-btn">EN</button>
-        <div class="dropdown-content">
-            <a href="#" id="ar-btn">AR</a>
-            <a href="#" id="en-btn">EN</a>
-        </div>
+    <div class="logo">
+        <img src="{% static 'image/logo.png' %}" alt="">
     </div>
+    
 </nav>  
 
 {% block content %}
