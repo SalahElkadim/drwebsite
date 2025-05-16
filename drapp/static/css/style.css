@@ -448,7 +448,7 @@ margin-top: 10px;
 }
 .nav-list li{
     margin-bottom: 10px;
-    background-color: hsla(0, 0%, 0%, 0.5); 
+    background-color: rgb(25, 25, 25);
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 10px;
