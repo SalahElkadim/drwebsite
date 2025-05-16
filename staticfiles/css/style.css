@@ -110,7 +110,7 @@
         }
         .container{
             background: 
-                        url('../image/1.jpeg');
+                        url('../image/home.jpg');
             background-size: cover;
             background-position: center;
             height: 1000px;
@@ -398,6 +398,14 @@
         
     }
 @media(max-width:1100px){
+
+    .container{
+            background: 
+                        url('../image/1.jpeg');
+            
+
+
+        }
     .consultation-cta {
             top: 300px;
         }

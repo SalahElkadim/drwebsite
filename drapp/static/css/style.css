@@ -398,6 +398,14 @@
         
     }
 @media(max-width:1100px){
+
+    .container{
+            background: 
+                        url('../image/1.jpeg');
+            
+
+
+        }
     .consultation-cta {
             top: 300px;
         }
