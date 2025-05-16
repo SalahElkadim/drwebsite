@@ -249,8 +249,9 @@
             font-size: 14px;
             animation: fadeIn 2s ease;
             padding: 10px;
-            background-color: #2e2d2d;
+            background-color: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
+            min-width: 380.19px;
         }
         
         /* التنسيق للهواتف */
