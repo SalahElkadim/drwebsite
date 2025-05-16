@@ -52,6 +52,7 @@
         .nav-list li a:hover {
             transform: translateY(-2px);
             color: #1a2c4a;}
+
         .dropdown {
             position: relative;
             display: inline-block;
@@ -401,6 +402,17 @@
         left: 500px;
         
     }
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* لون شبه شفاف */
+  backdrop-filter: blur(5px); /* تأثير الضبابية */
+  z-index: 1500; /* أقل من z-index القائمة ولكن أعلى من باقي الصفحة */
+  display: none; /* مخفي بشكل افتراضي */
+}
 @media(max-width:1100px){
 
     .container{
@@ -433,7 +445,7 @@
     top: 120px;
     left:0;
     right: 10px;
-    z-index: 1000;
+    z-index: 2000;
     width: 100%;
     text-align: center;
 display:none;
@@ -487,7 +499,9 @@ margin-top: 10px;
     transition: .3s ease;
 
 }
-
+.overlay.active {
+    display: block;
+}
 
 }
 @media(max-width:600px){

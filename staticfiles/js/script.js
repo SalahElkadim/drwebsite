@@ -1,11 +1,12 @@
 
 let menu_1 = document.querySelector(".nav-menu")
-let nav_list = document.querySelector(".nav-list");
-
+let nav_list = document.querySelector(".nav-list")
+let overlay = document.querySelector(".overlay");
 
 menu_1.onclick = function() {
 menu_1.classList.toggle("move")
-nav_list.classList.toggle("move_1");
+nav_list.classList.toggle("move_1")
+overlay.classList.toggle("active");
 }
 
 const whatsappBtn = document.getElementById('whatsappBtn');
