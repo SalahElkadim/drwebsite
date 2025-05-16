@@ -178,6 +178,7 @@
             gap: 15px;
             text-decoration: none;
             margin-bottom: 20px;
+            min-width: 380px;
         }        
         .cta-button::before {
             content: '';
@@ -243,8 +244,9 @@
         .cta-subtext {
             margin-top: 20px;
             color: #7f8c8d;
-            font-size: 16px;
+            font-size: 14px;
             animation: fadeIn 2s ease;
+            padding: 10px;
         }
         
         /* التنسيق للهواتف */
@@ -458,7 +460,7 @@ margin-top: 10px;
 }
 .nav-list li:hover{
     margin-bottom: 10px;
-    background-color: #1a2c4a;
+    background-color: #2a2a2a;
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 10px;
