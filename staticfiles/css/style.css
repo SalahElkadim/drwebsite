@@ -1059,11 +1059,11 @@ margin-top: 10px;
     }
 }
 
- 
         /* تصميم النموذج */
         .consultation-form {
             max-width: 700px;
             margin: 30px auto;
+            margin-top: 80px;
             background: white;
             padding: 30px;
             border-radius: 15px;
