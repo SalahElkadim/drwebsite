@@ -9,6 +9,8 @@ nav_list.classList.toggle("move_1")
 overlay.classList.toggle("active");
 }
 overlay.onclick = function(){
+  menu_1.classList.remove("move");
+  nav_list.classList.remove("move_1");
   overlay.classList.remove("active");
 }
 
