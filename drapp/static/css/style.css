@@ -161,7 +161,7 @@
 
         }
         .cta-button1 {
-            background: #b44627;
+            background: #1a2c4a;
             color: #efe9e5;
             border: none;
             padding: 25px 50px;
@@ -257,7 +257,7 @@
         @media (max-width: 768px) {
             
             .cta-button {
-                padding: 15px 20px;
+                padding: 10px;
                 font-size: 14px;
             }
             
@@ -267,7 +267,7 @@
             }
         }
         .cta-button1 {
-                padding: 15px 20px;
+                padding: 10px;
                 font-size: 14px;
             }
             
@@ -420,6 +420,9 @@
     .cta-button {
         font-size: 14px;
     }
+    .cta-button1 {
+                font-size: 14px;
+            }
 
     
     .container{
@@ -498,7 +501,7 @@ margin-top: 10px;
 }
 @media(max-width:600px){
     .cta-button1 {
-                padding: 10px 15px;
+                padding: 10px;
                 font-size: 14px;
             }
             
