@@ -8,6 +8,9 @@ menu_1.classList.toggle("move")
 nav_list.classList.toggle("move_1")
 overlay.classList.toggle("active");
 }
+overlay.onclick = function(){
+  overlay.classList.remove("active");
+}
 
 const whatsappBtn = document.getElementById('whatsappBtn');
         const whatsappChat = document.getElementById('whatsappChat');
