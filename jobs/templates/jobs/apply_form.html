@@ -1,0 +1,9 @@
+{% extends 'jobs/base_jobs.html' %}
+{% block content %}
+<h2>التقديم على: {{ job.title }}</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="إرسال">
+</form>
+{% endblock %}

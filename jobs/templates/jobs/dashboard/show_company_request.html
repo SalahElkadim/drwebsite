@@ -1,0 +1,109 @@
+{% extends 'jobs/dashboard/base.html' %}
+
+{% block title %}تفاصيل الشركة - {{ company_request.company_name }}{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h1><i class="fas fa-building"></i> تفاصيل الشركة: {{ company_request.company_name }}</h1>
+    <div class="header-actions">
+        <a href="{% url 'accepted_companies' %}" class="btn btn-light">
+            <i class="fas fa-arrow-right"></i> رجوع للقائمة
+        </a>
+    </div>
+</div>
+
+<div class="company-details-container">
+    <!-- بطاقة معلومات الشركة الأساسية -->
+    <div class="detail-card">
+        <div class="detail-header bg-primary text-white">
+            <h2><i class="fas fa-info-circle"></i> المعلومات الأساسية</h2>
+        </div>
+        <div class="detail-body">
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <span class="detail-label">حالة الطلب:</span>
+                    <span class="detail-value">
+                        <span class="badge badge-{% if company_request.status == 'accepted' %}success{% elif company_request.status == 'rejected' %}danger{% else %}warning{% endif %}">
+                            {{ company_request.get_status_display }}
+                        </span>
+                    </span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">البريد الإلكتروني:</span>
+                    <span class="detail-value">{{ company_request.contact_email }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">تاريخ الطلب:</span>
+                    <span class="detail-value">{{ company_request.submitted_at|date:"Y-m-d" }}</span>
+                </div>
+                {% if company_request.status == 'accepted' %}
+                <div class="detail-item">
+                    <span class="detail-label">تاريخ القبول:</span>
+                    <span class="detail-value">{{ company_request.accepted_at|date:"Y-m-d" }}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">حالة التعاقد:</span>
+                    <span class="detail-value">
+                        <span class="badge badge-{% if company_request.contract_signed %}success{% else %}warning{% endif %}">
+                            {% if company_request.contract_signed %}مكتمل{% else %}قيد الإجراء{% endif %}
+                        </span>
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- بطاقة وصف الوظائف -->
+    <div class="detail-card">
+        <div class="detail-header bg-info text-white">
+            <h2><i class="fas fa-file-alt"></i> وصف الوظائف المطلوبة</h2>
+        </div>
+        <div class="detail-body">
+            <div class="job-description">
+                {{ company_request.job_description|linebreaks }}
+            </div>
+        </div>
+    </div>
+
+    <!-- بطاقة الإجراءات -->
+    <div class="detail-card">
+        <div class="detail-header bg-secondary text-white">
+            <h2><i class="fas fa-cogs"></i> الإجراءات</h2>
+        </div>
+        <div class="detail-body">
+            <div class="action-buttons">
+                {% if company_request.status == 'pending' %}
+                <form method="post" action="{% url 'accept_company_request' company_request.id %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-check"></i> قبول الطلب
+                    </button>
+                </form>
+                <form method="post" action="{% url 'reject_company_request' company_request.id %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-times"></i> رفض الطلب
+                    </button>
+                </form>
+                {% elif company_request.status == 'accepted' %}
+                <a href="mailto:{{ company_request.contact_email }}?subject=عقد التوظيف مع {{ company_request.company_name }}" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> إرسال عقد
+                </a>
+                <form method="post" action="{% url 'mark_contract_signed' company_request.id %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success {% if company_request.contract_signed %}disabled{% endif %}">
+                        <i class="fas fa-file-signature"></i> تعيين كمكتمل
+                    </button>
+                </form>
+                {% endif %}
+                <a href="tel:{{ company_request.contact_phone|default:'#' }}" class="btn btn-info">
+                    <i class="fas fa-phone"></i> الاتصال
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

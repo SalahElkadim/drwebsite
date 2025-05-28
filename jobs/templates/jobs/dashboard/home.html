@@ -1,0 +1,40 @@
+{% extends 'jobs/dashboard/base.html' %}
+
+{% block title %}إدارة الوظائف{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h1><i class="fas fa-briefcase"></i> إدارة الوظائف</h1>
+    <a href="{% url 'add_job' %}" class="btn btn-primary">
+        <i class="fas fa-plus"></i> إضافة وظيفة
+    </a>
+</div>
+
+<div class="jobs-list">
+    {% for job in jobs %}
+    <div class="job-card {% if not job.is_active %}inactive{% endif %}">
+        <div class="job-info">
+            <h3>{{ job.title }}</h3>
+            <div class="job-meta">
+                <span><i class="fas fa-building"></i> {{ job.company_name }}</span>
+                <span><i class="fas fa-map-marker-alt"></i> {{ job.location }}</span>
+                <span><i class="fas fa-clock"></i> {{ job.get_job_type_display }}</span>
+                <span><i class="fas fa-calendar"></i> {{ job.posted_at|date:"Y-m-d" }}</span>
+            </div>
+        </div>
+        <div class="job-actions">
+            <a href="{% url 'toggle_job_status' job.id %}" class="btn btn-sm {% if job.is_active %}btn-warning{% else %}btn-success{% endif %}">
+                {% if job.is_active %}<i class="fas fa-eye-slash"></i> تعطيل{% else %}<i class="fas fa-eye"></i> تفعيل{% endif %}
+            </a>
+            <a href="{% url 'edit_job' job.id %}" class="btn btn-sm btn-outline-primary">
+                <i class="fas fa-edit"></i> تعديل
+            </a>
+        </div>
+    </div>
+    {% empty %}
+    <div class="alert alert-info">
+        <i class="fas fa-info-circle"></i> لا توجد وظائف متاحة حالياً
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

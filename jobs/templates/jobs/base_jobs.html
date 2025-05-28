@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}قسم التوظيف{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/jobs.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="{% static 'js/jobs.js' %}" defer></script>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        <header class="site-header">
+            <h1><i class="fas fa-briefcase"></i> <span class="highlight">وظائفنا</span></h1>
+            <nav class="nav-bar">
+                <a href="{% url 'job_list' %}"><i class="fas fa-list"></i> عرض الوظائف</a>
+                <a href="{% url 'company_request' %}"><i class="fas fa-building"></i> طلب توظيف</a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="site-footer">
+            <p>قسم التوظيف - <strong>سبر للاستشارات</strong> © <span id="year"></span></p>
+        </footer>
+    </div>
+    
+    <script>
+        // عرض السنة الحالية في التذييل
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

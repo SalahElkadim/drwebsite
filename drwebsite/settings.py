@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'drapp',
+    'jobs',
+
 ]
 
 MIDDLEWARE = [
@@ -87,6 +89,8 @@ DATABASES = {
 
     )
 }
+FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
+
 
 
 
@@ -131,8 +135,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'  # URL لخدمة الملفات
+MEDIA_ROOT = '/data/media'  # المسار المحلي لتخزين الملفات
+
+# إذا كنت تستخدم Railway للرفع
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'  # لـ AWS S3
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

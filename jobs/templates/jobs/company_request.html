@@ -1,0 +1,9 @@
+{% extends 'jobs/base_jobs.html' %}
+{% block content %}
+<h2>طلب توظيف لشركتك</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="إرسال الطلب">
+</form>
+{% endblock %}

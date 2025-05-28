@@ -1,0 +1,24 @@
+{% extends 'jobs/base_jobs.html' %}
+{% block content %}
+<div class="job-details">
+    <h2>{{ job.title }}</h2>
+    
+    <div class="job-meta">
+        <p><i class="fas fa-building"></i> <strong>الشركة:</strong> {{ job.company_name }}</p>
+        <p><i class="fas fa-map-marker-alt"></i> <strong>الموقع:</strong> {{ job.location }}</p>
+        <p><i class="fas fa-clock"></i> <strong>النوع:</strong> {{ job.get_job_type_display }}</p>
+        <p><i class="fas fa-calendar-alt"></i> <strong>تاريخ النشر:</strong> {{ job.posted_at|date:"Y-m-d" }}</p>
+    </div>
+    
+    <div class="job-description">
+        <h3>وصف الوظيفة:</h3>
+        {{ job.description|linebreaks }}
+    </div>
+    
+    <div class="apply-section">
+        <a href="{% url 'apply_job' job.id %}" class="apply-btn">
+            <i class="fas fa-paper-plane"></i> قدم الآن
+        </a>
+    </div>
+</div>
+{% endblock %}
