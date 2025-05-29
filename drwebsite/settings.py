@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'drwebsite.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres:pNBQtCNndiqoduItFiKINHbaLacphllb@interchange.proxy.rlwy.net:57493/railway',
+        default='postgresql://postgres:hEzsUvAdaopyMpizgBrBPTzodTZWknCx@gondola.proxy.rlwy.net:21914/railway',
         conn_max_age=600,
         engine='django.db.backends.postgresql_psycopg2' 
 
