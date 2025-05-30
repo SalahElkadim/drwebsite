@@ -165,15 +165,16 @@ CACHES = {
 
     }
 }
+DEBUG = True
 
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+#DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 # إعدادات الأمان عند تفعيل HTTPS
-SECURE_SSL_REDIRECT = not DEBUG
-SESSION_COOKIE_SECURE = not DEBUG
-CSRF_COOKIE_SECURE = not DEBUG
+#SECURE_SSL_REDIRECT = not DEBUG
+#SESSION_COOKIE_SECURE = not DEBUG
+#CSRF_COOKIE_SECURE = not DEBUG
 
 # مهم جداً مع Railway ونطاق مخصص
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
