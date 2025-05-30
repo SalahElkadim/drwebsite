@@ -141,7 +141,7 @@
             background: #1a2c4a;
             color: #efe9e5;
             border: none;
-            padding: 25px 50px;
+            padding: 5px 10px;
             font-size: 18px;
             font-weight: 700;
             font-family: 'Tajawal', sans-serif;
@@ -1281,5 +1281,86 @@ section h1::after {
     background-color: #007bff; /* لون خط تحت العنوان */
     margin: 10px auto 0; /* وسط الخط */
     border-radius: 2px; /* أطراف ناعمة */
+}
+
+
+
+
+/* تنسيقات أزرار المصادقة */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 2px 4px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 10px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.login-btn {
+    background-color: #1a2c4a;
+    color: white;
+    text-decoration: none;
+}
+
+.login-btn:hover {
+    background-color: #51699a;
+}
+
+.register-btn {
+    background-color: #51699a;
+    color: white;
+    text-decoration: none;
+
+}
+
+.register-btn:hover {
+    background-color: #1a2c4a;
+    border-color: #0b7dda;
+}
+
+.profile-btn {
+    background-color: #ff9800;
+    color: white;
+    border: 2px solid #ff9800;
+    text-decoration: none;
+
+}
+
+.profile-btn:hover {
+    background-color: #e68a00;
+    border-color: #e68a00;
+}
+
+.logout-btn {
+    background-color: #f44336;
+    color: white;
+    border: 2px solid #f44336;
+    text-decoration: none;
+
+}
+
+.logout-btn:hover {
+    background-color: #da190b;
+    border-color: #da190b;
+}
+
+/* للهواتف */
+@media (max-width: 768px) {
+    .auth-buttons {
+        flex-direction: row;
+        margin-top: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
 }
 

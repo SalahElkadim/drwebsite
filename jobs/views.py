@@ -42,7 +42,17 @@ def company_request(request):
         form = CompanyRequestForm()
     return render(request, 'jobs/company_request.html', {'form': form})
 
-
+@login_required
+def company_applicants_view(request, company_request_id):
+    company_request = get_object_or_404(CompanyRequest, id=company_request_id)
+    job_applications = company_request.job_applications.all()  # لاحظ هنا التعديل
+    
+    context = {
+        'company_request': company_request,
+        'job_applications': job_applications,
+    }
+    return render(request, 'jobs/applicants_list.html', context)
+    
 
 
 
@@ -191,3 +201,4 @@ def accepted_companies(request):
     return render(request, 'jobs/dashboard/accepted_companies.html', {
         'accepted_companies': accepted_companies
     })
+

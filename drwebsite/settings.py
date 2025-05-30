@@ -166,7 +166,6 @@ CACHES = {
     }
 }
 
-
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 # إعدادات الأمان عند تفعيل HTTPS

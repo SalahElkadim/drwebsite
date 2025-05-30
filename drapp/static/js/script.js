@@ -162,6 +162,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     cta_title: "Need Training & Development?",
     cta_button: "Contact Us",
+    job: "Recruitment",
+    dashboard_home: "dashboard"
   };
 
   function translateToEnglish() {

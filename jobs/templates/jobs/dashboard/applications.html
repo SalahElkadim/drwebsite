@@ -15,6 +15,7 @@
                 <th>الاسم</th>
                 <th>البريد الإلكتروني</th>
                 <th>الوظيفة</th>
+                <th>الشركة</th>
                 <th>تاريخ التقديم</th>
                 <th>الإجراءات</th>
             </tr>
@@ -26,6 +27,7 @@
                 <td>{{ application.applicant_name }}</td>
                 <td>{{ application.email }}</td>
                 <td>{{ application.job.title }}</td>
+                <td>{{ application.job.company_name }}</td>
                 <td><a href="{{ application.cv.url }}" class="btn btn-sm btn-outline-primary" target="_blank">
                     <i class="fas fa-download"></i> تحميل الملف
                 </a></td>
@@ -33,6 +35,11 @@
                 <td>
                     <a href="{% url 'delete_application' application.id %}" class="btn btn-sm btn-outline-danger">
                         <i class="fas fa-trash"></i> حذف
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'delete_application' application.id %}" class="btn btn-sm btn-outline-danger">
+                        <i class="fas fa-paper-plane"></i> ارسال للشركة
                     </a>
                 </td>
             </tr>
