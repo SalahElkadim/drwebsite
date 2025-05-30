@@ -19,7 +19,6 @@ urlpatterns = [
     path('company/<int:request_id>/reject/', views.reject_company_request, name='reject_company_request'),
     path('company/<int:request_id>/mark-signed/', views.mark_contract_signed, name='mark_contract_signed'),    
     path('dashboard/accepted-companies/', views.accepted_companies, name='accepted_companies'),
-    path('company/<int:company_request_id>/applicants/', views.company_applicants_view, name='company_applicants'),
 
 
 ]

@@ -19,13 +19,6 @@
             <nav class="nav-bar">
                 <a href="{% url 'job_list' %}"><i class="fas fa-list"></i> عرض الوظائف</a>
                 <a href="{% url 'company_request' %}"><i class="fas fa-building"></i> طلب توظيف</a>
-                {% if user.is_authenticated %}
-                    {% if company_request.id %}
-                    <a href="{% url 'company_applicants' company_request.id %}">عرض المتقدمين</a>
-                    {% else %}
-                    <span>لا يوجد طلب مرتبط</span>
-                    {% endif %}
-                {% endif %}
                 <a href="{% url 'home' %}" class="btn btn-secondary">⬅️ العودة إلى الرئيسية</a>
 
             </nav>

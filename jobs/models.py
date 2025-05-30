@@ -32,7 +32,6 @@ class CompanyRequest(models.Model):
         ('accepted', 'مقبول'),
         ('rejected', 'مرفوض'),
     ]
-    job_applications = models.ManyToManyField(JobApplication)
     company_name = models.CharField(max_length=200, verbose_name="اسم الشركة")
     contact_email = models.EmailField(verbose_name="البريد الإلكتروني")
     contact_phone = models.CharField(max_length=20, blank=True, null=True, verbose_name="هاتف الاتصال")
