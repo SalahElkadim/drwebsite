@@ -1360,7 +1360,7 @@ section h1::after {
 /* للهواتف */
 @media (max-width: 768px) {
     .auth-buttons {
-        flex-direction: row;
+        flex-direction: column;
         margin-top: 10px;
     }
     
@@ -1370,11 +1370,4 @@ section h1::after {
     }
 }
 
-.section-divider {
-  height: 2px;
-  width: 100%;
-  margin: 40px 0;
-  background: linear-gradient(to right, #ccc, #333, #ccc);
-  border-radius: 2px;
-  opacity: 0.7;
-}
+
