@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static%}
+<title>{% block title %}سبر |تواصل الآن {% endblock %}</title>
+{% block content %}
+<style>
+.contact-card {
+  max-width: 500px;
+  margin: 50px auto;
+  margin-top: 150px;
+  background: #fff;
+  border: 2px solid #003366;
+  border-radius: 15px;
+  padding: 30px 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  direction: rtl;
+}
+
+.contact-card h2 {
+  color: #003366;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.contact-card h4 {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.contact-details p {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.contact-details a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
+</style>
+<div class="contact-card">
+  <h2>مكتب سبر للاستشارات اللغوية والجنائية</h2>
+  <h4>Sabr Linguistic & Forensic Consultancy</h4>
+
+  <div class="contact-details">
+    <p><strong>📱 الجوال:</strong> <a href="tel:+966500819191">+966 500 819 191</a></p>
+    <p><strong>☎️ المكتب:</strong> <a href="tel:+96653929992">+966 53 929 992</a></p>
+    <p><strong>📧 البريد الإلكتروني:</strong> <a href="mailto:info@SabrConsult.com">info@SabrConsult.com</a></p>
+    <p><strong>🌐 الموقع:</strong> <a href="https://SabrConsult.com" target="_blank">SabrConsult.com</a></p>
+  </div>
+</div>
+
+{% endblock %}

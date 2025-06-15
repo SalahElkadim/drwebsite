@@ -39,7 +39,8 @@ def academic (request):
 def seminar (request):
     return render(request, 'drapp/seminar.html')
 
-
+def contact_view(request):
+    return render(request, 'drapp/connect.html')
 # views.py
 
 
