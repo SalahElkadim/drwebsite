@@ -18,6 +18,8 @@
     <meta property="og:type" content="website">
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+
 </head>
 <body dir="rtl"> 
 <nav class="navbar">
@@ -85,7 +87,7 @@
         </div>
         <div class="chat-body">
             <p>مرحباً، كيف يمكنني مساعدتك؟</p>
-            <a href="https://wa.me/+97472261770" target="_blank" style="
+            <a href="https://wa.me/+966545392992" target="_blank" style="
                 display: inline-block;
                 background: #25D366;
                 color: white;
@@ -121,4 +123,13 @@
 </footer>
 
 <script src="{% static 'js/script.js' %}"></script>
+<script>
+  ScrollReveal().reveal('.reveal-item', {
+    distance: '50px',
+    duration: 800,
+    easing: 'ease-in-out',
+    origin: 'bottom',
+    interval: 100 // فرق التوقيت بين كل عنصر
+  });
+</script>
 </body>
