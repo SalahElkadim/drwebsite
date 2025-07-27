@@ -1,59 +1,144 @@
 {% extends "base.html" %}
-{% load static%}
-<title>{% block title %}سبر |تواصل الآن {% endblock %}</title>
+{% load static %}
+<title>{% block title %}سبر |  تواصل معنا{% endblock %}</title>
+
 {% block content %}
-<style>
-.contact-card {
-  max-width: 500px;
-  margin: 50px auto;
-  margin-top: 150px;
-  background: #fff;
-  border: 2px solid #003366;
-  border-radius: 15px;
-  padding: 30px 25px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  text-align: center;
-  direction: rtl;
-}
+       <link rel="stylesheet" href="{% static 'css/connect.css' %}">
 
-.contact-card h2 {
-  color: #003366;
-  font-size: 24px;
-  margin-bottom: 10px;
-}
+    <div class="background-overlay"></div>
+    
+    <div class="geometric-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
 
-.contact-card h4 {
-  color: #666;
-  font-size: 18px;
-  margin-bottom: 25px;
-}
+    <div class="contact-section">
+        <h2>مكتب سبر للاستشارات اللغوية والجنائية</h2>
+        <h4>Sabr Linguistic & Forensic Consultancy</h4>
 
-.contact-details p {
-  font-size: 16px;
-  margin: 10px 0;
-  color: #333;
-}
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-mobile-alt"></i>
+                <div class="contact-content">
+                    <strong>الجوال:</strong>
+                    <a href="tel:+966500819191">+966 500 819 191</a>
+                </div>
+            </div>
 
-.contact-details a {
-  color: #0066cc;
-  text-decoration: none;
-  font-weight: 500;
-}
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <div class="contact-content">
+                    <strong>المكتب:</strong>
+                    <a href="tel:+96653929992">+966 53 929 992</a>
+                </div>
+            </div>
 
-.contact-details a:hover {
-  text-decoration: underline;
-}
-</style>
-<div class="contact-card">
-  <h2>مكتب سبر للاستشارات اللغوية والجنائية</h2>
-  <h4>Sabr Linguistic & Forensic Consultancy</h4>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <div class="contact-content">
+                    <strong>البريد الإلكتروني:</strong>
+                    <a href="mailto:info@SabrConsult.com">info@SabrConsult.com</a>
+                </div>
+            </div>
 
-  <div class="contact-details">
-    <p><strong>📱 الجوال:</strong> <a href="tel:+966500819191">+966 500 819 191</a></p>
-    <p><strong>☎️ المكتب:</strong> <a href="tel:+96653929992">+966 53 929 992</a></p>
-    <p><strong>📧 البريد الإلكتروني:</strong> <a href="mailto:info@SabrConsult.com">info@SabrConsult.com</a></p>
-    <p><strong>🌐 الموقع:</strong> <a href="https://SabrConsult.com" target="_blank">SabrConsult.com</a></p>
-  </div>
-</div>
+            <div class="contact-item">
+                <i class="fas fa-globe"></i>
+                <div class="contact-content">
+                    <strong>الموقع:</strong>
+                    <a href="https://SabrConsult.com" target="_blank">SabrConsult.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click ripple effect
+            document.querySelectorAll('.contact-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    const ripple = document.createElement('div');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        left: ${x}px;
+                        top: ${y}px;
+                        width: ${size}px;
+                        height: ${size}px;
+                        background: rgba(255, 255, 255, 0.1);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: rippleEffect 0.6s ease-out;
+                        pointer-events: none;
+                        z-index: 10;
+                    `;
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Parallax effect for geometric shapes
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const shapes = document.querySelectorAll('.shape');
+                
+                shapes.forEach((shape, index) => {
+                    const speed = (index + 1) * 0.2;
+                    shape.style.transform += ` translateY(${scrolled * speed}px)`;
+                });
+            });
+
+            // Add stagger animation to contact items
+            const contactItems = document.querySelectorAll('.contact-item');
+            contactItems.forEach((item, index) => {
+                item.style.animation = `slideInScale 0.6s ease-out ${1 + index * 0.2}s both`;
+            });
+
+            // Copy to clipboard functionality
+            document.querySelectorAll('.contact-content a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.href.startsWith('tel:') || this.href.startsWith('mailto:')) {
+                        return; // Let default behavior handle phone/email links
+                    }
+                    
+                    // For website links, add copy functionality
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        navigator.clipboard.writeText(this.textContent).then(() => {
+                            // Visual feedback for copy
+                            const originalText = this.textContent;
+                            this.textContent = 'تم النسخ!';
+                            this.style.color = '#4CAF50';
+                            
+                            setTimeout(() => {
+                                this.textContent = originalText;
+                                this.style.color = '';
+                            }, 1500);
+                        });
+                    }
+                });
+            });
+        });
+
+        // Add ripple animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rippleEffect {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 {% endblock %}

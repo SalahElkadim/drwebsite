@@ -30,8 +30,6 @@ def helpcenter (request):
 def forensic (request):
     return render(request, 'drapp/forensic.html')
 
-def marketing (request):
-    return render(request, 'drapp/marketing.html')
 
 def academic (request):
     return render(request, 'drapp/academic.html')

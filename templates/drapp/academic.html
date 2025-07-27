@@ -1,103 +1,43 @@
 {% extends "base.html" %}
-{% load static%}
-<title>{% block title %}سبر | حلول أكاديمية{% endblock %}</title>
+{% load static %}
+<title>{% block title %}سبر | أكاديميا{% endblock %}</title>
 
 {% block content %}
-    <style>
-        
-        header {
-            background-color: #2e3c5d;
-            color: white;
-            padding: 30px;
-            text-align: center;
-            margin-top: 80px;
+<div class="about">
+    
+    <header>
+        <h1>سبر أكاديميا</h1>
+        <p>عمق أكاديمي وخبرة تطبيقية في اللغويات الجنائية</p>
+    </header>
 
-        }
-        .intro {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-        .services {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin: 40px auto;
-            max-width: 1000px;
-        }
-        .service {
-            background-color: white;
-            width: 40%;
-            padding: 25px;
-            margin: 10px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        h2, h3 {
-            color: #2e3c5d;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        ul li {
-            margin-bottom: 10px;
-        }
-        .cta {
-            text-align: center;
-            margin: 50px;
-        }
-        .cta a {
-            background-color: #446eaa;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 6px;
-            text-decoration: none;
-        }
-    </style>
-<header>
-    <h1 class="translatable" data-translate="training_title">التدريب والتطوير</h1>
-    <p class="translatable" data-translate="training_subtitle">برامج تدريبية متخصصة في اللغويات الجنائية، كشف الاحتيال، وتحليل التواصل لتمكين الأفراد والمؤسسات</p>
-</header>
+    
+    <section class="about-section">
+        <h2>البرامج النوعية</h2>
+        <p>تُقدّم <strong>سبر أكاديميا</strong> حزمة من البرامج النوعية التي تمزج بين العمق الأكاديمي والخبرة التطبيقية، وتشمل:</p>
+    </section>
 
-<div class="intro">
-    <p class="translatable" data-translate="training_intro">نقدم جلسات تدريبية وورش عمل يقودها خبراء تهدف إلى تطوير المهارات التحقيقية واللغوية والتحليلية اللازمة لاكتشاف الخداع، وتحليل الاتصالات الاحتيالية، ودعم المساءلة القانونية.</p>
-</div>
-
-<div class="services">
-
-    <div class="service">
-        <h3 class="translatable" data-translate="specialized_training_title">جلسات تدريبية متخصصة</h3>
+    <section class="about-section">
+        <h2>برامج الدراسات العليا والتأهيل الأكاديمي</h2>
         <ul>
-            <li class="translatable" data-translate="session1">تقديم جلسات يقودها خبراء تركز على تحليل الأدلة اللغوية في التحقيقات القانونية</li>
-            <li class="translatable" data-translate="session2">تنظيم ورش عمل تفاعلية لتعليم كيفية التعرف على الإشارات اللغوية وأنماط التواصل التي تدل على الاحتيال</li>
-            <li class="translatable" data-translate="session3">تقديم برامج تدريبية تهدف إلى تعزيز المهارات المهنية في فحص وتحليل المستندات والرسائل الاحتيالية</li>
+            <li>تقديم الاستشارات المتخصصة في اللغويات الجنائية، لبرامج الدراسات العليا والدرجات العلمية الأخرى.</li>
+            <li>إعداد برامج تمهيدية لتأهيل الملتحقين ببرامج الماجستير والدبلوم العالي في تخصصات اللغويات الجنائية والاحتيال المالي.</li>
         </ul>
-    </div>
+    </section>
 
-    <div class="service">
-        <h3 class="translatable" data-translate="practical_training_title">حلول تدريبية عملية</h3>
+    <section class="about-section">
+        <h2>دبلومات مهنية تطبيقية</h2>
         <ul>
-            <li class="translatable" data-translate="practical1">تقديم حزم تدريبية لتطوير المهارات اللغوية الاستراتيجية أثناء المقابلات لاكتشاف الخداع والاحتيال</li>
-            <li class="translatable" data-translate="practical2">استضافة ندوات متخصصة عبر الإنترنت حول اللغة والجريمة المالية لتعزيز المساءلة القانونية</li>
-            <li class="translatable" data-translate="practical3">تنفيذ تدريبات موجهة لاكتشاف اللغة المضللة والاستراتيجيات الاحتيالية في المستندات والعقود المالية</li>
+            <li>دبلومات معتمدة في علم اللغة الجنائي، التحليل الأسلوبي، ومكافحة الاحتيال المالي.</li>
+            <li>بفترات زمنية مختلفة (دبلوم مشارك ومتوسط).</li>
         </ul>
-    </div>
+    </section>
 
-    <div class="service">
-        <h3 class="translatable" data-translate="advanced_training_title">تدريب متقدم في التواصل والتحليل الجنائي</h3>
+    <section class="about-section">
+        <h2>دورات تطويرية وتأهيلية قصيرة</h2>
         <ul>
-            <li class="translatable" data-translate="advanced1">تقديم تمارين عملية حول إسناد التأليف وتقييم التهديدات</li>
-            <li class="translatable" data-translate="advanced2">تنفيذ تدريب متخصص في تحليل أنماط الاتصال الاحتيالية في البيئات الرقمية مثل البريد الإلكتروني، ووسائل التواصل الاجتماعي، والمنصات الإلكترونية</li>
+            <li>دورات تخصصية (2–5 أيام) موجهة للقطاعات القانونية، الأمنية والمالية.</li>
+            <li>ورش عمل مغلقة للجهات القضائية والرقابية، وللمؤسسات المعنية.</li>
         </ul>
-    </div>
-
+    </section>
 </div>
-
-<div class="cta">
-    <h2 class="translatable" data-translate="cta_title">تحتاج إلى تدريب وتطوير؟</h2>
-    <a href="{% url 'contact' %}" class="translatable" data-translate="cta_button">تواصل معنا</a>
-</div>
-
-
 {% endblock %}

@@ -1,90 +1,84 @@
 {% extends "base.html" %}
-{% load static%}
+{% load static %}
 <title>{% block title %}سبر | الخدمات اللغوية والجنائية{% endblock %}</title>
 
 {% block content %}
-    <style>
-        header {
-            background-color: #252b48;
-            color: white;
-            padding: 30px;
-            text-align: center;
-            margin-top: 80px;
-        }
-        .intro {
-            max-width: 1400px;
-            margin: 30px auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-        .services {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin: 40px auto;
-            max-width: 1000px;
-        }
-        .service {
-            background-color: white;
-            width: 40%;
-            padding: 25px;
-            margin: 10px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        h2, h3 {
-            color: #252b48;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        ul li {
-            margin-bottom: 10px;
-        }
-        .cta {
-            text-align: center;
-            margin: 50px;
-        }
-        .cta a {
-            background-color: #445069;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 6px;
-            text-decoration: none;
-        }
-    </style>
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+
+
+<div class="services-page">
     <header>
-    <h1 class="translatable" data-translate="forensic_linguistic_services">الخدمات اللغوية والجنائية</h1>
-    <p class="translatable" data-translate="fff">خدمات متخصصة في اللغويات الجنائية، كشف الاحتيال، تحليل الأسلوب، والتحقق من صحة الوثائق</p>
-</header>
+        <h1>الخدمات اللغوية والتحليل الجنائي اللغوي</h1>
+        <p>تحليل احترافي للنصوص والمراسلات والوثائق لدعم التحقيقات وكشف الغموض والاحتيال</p>
+    </header>
 
-<div class="intro">
-    <p class="translatable" data-translate="hhh">نقدّم خبرات لغوية وجنائية لمساعدة العملاء والمحامين والمؤسسات في كشف الخداع، واكتشاف التزوير، وتحليل الأدلة اللغوية في السياقات القانونية والتحقيقية.</p>
-</div>
-
-<div class="services">
-
-    <div class="service">
-        <h3 class="translatable" data-translate="forensic_linguistic_services">الخدمات اللغوية الجنائية</h3>
-        <ul>
-            <li class="translatable" data-translate="forensic_linguistic_analysis"تحليل النزاعات التعاقدية واكتشاف الغموض أو التحايل في الصياغة</li>
-            <li class="translatable" data-translate="authorship_identification">  كشف الاحتيال التجاري والمالي من خلال تحليل المراسلات والبصمة اللغوية</li>
-            <li class="translatable" data-translate="threat_fraud_detection">تحليل انتهاكات العلامات التجارية والتقليد والانتحال في النصوص والشعارات</li>
-            <li class="translatable" data-translate="peer_review_content">إعداد تقارير خبيرة تدعم قضايا التعدي على الهوية التجارية أمام الجهات المختصة</li>
-            <li class="translatable" data-translate="legal_language_simplification">تحليل المحتوى الإعلاني لرصد العبارات المضللة قانونيًا</li>
-            <li class="translatable" data-translate="legal_translation_services">  فحص مستندات التستر التجاري والتزوير (مثل الفواتير والتصاريح المشبوهة)</li>
-            <li class="translatable" data-translate="legal_translation_services"> تقديم استشارات لغوية لعقود ومراسلات المستثمرين الأجانب وفق النظام السعودي
-</li>
-        </ul>
+    <div class="intro">
+        <p>
+            في <strong>سبر</strong>، نقدّم مجموعة متقدمة من الخدمات المتخصصة في اللغويات الجنائية، تستند إلى أسس علمية دقيقة، وتخدم الجهات القانونية، القضائية، الرقابية، والمحامين، لفحص الأدلة النصية وتقديم تقارير خبيرة ذات موثوقية عالية في السياقات القضائية والتحقيقية.
+        </p>
     </div>
 
+    <div class="services">
+        <div class="service">
+            <h3>تحليل الصياغات القانونية والنزاعات التعاقدية</h3>
+            <ul>
+                <li>الكشف عن الغموض المتعمد أو التلاعب اللغوي في العقود والمستندات الرسمية.</li>
+                <li>تحليل بنود العقود لاكتشاف الثغرات أو التفسيرات المتعددة التي قد تُستغل قانونيًا.</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>كشف الانتحال وتحديد هوية الكاتب (البصمة اللغوية)</h3>
+            <ul>
+                <li>تحليل النصوص والمراسلات لتحديد ما إذا كانت مكتوبة من نفس الشخص أو منتحلة.</li>
+                <li>دعم القضايا المتعلقة بالتشهير أو الانتحال في السياقات القانونية أو الإعلامية.</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>تحقيقات الاحتيال التجاري والمحاسبي من خلال اللغة</h3>
+            <ul>
+                <li>تحليل البريد الإلكتروني والمراسلات الداخلية لرصد الأنماط اللغوية المشبوهة.</li>
+                <li>كشف نوايا التلاعب أو التحايل بناءً على الأسلوب والسياق اللغوي.</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>تحليل قضايا الملكية الفكرية والعلامات التجارية</h3>
+            <ul>
+                <li>تحليل تقليد أو انتحال الشعارات، النصوص الدعائية، أو العلامات التجارية.</li>
+                <li>إعداد تقارير لغوية خبيرة تُقدَّم للهيئات المختصة كأدلة في قضايا التعدي والانتحال.</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>تدقيق اللغة القانونية والإعلانية</h3>
+            <ul>
+                <li>فحص المحتوى التسويقي لرصد العبارات المخادعة أو المضللة قانونيًا.</li>
+                <li>تبسيط اللغة القانونية لتكون مفهومة وواضحة لغير المختصين دون الإخلال بالمعنى.</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>التحقق من الوثائق والمستندات المشبوهة</h3>
+            <ul>
+                <li>فحص الفواتير، التصاريح، والعقود لاكتشاف التزوير أو التحوير اللغوي.</li>
+                <li>تحليل الوثائق التي يشتبه بكونها صادرة عن تستر تجاري أو مخالفات نظامية.</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>الاستشارات اللغوية للمستثمرين الأجانب</h3>
+            <ul>
+                <li>تقديم خدمات صياغة وتدقيق العقود والمراسلات التجارية بما يتوافق مع النظام السعودي.</li>
+                <li>ترجمة قانونية احترافية تعكس المعنى الدقيق والملائم قانونيًا في السياق المحلي.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cta">
+        <h2>هل تحتاج خدمة متخصصة في لغويات الجريمة أو فحص الأدلة النصية؟</h2>
+        <a href="{% url 'contact' %}">تواصل معنا الآن</a>
+    </div>
 </div>
-
-<div class="cta">
-    <h2 class="translatable" data-translate="iii">مهتم بخدماتنا؟</h2>
-    <a href="{% url 'contact' %}">تواصل معنا</a>
-</div>
-
-
-
 {% endblock %}

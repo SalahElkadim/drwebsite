@@ -1,201 +1,233 @@
-
-let menu_1 = document.querySelector(".nav-menu")
-let nav_list = document.querySelector(".nav-list")
-let overlay = document.querySelector(".overlay");
-
-menu_1.onclick = function() {
-menu_1.classList.toggle("move")
-nav_list.classList.toggle("move_1")
-overlay.classList.toggle("active");
-}
-overlay.onclick = function(){
-  menu_1.classList.remove("move");
-  nav_list.classList.remove("move_1");
-  overlay.classList.remove("active");
-}
-
-const whatsappBtn = document.getElementById('whatsappBtn');
-        const whatsappChat = document.getElementById('whatsappChat');
-
-        // عند النقر على الزر
-        whatsappBtn.addEventListener("click", function () {
-          // الطريقة 1: فتح محادثة مباشرة (الأفضل)
-        whatsappChat.style.display =
-            whatsappChat.style.display === "block" ? "none" : "block";
+        // تأثيرات التمرير والحركة
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
 
-const consultBtn = document.getElementById("consultBtn");
-if (consultBtn) {
-  consultBtn.addEventListener("click", function () {
-    document
-      .getElementById("consultation-section")
-      ?.scrollIntoView({ behavior: "smooth" });
-  });
-}
+        // قائمة الهاتف المحمول
+        const navMenu = document.getElementById('navMenu');
+        const navList = document.getElementById('navList');
+        
+        navMenu.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            navList.classList.toggle('active');
+        });
 
-// إنشاء دوائر متحركة إضافية
-setInterval(() => {
-  const circle = document.createElement("div");
-  circle.className = "pulse-circle";
-  circle.style.width = "100%";
-  circle.style.height = "100%";
-  circle.style.top = "0";
-  circle.style.left = "0";
-  circle.style.animationDelay = "0s";
+        // إغلاق القائمة عند النقر خارجها
+        document.addEventListener('click', function(e) {
+            if (!navMenu.contains(e.target) && !navList.contains(e.target)) {
+                navMenu.classList.remove('active');
+                navList.classList.remove('active');
+            }
+        });
 
-  // إزالة الدوائر القديمة لمنع تراكمها
-  setTimeout(() => {
-    circle.remove();
-  }, 3000);
-}, 1500);
+        // نافذة واتساب
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        const whatsappChat = document.getElementById('whatsappChat');
+        
+        whatsappBtn.addEventListener('click', function() {
+            whatsappChat.classList.toggle('active');
+        });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const englishText = {
-    home: "Home",
-    about: "About Us",
-    forensic: "Forensic Services",
-    ling: "Corporate Protection & Analysis Solutions",
-    financial: "Financial Fraud Analysis",
-    train: "Training & Development",
-    book: "Book a Consultation",
-    test: "Testimonials",
-    faq: "FAQs",
-    help: "Help",
-    privacy: "Privacy Policy",
-    contact: "Contact Us",
-    req: "Request Consultation Now",
-    spe: "Specialized consultations in forensic linguistics and financial fraud analysis",
-    re: "Request a Consultation",
-    cer: "Certified Experts in Forensic Linguistics",
-    for: "Forensic linguistic analysis – forgery detection – financial fraud investigation – expertise in forensic evidence",
-    con: "Contact Us",
-    req1: "Book a Seminar for Government or Private Institutions",
-    imp: "Important Links",
+        // إغلاق نافذة واتساب عند النقر خارجها
+        document.addEventListener('click', function(e) {
+            if (!whatsappBtn.contains(e.target) && !whatsappChat.contains(e.target)) {
+                whatsappChat.classList.remove('active');
+            }
+        });
 
-    forensic_linguistic_services: "Forensic Linguistic Services",
-    forensic_linguistic_analysis:
-      "Forensic Linguistic Analysis in Arabic and English",
-    authorship_identification:
-      "Authorship Identification (Linguistic Fingerprint)",
-    threat_fraud_detection:
-      "Detection of Linguistic Indicators of Threat and Fraud",
-    peer_review_content: "Peer Review for Legal and Commercial Content",
-    legal_language_simplification: "Legal Language Simplification in Contracts",
-    legal_translation_services: "Legal Translation Services",
+        // تأثيرات الظهور عند التمرير
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal-item');
+            
+            reveals.forEach(reveal => {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveal.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('revealed');
+                }
+            });
+        }
 
-    fraud_forgery_detection: "Fraud and Forgery Detection",
-    verify_contracts: "Verification of Written Contracts and Agreements",
-    validate_email_communications:
-      "Email and Communication Credibility Verification",
-    review_financial_documents:
-      "Comprehensive Review of Financial Documents and Records",
-    user_behavior_analysis: "User Behavior Analysis",
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // تشغيل عند تحميل الصفحة
 
-    forensic_voice_analysis: "Forensic Voice Analysis",
-    voiceprint_analysis: "Voiceprint and Audio Context Analysis",
-    forensic_voice_reports: "Preparation of Forensic Audio Expert Reports",
-    recording_authenticity_verification:
-      "Recording Authenticity Verification and Tampering Detection",
-    confession_analysis: "Analysis of Recorded Confessions Under Pressure",
-    voice_comparison_demographics:
-      "Voice Comparison and Demographic Feature Detection",
-    expert_technical_services:
-      "Expert Technical Services for Judicial Authorities",
-    written_expert_reports: "Provision of Written Expert Reports",
-    expert_witness_testimony: "Expert Witness Testimony in Court",
-    fff: "Specialized services in forensic linguistics, fraud detection, authorship analysis, and document validation.",
-    hhh: "Our expertise helps clients, legal professionals, and institutions detect deception, uncover forgery, and analyze linguistic evidence.",
-    iii: "If you are interested, contact us now",
-    trademark_marketing_title: "Trademark and Marketing Solutions",
-    trademark_marketing_subtitle:
-      "Comprehensive services for brand protection, registration, strategic development, and digital growth",
-    trademark_marketing_intro:
-      "We help individuals and companies protect their commercial identity and grow their market presence through legal and creative strategies",
+        // تأثير hover للبطاقات
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+                this.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.08)';
+            });
+        });
 
-    trademark_services_title: "Trademark Services",
-    linguistic_analysis_trademark:
-      "Linguistic Analysis for Local and International Trademark Disputes",
-    develop_brand_strategy: "Brand Strategy Development",
-    brand_identity_design: "Visual Identity Design",
-    market_competitor_analysis: "Market and Competitor Analysis",
-    linguistic_consulting_brand: "Linguistic Consulting for Brand Building",
-    legal_consulting_protection: "Legal Consulting and Brand Protection",
-    brand_reputation_protection: "Brand Reputation Protection",
+        // تأثير الكتابة المتدرجة
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            element.style.borderLeft = '3px solid white';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    // إخفاء المؤشر بعد انتهاء الكتابة
+                    setTimeout(() => {
+                        element.style.borderLeft = 'none';
+                    }, 1000);
+                }
+            }
+            type();
+        }
 
-    digital_marketing_services_title: "Digital Marketing Services",
-    develop_digital_marketing_strategy:
-      "Digital Strategy Development for Online Presence",
-    online_reputation_monitoring: "Online Reputation Monitoring & PR",
-    seo_service: "Search Engine Optimization (SEO)",
-    ppc_campaigns: "Pay-Per-Click Campaign Management",
+        document.addEventListener("DOMContentLoaded", function () {
+          const typewriterElement = document.querySelector(".typewriter");
+          if (typewriterElement) {
+            const originalText = typewriterElement.textContent;
+            typewriterElement.textContent = ""; // إخفاء النص فورًا
+            typewriterElement.classList.remove("typewriter");
 
-    brand_protection_growth_cta: "Need help with brand protection or growth?",
-    contact_our_team: "Contact Our Team",
-    training_title: "Training & Development",
-    training_subtitle:
-      "Specialized programs in forensic linguistics, fraud detection, and communication analysis for professionals and institutions",
+            setTimeout(() => {
+              typeWriter(typewriterElement, originalText, 40); // سرعة الكتابة أسرع (من 80 إلى 40)
+            }, 500); // تقليل وقت الانتظار
+          }
+        });
 
-    training_intro:
-      "We offer expert-led training sessions and workshops to enhance investigative, linguistic, and analytical skills for identifying deception and supporting legal accountability.",
+        function typeWriter(element, text, delay) {
+          let i = 0;
+          function writeChar() {
+            if (i < text.length) {
+              element.textContent += text.charAt(i);
+              i++;
+              setTimeout(writeChar, delay);
+            }
+          }
+          writeChar();
+        }
 
-    specialized_training_title: "Specialized Training Sessions",
-    session1:
-      "Expert-led sessions focused on linguistic evidence in legal investigations",
-    session2:
-      "Interactive workshops on identifying fraudulent linguistic patterns",
-    session3:
-      "Training programs to improve skills in analyzing fraudulent documents and messages",
+        // تأثيرات إضافية للتفاعل
+        document.querySelectorAll('.floating-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // تأثير النقر
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+                
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = e.clientX - rect.left - size / 2 + 'px';
+                ripple.style.top = e.clientY - rect.top - size / 2 + 'px';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
 
-    practical_training_title: "Practical Training Solutions",
-    practical1:
-      "Training kits to develop linguistic strategies for fraud detection in interviews",
-    practical2: "Webinars on language and financial crime for legal awareness",
-    practical3:
-      "Workshops to detect misleading language and fraud in financial documents",
+        // CSS للتأثير المتموج
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
 
-    advanced_training_title:
-      "Advanced Communication & Forensic Analysis Training",
-    advanced1:
-      "Practical training in authorship attribution and threat assessment",
-    advanced2:
-      "Workshops on analyzing fraud communication in digital platforms",
+        // تأثير المؤشر المخصص
+        const cursor = document.createElement('div');
+        cursor.style.cssText = `
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(0,0,0,0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            display: none;
+        `;
+        document.body.appendChild(cursor);
 
-    cta_title: "Need Training & Development?",
-    cta_button: "Contact Us",
-    job: "Recruitment",
-    dashboard_home: "dashboard"
-  };
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+            cursor.style.display = 'block';
+        });
 
-  function translateToEnglish() {
-    const elementsToTranslate = document.querySelectorAll(".translatable");
-    elementsToTranslate.forEach((el) => {
-      const key = el.getAttribute("data-translate");
-      if (englishText[key]) {
-        el.textContent = englishText[key];
-      }
-    });
+        document.addEventListener('mouseenter', () => {
+            cursor.style.display = 'block';
+        });
 
-    const dropdownBtn = document.querySelector(".dropdown-btn");
-    if (dropdownBtn) {
-      dropdownBtn.textContent = "EN";
-    }
-  }
+        document.addEventListener('mouseleave', () => {
+            cursor.style.display = 'none';
+        });
 
-  const enBtn = document.getElementById("en-btn");
-  if (enBtn) {
-    enBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      translateToEnglish();
-    });
-  }
+        // تأثير التحويم على الروابط
+        document.querySelectorAll('a, button').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(1.5)';
+                cursor.style.background = 'radial-gradient(circle, rgba(0,0,0,1) 0%, transparent 70%)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.background = 'radial-gradient(circle, rgba(0,0,0,0.8) 0%, transparent 70%)';
+            });
+        });
 
-  const arBtn = document.getElementById("ar-btn");
-  if (arBtn) {
-    arBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      location.reload(); // تُرجع للمحتوى العربي الأساسي
-    });
-  }
-});
+        // تأثير التمرير السلس
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
+        // تحديث الألوان بناءً على الوقت (وضع ليلي/نهاري تلقائي)
+        function updateThemeBasedOnTime() {
+            const hour = new Date().getHours();
+            const root = document.documentElement;
+            
+            if (hour >= 6 && hour < 18) {
+                // الوضع النهاري - أبيض أكثر
+                root.style.setProperty('--primary-bg', 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%)');
+            } else {
+                // الوضع الليلي - أسود أكثر
+                root.style.setProperty('--primary-bg', 'linear-gradient(135deg, #000000 0%, #111111 50%, #1a1a1a 100%)');
+            }
+        }
 
+        // تحديث الموضوع عند تحميل الصفحة
+        updateThemeBasedOnTime();
+        
+        // تحديث الموضوع كل ساعة
+        setInterval(updateThemeBasedOnTime, 3600000);

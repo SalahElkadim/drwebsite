@@ -16,7 +16,6 @@ urlpatterns = [
     path('privacy', views.privacy , name='privacy'),
     path('helpcenter', views.helpcenter , name='helpcenter'),
     path('forensic', views.forensic , name='forensic'),
-    path('marketing', views.marketing , name='marketing'),
     path('academic', views.academic , name='academic'),
     path('seminar', views.seminar , name='seminar'),
     path('submit-consultation/', submit_consultation, name='submit_consultation'),
