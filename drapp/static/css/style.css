@@ -874,7 +874,7 @@ font-size: 10px;
                 transform: translateY(0);
             }
         }
-        @media (max-width: 485px) {
+        @media (max-width: 400px) {
             .logo {
             width:3rem;
 
