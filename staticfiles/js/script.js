@@ -155,36 +155,6 @@
             }
         `;
         document.head.appendChild(style);
-
-        // تأثير المؤشر المخصص
-        const cursor = document.createElement('div');
-        cursor.style.cssText = `
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle, rgba(0,0,0,0.8) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease;
-            display: none;
-        `;
-        document.body.appendChild(cursor);
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX - 10 + 'px';
-            cursor.style.top = e.clientY - 10 + 'px';
-            cursor.style.display = 'block';
-        });
-
-        document.addEventListener('mouseenter', () => {
-            cursor.style.display = 'block';
-        });
-
-        document.addEventListener('mouseleave', () => {
-            cursor.style.display = 'none';
-        });
-
         // تأثير التحويم على الروابط
         document.querySelectorAll('a, button').forEach(element => {
             element.addEventListener('mouseenter', () => {
