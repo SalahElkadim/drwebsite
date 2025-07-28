@@ -268,3 +268,122 @@ background: linear-gradient(135deg,
       margin-bottom: -10px;
     }
   }
+
+  @media (max-width: 500px) {
+
+  .services-page {
+    padding: 40px 20px;
+    line-height: 1.6;
+  }
+
+  .services-page header {
+    margin-right: 20px;
+    text-align: center;
+  }
+
+  .services-page header h1 {
+    font-size: 1.5rem;
+  }
+
+  .services-page header p {
+    font-size: 1rem;
+  }
+
+  .intro {
+    font-size: 1rem;
+    margin-right: 20px;
+    text-align: center;
+  }
+
+  .services {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .service {
+    padding-right: 20px;
+    max-width: 100%;
+  }
+
+  .service h3 {
+    font-size: 1rem;
+  }
+
+  .service li {
+    font-size: .8rem;
+  }
+
+  .service ul {
+    padding-right: 20px;
+  }
+
+  .cta {
+    margin-right: 20px;
+    text-align: center;
+  }
+
+  .cta h2 {
+    font-size: 1.2rem;
+  }
+
+  .cta a {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  .consultation {
+    padding: 40px 15px;
+    text-align: center;
+  }
+
+  .consultation-form {
+    padding: 30px 20px;
+  }
+
+  .form-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .form-header p {
+    font-size: 1rem;
+  }
+
+  .form-control {
+    font-size: 0.95rem;
+    padding: 8px;
+  }
+
+  .submit-btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+    flex-direction: column;
+  }
+
+  .success-message {
+    font-size: 0.95rem;
+  }
+
+  .contact-section {
+    margin: 60px 15px 30px;
+    padding: 25px;
+  }
+
+  .contact-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .contact-section h4 {
+    font-size: 1rem;
+  }
+
+  .contact-info {
+    grid-template-columns: 100%;
+    font-size: 0.95rem;
+  }
+
+  .contact-info i {
+    font-size: 20px;
+    margin-bottom: -5px;
+  }
+}

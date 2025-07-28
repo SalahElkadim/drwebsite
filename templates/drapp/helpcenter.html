@@ -1,204 +1,87 @@
 {% extends "base.html" %}
 {% load static %}
-<title>{% block title %}سبر | الخدمات اللغوية والجنائية{% endblock %}</title>
+<title>{% block title %}سبر | مركز المساعدة{% endblock %}</title>
 
 {% block content %}
-           <link rel="stylesheet" href="{% static 'css/help.css' %}">
+<link rel="stylesheet" href="{% static 'css/help.css' %}">
 
+<div class="background-pattern"></div>
 
-    <div class="background-pattern"></div>
-    
-    <div class="floating-elements">
-        <div class="floating-dot"></div>
-        <div class="floating-dot"></div>
-        <div class="floating-dot"></div>
-        <div class="floating-dot"></div>
-        <div class="floating-dot"></div>
+<div class="floating-elements">
+    <div class="floating-dot"></div>
+    <div class="floating-dot"></div>
+    <div class="floating-dot"></div>
+    <div class="floating-dot"></div>
+    <div class="floating-dot"></div>
+</div>
+
+<header>
+    <h1 data-key="مركز المساعدة">مركز المساعدة</h1>
+    <p data-key="مرحبًا بك في مركز الدعم الخاص بنا – متخصصون في علم اللغة الجنائي وكشف التزوير والاحتيال">
+        مرحبًا بك في مركز الدعم الخاص بنا – متخصصون في علم اللغة الجنائي وكشف التزوير والاحتيال
+    </p>
+</header>
+
+<div class="search-bar">
+    <div class="search-container">
+        <input type="text" placeholder="ابحث عن سؤال، خدمة أو موضوع..." id="searchInput">
+        <i class="fas fa-search search-icon"></i>
+    </div>
+</div>
+
+<section class="categories">
+    <div class="category">
+        <h3 data-key="الخدمات اللغوية الجنائية">الخدمات اللغوية الجنائية</h3>
+        <p data-key="تعرف على خدمات تحليل النصوص، المقارنات اللغوية، وتحقيقات الانتحال.">
+            تعرف على خدمات تحليل النصوص، المقارنات اللغوية، وتحقيقات الانتحال.
+        </p>
+    </div>
+    <div class="category">
+        <h3 data-key="التزوير والكشف عن الاحتيال">التزوير والكشف عن الاحتيال</h3>
+        <p data-key="شرح آليات كشف التزوير في الوثائق، التواقيع، والتحقق من الأصالة.">
+            شرح آليات كشف التزوير في الوثائق، التواقيع، والتحقق من الأصالة.
+        </p>
+    </div>
+    <div class="category">
+        <h3 data-key="الحساب والإعدادات">الحساب والإعدادات</h3>
+        <p data-key="إدارة حسابك، تغيير البيانات، وتفعيل الإشعارات.">
+            إدارة حسابك، تغيير البيانات، وتفعيل الإشعارات.
+        </p>
+    </div>
+    <div class="category">
+        <h3 data-key="التقارير والاستشارات">التقارير والاستشارات</h3>
+        <p data-key="كيفية طلب تقارير رسمية، أو حجز جلسة استشارة مع خبير لغوي جنائي.">
+            كيفية طلب تقارير رسمية، أو حجز جلسة استشارة مع خبير لغوي جنائي.
+        </p>
+    </div>
+</section>
+
+<section class="faq-section">
+    <h2 data-key="الأسئلة الشائعة">الأسئلة الشائعة</h2>
+    <div class="faq-item">
+        <strong data-key="ما هو علم اللغة الجنائي؟">ما هو علم اللغة الجنائي؟</strong>
+        <p data-key="هو استخدام علم اللغة لتحليل النصوص المكتوبة أو المنطوقة لأغراض التحقيق والقضاء.">
+            هو استخدام علم اللغة لتحليل النصوص المكتوبة أو المنطوقة لأغراض التحقيق والقضاء.
+        </p>
+    </div>
+    <div class="faq-item">
+        <strong data-key="كيف أطلب خدمة تحليل نص؟">كيف أطلب خدمة تحليل نص؟</strong>
+        <p data-key="يمكنك تقديم طلب من خلال صفحة 'زر الواتساب السريع أو من خلال طلب استشارة' وسنقوم بالرد خلال 24 ساعة.">
+            يمكنك تقديم طلب من خلال صفحة "زر الواتساب السريع أو من خلال طلب استشارة" وسنقوم بالرد خلال 24 ساعة.
+        </p>
+    </div>
+    <div class="faq-item">
+        <strong data-key="هل يمكن الكشف عن تزوير الوثائق الرقمية؟">هل يمكن الكشف عن تزوير الوثائق الرقمية؟</strong>
+        <p data-key="نعم، لدينا أدوات وتقنيات لتحليل اللغة والبنية الرقمية للوثائق المرسلة.">
+            نعم، لدينا أدوات وتقنيات لتحليل اللغة والبنية الرقمية للوثائق المرسلة.
+        </p>
     </div>
 
-    <header>
-        <h1>مركز المساعدة</h1>
-        <p>مرحبًا بك في مركز الدعم الخاص بنا – متخصصون في علم اللغة الجنائي وكشف التزوير والاحتيال</p>
-    </header>
-
-    <div class="search-bar">
-        <div class="search-container">
-            <input type="text" placeholder="ابحث عن سؤال، خدمة أو موضوع..." id="searchInput">
-            <i class="fas fa-search search-icon"></i>
-        </div>
+    <div class="contact-links">
+        <h3 data-key="هل تحتاج مساعدة إضافية؟">هل تحتاج مساعدة إضافية؟</h3>
+        <a href="tel:+966500819191"><i class="fas fa-phone"></i> <span data-key="اتصل بنا">اتصل بنا</span></a>
+        <a href="mailto:info@SabrConsult.com"><i class="fas fa-envelope"></i> <span data-key="راسلنا">راسلنا</span></a>
+        <a href="https://wa.me/966500819191"><i class="fab fa-whatsapp"></i> <span data-key="واتساب">واتساب</span></a>
     </div>
-
-    <section class="categories">
-        <div class="category">
-            <h3>الخدمات اللغوية الجنائية</h3>
-            <p>تعرف على خدمات تحليل النصوص، المقارنات اللغوية، وتحقيقات الانتحال.</p>
-        </div>
-        <div class="category">
-            <h3>التزوير والكشف عن الاحتيال</h3>
-            <p>شرح آليات كشف التزوير في الوثائق، التواقيع، والتحقق من الأصالة.</p>
-        </div>
-        <div class="category">
-            <h3>الحساب والإعدادات</h3>
-            <p>إدارة حسابك، تغيير البيانات، وتفعيل الإشعارات.</p>
-        </div>
-        <div class="category">
-            <h3>التقارير والاستشارات</h3>
-            <p>كيفية طلب تقارير رسمية، أو حجز جلسة استشارة مع خبير لغوي جنائي.</p>
-        </div>
-    </section>
-
-    <section class="faq-section">
-        <h2>الأسئلة الشائعة</h2>
-        <div class="faq-item">
-            <strong>ما هو علم اللغة الجنائي؟</strong>
-            <p>هو استخدام علم اللغة لتحليل النصوص المكتوبة أو المنطوقة لأغراض التحقيق والقضاء.</p>
-        </div>
-        <div class="faq-item">
-            <strong>كيف أطلب خدمة تحليل نص؟</strong>
-            <p>يمكنك تقديم طلب من خلال صفحة "زر الواتساب السريع أو من خلال طلب استشارة" وسنقوم بالرد خلال 24 ساعة.</p>
-        </div>
-        <div class="faq-item">
-            <strong>هل يمكن الكشف عن تزوير الوثائق الرقمية؟</strong>
-            <p>نعم، لدينا أدوات وتقنيات لتحليل اللغة والبنية الرقمية للوثائق المرسلة.</p>
-        </div>
-
-        <div class="contact-links">
-            <h3>هل تحتاج مساعدة إضافية؟</h3>
-            <a href="tel:+966500819191"><i class="fas fa-phone"></i> اتصل بنا</a>
-            <a href="mailto:info@SabrConsult.com"><i class="fas fa-envelope"></i> راسلnا</a>
-            <a href="https://wa.me/966500819191"><i class="fab fa-whatsapp"></i> واتساب</a>
-        </div>
-    </section>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Search functionality
-            const searchInput = document.getElementById('searchInput');
-            const faqItems = document.querySelectorAll('.faq-item');
-            const categories = document.querySelectorAll('.category');
-
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                
-                // Search in FAQ items
-                faqItems.forEach(item => {
-                    const text = item.textContent.toLowerCase();
-                    if (text.includes(searchTerm)) {
-                        item.style.display = 'block';
-                        item.style.animation = 'fadeInUp 0.5s ease-out';
-                    } else {
-                        item.style.display = searchTerm === '' ? 'block' : 'none';
-                    }
-                });
-
-                // Search in categories
-                categories.forEach(category => {
-                    const text = category.textContent.toLowerCase();
-                    if (text.includes(searchTerm)) {
-                        category.style.display = 'block';
-                        category.style.animation = 'fadeInUp 0.5s ease-out';
-                    } else {
-                        category.style.display = searchTerm === '' ? 'block' : 'none';
-                    }
-                });
-            });
-
-            // Add click ripple effect
-            document.querySelectorAll('.category, .faq-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    const ripple = document.createElement('div');
-                    const rect = this.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height);
-                    const x = e.clientX - rect.left - size / 2;
-                    const y = e.clientY - rect.top - size / 2;
-                    
-                    ripple.style.cssText = `
-                        position: absolute;
-                        left: ${x}px;
-                        top: ${y}px;
-                        width: ${size}px;
-                        height: ${size}px;
-                        background: rgba(255, 255, 255, 0.1);
-                        border-radius: 50%;
-                        transform: scale(0);
-                        animation: rippleEffect 0.6s ease-out;
-                        pointer-events: none;
-                        z-index: 10;
-                    `;
-                    
-                    this.style.position = 'relative';
-                    this.appendChild(ripple);
-                    
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 600);
-                });
-            });
-
-            // FAQ accordion functionality
-            faqItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const p = this.querySelector('p');
-                    const isExpanded = p.style.maxHeight && p.style.maxHeight !== '0px';
-                    
-                    // Close all other items
-                    faqItems.forEach(otherItem => {
-                        if (otherItem !== this) {
-                            const otherP = otherItem.querySelector('p');
-                            otherP.style.maxHeight = '0px';
-                            otherP.style.opacity = '0';
-                            otherItem.classList.remove('expanded');
-                        }
-                    });
-                    
-                    // Toggle current item
-                    if (isExpanded) {
-                        p.style.maxHeight = '0px';
-                        p.style.opacity = '0';
-                        this.classList.remove('expanded');
-                    } else {
-                        p.style.maxHeight = p.scrollHeight + 'px';
-                        p.style.opacity = '1';
-                        this.classList.add('expanded');
-                    }
-                });
-            });
-
-            // Parallax effect for floating elements
-            window.addEventListener('scroll', function() {
-                const scrolled = window.pageYOffset;
-                const dots = document.querySelectorAll('.floating-dot');
-                
-                dots.forEach((dot, index) => {
-                    const speed = (index + 1) * 0.1;
-                    dot.style.transform = `translateY(${scrolled * speed}px)`;
-                });
-            });
-
-            // Initialize FAQ items as collapsed
-            faqItems.forEach(item => {
-                const p = item.querySelector('p');
-                p.style.maxHeight = '0px';
-                p.style.opacity = '0';
-                p.style.transition = 'all 0.3s ease';
-                p.style.overflow = 'hidden';
-            });
-        });
-
-        // Add ripple animation keyframes
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes rippleEffect {
-                to {
-                    transform: scale(2);
-                    opacity: 0;
-                }
-            }
-            
-            .faq-item.expanded {
-                background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)) !important;
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
-{% endblock  %}
+</section>
+{% endblock %}

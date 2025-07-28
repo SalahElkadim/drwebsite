@@ -4,7 +4,7 @@
         rgba(0, 0, 0, 0.0) 0%, 
         rgba(17, 17, 17, 0.0) 50%, 
         rgba(0, 0, 0, 0.0) 100%),
-        url('/drapp/static/image/hero-bg.jpg') center/cover no-repeat;    
+        url('/static/image/hero-bg.jpg') center/cover no-repeat;    
     padding: 3rem 0;
     margin-top: 2rem;
     border-radius: 20px;

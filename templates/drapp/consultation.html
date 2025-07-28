@@ -5,57 +5,56 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/about.css' %}">
 
-
 <section class="consultation">
     <div class="consultation-form">
         <div class="form-header">
-            <h2><i class="fas fa-comments"></i> طلب استشارة </h2>
-            <p>املأ النموذج وسيتواصل معك أحد خبرائنا خلال 24 ساعة</p>
+            <h2 data-key="طلب استشارة"><i class="fas fa-comments"></i> طلب استشارة </h2>
+            <p data-key="املأ النموذج وسيتواصل معك أحد خبرائنا خلال 24 ساعة">املأ النموذج وسيتواصل معك أحد خبرائنا خلال 24 ساعة</p>
         </div>
 
         <form id="consultationForm">
             {% csrf_token %}
 
             <div class="form-group">
-                <label for="name">الاسم الكامل</label>
+                <label for="name" data-key="الاسم الكامل">الاسم الكامل</label>
                 <input type="text" id="name" class="form-control" required placeholder="أدخل اسمك هنا">
             </div>
 
             <div class="form-group">
-                <label for="email">البريد الإلكتروني</label>
+                <label for="email" data-key="البريد الإلكتروني">البريد الإلكتروني</label>
                 <input type="email" id="email" class="form-control" required placeholder="example@domain.com">
             </div>
 
             <div class="form-group">
-                <label for="phone">رقم الهاتف</label>
+                <label for="phone" data-key="رقم الهاتف">رقم الهاتف</label>
                 <input type="tel" id="phone" class="form-control" required placeholder="05XXXXXXXX">
             </div>
 
             <div class="form-group">
-                <label for="service">نوع الخدمة المطلوبة</label>
+                <label for="service" data-key="نوع الخدمة المطلوبة">نوع الخدمة المطلوبة</label>
                 <select id="service" class="form-control" required>
-                    <option value="" disabled selected>اختر خدمة</option>
-                    <option value="تحليل لغوي جنائي">تحليل لغوي جنائي</option>
-                    <option value="كشف احتيال مالي">كشف احتيال مالي</option>
-                    <option value="قضايا الابتزاز الالكتروني">قضايا الابتزاز الالكتروني</option>
-                    <option value="قضايا التزوير الالكتروني">قضايا التزوير الالكتروني</option>
-                    <option value="other">غير ذلك</option>
+                    <option value="" disabled selected data-key="اختر خدمة">اختر خدمة</option>
+                    <option value="تحليل لغوي جنائي" data-key="تحليل لغوي جنائي">تحليل لغوي جنائي</option>
+                    <option value="كشف احتيال مالي" data-key="كشف احتيال مالي">كشف احتيال مالي</option>
+                    <option value="قضايا الابتزاز الالكتروني" data-key="قضايا الابتزاز الالكتروني">قضايا الابتزاز الالكتروني</option>
+                    <option value="قضايا التزوير الالكتروني" data-key="قضايا التزوير الالكتروني">قضايا التزوير الالكتروني</option>
+                    <option value="other" data-key="غير ذلك">غير ذلك</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="message">تفاصيل الاستشارة</label>
+                <label for="message" data-key="تفاصيل الاستشارة">تفاصيل الاستشارة</label>
                 <textarea id="message" class="form-control" required placeholder="أخبرنا أكثر عن احتياجاتك..." rows="5"></textarea>
             </div>
 
             <button type="submit" class="submit-btn">
-                <i class="fas fa-paper-plane"></i> إرسال الطلب
+                <i class="fas fa-paper-plane"></i> <span data-key="إرسال الطلب">إرسال الطلب</span>
             </button>
 
-            <div class="success-message" id="successMessage">
+            <div class="success-message" id="successMessage" style="display: none;">
                 <i class="fas fa-check-circle" style="font-size: 40px; margin-bottom: 10px;"></i>
-                <h3>تم إرسال طلبك بنجاح!</h3>
-                <p>سيتم التواصل معك خلال 24 ساعة عمل</p>
+                <h3 data-key="تم إرسال طلبك بنجاح!">تم إرسال طلبك بنجاح!</h3>
+                <p data-key="سيتم التواصل معك خلال 24 ساعة عمل">سيتم التواصل معك خلال 24 ساعة عمل</p>
             </div>
         </form>
     </div>
@@ -81,15 +80,15 @@
             },
             body: JSON.stringify(data)
         })
-            .then(res => res.json())
-            .then(res => {
-                if (res.status === 'success') {
-                    document.getElementById('successMessage').style.display = 'block';
-                    document.getElementById('consultationForm').reset();
-                } else {
-                    alert('حدث خطأ أثناء الإرسال.');
-                }
-            });
+        .then(res => res.json())
+        .then(res => {
+            if (res.status === 'success') {
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('consultationForm').reset();
+            } else {
+                alert('حدث خطأ أثناء الإرسال.');
+            }
+        });
 
         function getCookie(name) {
             let cookieValue = null;
@@ -106,6 +105,8 @@
             return cookieValue;
         }
     });
-</script>
 
+    document.getElementById("en-btn").addEventListener("click", () => switchLanguage("en"));
+    document.getElementById("ar-btn").addEventListener("click", () => switchLanguage("ar"));
+</script>
 {% endblock %}
