@@ -647,7 +647,7 @@
                 gap: 1rem;
             }
         }
-        @media (max-width: 1200px) {
+        @media (max-width: 485px) {
             .logo {
             width:3rem;
 
