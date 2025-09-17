@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'drapp',
     'jobs',
     'accounts',
+    'django.contrib.sitemaps',
+
 
 
 ]
