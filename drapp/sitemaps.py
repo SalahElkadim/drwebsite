@@ -7,7 +7,7 @@ class StaticViewSitemap(Sitemap):
 
     def items(self):
         # هنا تحط الصفحات الثابتة
-        return ['home', 'about', 'consult', 'privacy', 'helpcenter', 'forensic', 'marketing', 'academic']
+        return ['home', 'about', 'consult', 'privacy', 'helpcenter', 'forensic',  'academic']
 
     def location(self, item):
         return reverse(item)
