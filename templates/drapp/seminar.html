@@ -1,8 +1,10 @@
 
 {% extends "base.html" %}
 {% load static%}
-<title>{% block title %}سبر | حجز ندوة{% endblock %}</title>
-
+{% block title %} حجز ندوة | سبر للاستشارات{% endblock %}
+{% block meta_description %}
+<meta name="description" content="احجز ندوة متخصصة للجهات الحكومية والخاصة مع خبراء Sabr Consult في مجال اللغة الجنائية والتحليل اللغوي. املأ النموذج وسنتواصل معك خلال 24 ساعة.">
+{% endblock %}
 {% block content %}
    <link rel="stylesheet" href="{% static 'css/about.css' %}">
 

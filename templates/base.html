@@ -6,10 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}سبر{% endblock %}</title>
     <link rel="icon" href="{% static 'image/favicon.png' %}" type="image/png">
-    <meta name="description" content="{% block meta_description %}
-    موقع متخصص في اللغة الجنائية (Forensic Linguistics) وتحليل النصوص القانونية. نقدم خدمات فحص الانتحال، تحديد هوية الكاتب، تحليل التهديدات، والخبرة القضائية بدقة علمية. فريق خبراء معتمد لتحليل النصوص وتقديم أدلة لغوية قانونية.
-    {% endblock %}">
-    <meta name="keywords" content="{% block meta_keywords %}اللغة الجنائية, تحليل الانتحال, تحليل التهديدات والابتزاز{% endblock %}">
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
     <meta property="og:title" content="{% block og_title %}Sabr{% endblock %}">
     <meta property="og:description" content="{% block og_description %}وصف مفصل لهذه المقالة حول اللغة الجنائية...{% endblock %}">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
@@ -54,7 +52,7 @@
             </a>
         </div>
         
-        <img src="{% static 'image/logo.png' %}" alt="" class="logo">
+        <img src="{% static 'image/logo.png' %}" alt="Sabr Consult - Forensic Linguistics Saudi Arabia" class="logo">
     </nav>
 
     <!-- المحتوى الرئيسي -->
