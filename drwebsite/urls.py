@@ -4,11 +4,10 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
-from drapp.sitemaps import StaticViewSitemap, BlogSitemap  # عدل حسب المسار
+from drapp.sitemaps import StaticViewSitemap  # عدل حسب المسار
 
 sitemaps = {
     'static': StaticViewSitemap,
-    'blog': BlogSitemap,
 }
 urlpatterns = [
     path('admin/', admin.site.urls),
