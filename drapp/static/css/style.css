@@ -254,7 +254,6 @@
         /* المحتوى الرئيسي */
         .main-content {
             margin-top: 80px;
-            padding: 2rem;
             min-height: calc(100vh - 80px);
         }
 
@@ -273,6 +272,7 @@
             overflow: hidden;
             color: var(--primary-white);
             height: 42rem;
+            margin-top: -2rem;
             
         }
 
