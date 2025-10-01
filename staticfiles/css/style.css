@@ -254,7 +254,6 @@
         /* المحتوى الرئيسي */
         .main-content {
             margin-top: 80px;
-            padding: 2rem;
             min-height: calc(100vh - 80px);
         }
 
@@ -268,7 +267,7 @@
                 rgba(0, 0, 0, 0.1) 50%),
                 url('/static/image/Saber-Profile.png') center/cover no-repeat;
                 
-            margin: 2rem 0;
+            margin:0;
             position: relative;
             overflow: hidden;
             color: var(--primary-white);
