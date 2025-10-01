@@ -52,6 +52,9 @@
             "Trademark Services and Infringement",
           "تقديم تحليل لغوي وفني للعلامات التجارية من حيث المعنى والأسلوب والأسس اللغوية، إلى جانب التحليل السيميائي للشعارات لتقييم فعاليتها وضمان حمايتها القانونية.":
             "Providing linguistic and technical analysis of trademarks in terms of meaning, style, and linguistic foundations, along with semiotic analysis of logos to evaluate their effectiveness and ensure their legal protection.",
+          "التحليل الصوتي الجنائي": "Forensic Voice Analysis",
+          "تحديد هوية المتحدث من خلال البصمة الصوتية الفريدة وتحليل التهديدات والابتزاز الصوتي لفهم الأسلوب، النبرة، والسياق بدقة عالية":
+            "Identifying the speaker through unique voiceprint analysis and examining threats and extortion recordings to accurately interpret style, tone, and context.",
           "شركاؤنا في النجاح": "Our Success Partners",
           "نفخر بثقة الجهات الحكومية والخاصة في خدماتنا المتخصصة":
             "We are proud of the trust of government and private entities in our specialized services",
@@ -298,9 +301,6 @@
             "Specialized courses (2–5 days) targeting legal, security, and financial sectors.",
           "ورش عمل مغلقة للجهات القضائية والرقابية، وللمؤسسات المعنية.":
             "Closed workshops for judicial and regulatory bodies, and relevant institutions.",
-          "التحليل الصوتي الجنائي": "Forensic Voice Analysis",
-          "تحديد هوية المتحدث من خلال البصمة الصوتية الفريدة وتحليل التهديدات والابتزاز الصوتي لفهم الأسلوب، النبرة، والسياق بدقة عالية":
-            "Identifying the speaker through unique voiceprint analysis and examining threats and extortion recordings to accurately interpret style, tone, and context.",
           "Developing linguistic analysis skills for legal and forensic texts by detecting inconsistencies, understanding implicit meanings, and effectively using linguistic evidence.":
             "Developing linguistic analysis skills for legal and forensic texts by detecting inconsistencies, understanding implicit meanings, and effectively using linguistic evidence.",
           "تعزيز مهارات الحِجاج القضائي وصياغة المرافعات والعقود ومحاضر التحقيق بدقة وموضوعية عالية.":
