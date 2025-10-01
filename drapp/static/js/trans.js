@@ -61,6 +61,77 @@
           "وزارة الداخلية": "Ministry of Interior",
           "شريك استراتيجي في مكافحة الجريمة":
             "Strategic partner in crime fighting",
+          "مكتب سبر للاستشارات اللغوية والجنائية":
+            "Sabr Linguistic & Forensic Consultancy Office",
+          "Sabr Linguistic & Forensic Consultancy":
+            "Sabr Linguistic & Forensic Consultancy",
+          "الجوال:": "Mobile:",
+          "المكتب:": "Office:",
+          // إضافات للقاموس (baseTranslations)
+          "نحن في sabr نحرص على حماية خصوصية زوارنا...":
+            "At <strong>Sabr</strong>, we are committed to protecting the privacy of our visitors. This policy explains how we collect, use, and share your personal data when you use our forensic linguistics consulting website.",
+          "البيانات المقدمة من قبلك": "Data Provided by You:",
+          "عند ملء استمارات الاستشارة":
+            "When filling out consultation forms (such as name, email, phone number).",
+          "أي مستندات تُرسل":
+            "Any documents or texts sent for forensic linguistic analysis.",
+          "البيانات التلقائية": "Automatic Data:",
+          "عنوان IP، نوع المتصفح":
+            "IP address, browser type, pages browsed (via cookies).",
+          "الموافقة الصريحة منك":
+            "Your explicit consent (when requesting consultation).",
+          "الامتثال للالتزامات القانونية":
+            "Compliance with legal obligations (when judicial authorities request data).",
+          "لتقديم استشارات متخصصة":
+            "To provide specialized consultations in forensic linguistic analysis.",
+          "لتحسين تجربة المستخدم":
+            "To improve user experience and develop the website.",
+          "للتواصل معك في الحالات الطارئة":
+            "To contact you in emergency cases (such as discovering legal threats in submitted texts).",
+          "نستخدم تقنيات التشفير":
+            "We use encryption technologies (SSL) to protect data during transmission.",
+          "لا نبيع أو نشارك بياناتك":
+            "We do not sell or share your data with third parties except:",
+          "بموافقتك الصريحة": "With your explicit consent.",
+          "أو في حال وجود التزام قانوني":
+            "Or in case of legal obligation (such as a court order).",
+          "نستخدم ملفات تعريف الارتباط لأغراض تحليلية":
+            "We use cookies for analytical purposes (such as Google Analytics). You can control them through browser settings.",
+          "يحق لك:": "You have the right to:",
+          "طلب نسخة من بياناتك": "Request a copy of your personal data.",
+          "طلب تعديل أو حذف بياناتك":
+            "Request modification or deletion of your data.",
+          "سحب الموافقة على استخدام بياناتك":
+            "Withdraw consent for using your data.",
+          "نحتفظ بحق تعديل سياسة الخصوصية":
+            "We reserve the right to modify the privacy policy at any time. You will be notified via email or through a website notification.",
+          "للاستفسار حول سياسة الخصوصية":
+            "For inquiries about the privacy policy:",
+          الفئات: "Categories",
+          "البريد الإلكتروني:": "Email:",
+          "حجز ندوة للجهات الحكومية والخاصة":
+            "Book Seminar for Government and Private Entities",
+          "اسم الجهة": "Entity Name",
+          "أدخل اسمك هنا": "Enter your name here",
+          "example@domain.com": "example@domain.com",
+          "05XXXXXXXX": "05XXXXXXXX",
+          "نوع الجهة": "Entity Type",
+          "اختر نوع الجهة": "Select Entity Type",
+          "جهة حكومية": "Government Entity",
+          "جهة خاصة": "Private Entity",
+          "تفاصيل إضافية": "Additional Details",
+          "أخبرنا أكثر عن احتياجاتك...": "Tell us more about your needs...",
+          "إرسال الطلب": "Submit Request",
+          "تم إرسال طلبك بنجاح!": "Your request was sent successfully!",
+          "سيتم التواصل معك خلال 24 ساعة عمل":
+            "You will be contacted within 24 working hours",
+          "حدث خطأ أثناء الإرسال.": "An error occurred during submission.",
+          "الموقع:": "Website:",
+          خدماتنا: "Our Services",
+          "التحليل الصوتي الجنائي": "Forensic Voice Analysis",
+          "التدريب والتطوير": "Training and Development",
+          "تدريب القضاة والمحققين والمحامين على أعلى مستويات الخبرة العملية والأكاديمية، ويشمل:":
+            "Training judges, investigators, and lawyers at the highest levels of practical and academic expertise, including:",
           "وزارة العدل": "Ministry of Justice",
           "التعاون في الخبرات القضائية": "Cooperation in judicial expertise",
           "جامعة الملك خالد": "King Khalid University",

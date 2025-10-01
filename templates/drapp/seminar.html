@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 {% load static%}
 {% block title %} حجز ندوة | سبر للاستشارات{% endblock %}
@@ -11,51 +10,49 @@
 <section class="consultation">
             <div class="consultation-form">
             <div class="form-header">
-                <h2><i class="fas fa-comments"></i> حجز ندوة للجهات الحكومية والخاصة</h2>
-                <p>املأ النموذج وسيتواصل معك أحد خبرائنا خلال 24 ساعة</p>
+                <h2><i class="fas fa-comments"></i> <span data-key="حجز ندوة للجهات الحكومية والخاصة">حجز ندوة للجهات الحكومية والخاصة</span></h2>
+                <p data-key="املأ النموذج وسيتواصل معك أحد خبرائنا خلال 24 ساعة">املأ النموذج وسيتواصل معك أحد خبرائنا خلال 24 ساعة</p>
             </div>
             
             <form id="seminarForm">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="name">اسم الجهة</label>
-                    <input type="text" id="name" class="form-control" required placeholder="أدخل اسمك هنا">
+                    <label for="name" data-key="اسم الجهة">اسم الجهة</label>
+                    <input type="text" id="name" class="form-control" required data-placeholder-ar="أدخل اسمك هنا" data-placeholder-en="Enter your name here" placeholder="أدخل اسمك هنا">
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">البريد الإلكتروني</label>
+                    <label for="email" data-key="البريد الإلكتروني">البريد الإلكتروني</label>
                     <input type="email" id="email" class="form-control" required placeholder="example@domain.com">
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">رقم الهاتف</label>
+                    <label for="phone" data-key="رقم الهاتف">رقم الهاتف</label>
                     <input type="tel" id="phone" class="form-control" required placeholder="05XXXXXXXX">
                 </div>
                 
                 <div class="form-group">
-                    <label for="service">نوع الجهة </label>
+                    <label for="service" data-key="نوع الجهة">نوع الجهة</label>
                     <select id="service" class="form-control" required>
-                        <option value="" disabled selected>اختر نوع الجهة</option>
-                        <option value="جهة حكومية">جهة حكومية</option>
-                        <option value="جهة خاصة">جهة خاصة</option>
-                    
-
+                        <option value="" disabled selected data-key="اختر نوع الجهة">اختر نوع الجهة</option>
+                        <option value="government" data-key="جهة حكومية">جهة حكومية</option>
+                        <option value="private" data-key="جهة خاصة">جهة خاصة</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="message">تفاصيل إضافية</label>
-                    <textarea id="message" class="form-control" required placeholder="أخبرنا أكثر عن احتياجاتك..."></textarea>
+                    <label for="message" data-key="تفاصيل إضافية">تفاصيل إضافية</label>
+                    <textarea id="message" class="form-control" required data-placeholder-ar="أخبرنا أكثر عن احتياجاتك..." data-placeholder-en="Tell us more about your needs..." placeholder="أخبرنا أكثر عن احتياجاتك..."></textarea>
                 </div>
                 
                 <button type="submit" class="submit-btn">
-                    <i class="fas fa-paper-plane"></i> إرسال الطلب
+                    <i class="fas fa-paper-plane"></i> <span data-key="إرسال الطلب">إرسال الطلب</span>
                 </button>
                 
                 <div class="success-message" id="successMessage">
                     <i class="fas fa-check-circle" style="font-size: 40px; margin-bottom: 10px;"></i>
-                    <h3>تم إرسال طلبك بنجاح!</h3>
-                    <p>سيتم التواصل معك خلال 24 ساعة عمل</p>
+                    <h3 data-key="تم إرسال طلبك بنجاح!">تم إرسال طلبك بنجاح!</h3>
+                    <p data-key="سيتم التواصل معك خلال 24 ساعة عمل">سيتم التواصل معك خلال 24 ساعة عمل</p>
                 </div>
             </form>
         </div>
@@ -86,7 +83,7 @@ document.getElementById('seminarForm').addEventListener('submit', function(e) {
             document.getElementById('successMessage').style.display = 'block';
             document.getElementById('seminarForm').reset();
         } else {
-            alert('حدث خطأ أثناء الإرسال.');
+            alert(document.querySelector('[data-key="حدث خطأ أثناء الإرسال."]')?.textContent || 'حدث خطأ أثناء الإرسال.');
         }
     });
 
@@ -106,7 +103,5 @@ document.getElementById('seminarForm').addEventListener('submit', function(e) {
     }
 });
 </script>
-
-
 
 {% endblock %}
