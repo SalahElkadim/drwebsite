@@ -120,6 +120,7 @@
           "جهة حكومية": "Government Entity",
           "جهة خاصة": "Private Entity",
           "تفاصيل إضافية": "Additional Details",
+          "تحليل تقليد أو انتحال الشعارات، النصوص الدعائية، أو العلامات التجارية.": "Analyzing imitation or plagiarism of logos, advertising texts, or trademarks.",
           "أخبرنا أكثر عن احتياجاتك...": "Tell us more about your needs...",
           "إرسال الطلب": "Submit Request",
           "تم إرسال طلبك بنجاح!": "Your request was sent successfully!",
