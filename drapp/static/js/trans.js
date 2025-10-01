@@ -48,8 +48,10 @@
           "تقييم الأدلة الكتابية": "Written Evidence Assessment",
           "المساهمة في تقييم الأدلة الكتابية في النزاعات القانونية":
             "Contributing to the assessment of written evidence in legal disputes",
-          "s": "Trademark Services and Infringement",
-          "ss":"Providing linguistic and technical analysis of trademarks in terms of meaning, style, and linguistic foundations, along with semiotic analysis of logos to evaluate their effectiveness and ensure their legal protection.",
+          "خدمات العلامات التجارية وانتهاكها":
+            "Trademark Services and Infringement",
+          "تحليل لغوي وسيميائي للعلامات التجارية وضمان الحماية القانونية":
+            "Providing linguistic and technical analysis of trademarks in terms of meaning, style, and linguistic foundations, along with semiotic analysis of logos to evaluate their effectiveness and ensure their legal protection.",
           "التحليل الصوتي الجنائي": "Forensic Voice Analysis",
           "تحديد هوية المتحدث من خلال البصمة الصوتية الفريدة وتحليل التهديدات والابتزاز الصوتي لفهم الأسلوب، النبرة، والسياق بدقة عالية":
             "Identifying the speaker through unique voiceprint analysis and examining threats and extortion recordings to accurately interpret style, tone, and context.",
