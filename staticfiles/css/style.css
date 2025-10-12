@@ -34,8 +34,7 @@
             color: var(--gray-800);
             min-height: 100vh;
             overflow-x: hidden;
-            padding-inline-start: 40px;
-            padding-inline-end: 40px;
+            
         }
 /* 👇 علشان العناصر اللي بتستخدم auto-align تفضل وسط أو بعيدة عن الحافة */
         .auto-align {
