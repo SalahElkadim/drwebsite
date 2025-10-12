@@ -20,8 +20,8 @@
           "جميع الحقوق محفوظة © 2025 | سبر - التحليل اللغوي الجنائي":
             "All Rights Reserved &copy; 2025 | Sabr - Forensic Linguistic Analysis",
           "التحليل اللغوي الجنائي": "Forensic Linguistic Analysis",
-          "كيان سعودي متخصص في التحليل اللغوي الجنائي (Forensic Linguistics)، يكافح الجريمة اللغوية بأنواعها والاحتيال، ويقدم أدلة نوعية وتقارير فنية علمية، للجهات القضائية والأمنية، ولمكاتب المحاماة، والمؤسسات والأفراد، مستندًا إلى منهجيات علمية وأدلة رقمية معتمدة، ومتوافقة مع  التحول الرقمي العدلي ونظام الإثبات السعودي الصادر بالمرسوم الملكي رقم (م/43) بتاريخ 26/5/1443 هـ، الذي ينص على اعتبار الدليل الرقمي حجة معتبرة في الإثبات.":
-            "A Saudi entity specialized in Forensic Linguistics, combating various types of linguistic crimes and fraud, providing qualitative evidence and scientific technical reports to judicial and security authorities, law firms, institutions and individuals, based on scientific methodologies and certified digital evidence, in compliance with the digital judicial transformation and the Saudi Evidence System issued by Royal Decree No. (M/43) dated 26/5/1443 AH, which stipulates that digital evidence is considered acceptable proof.",
+          "كيان سعودي متخصص في التحليل اللغوي الجنائي (Forensic Linguistics)، يكافح الجريمة اللغوية بأنواعها...":
+            "A Saudi entity specialized in forensic linguistics, dedicated to combating linguistic crimes of all kinds...",
           "تواصل معنا": "Contact Us",
           "استشارات متخصصة في اللغويات الجنائية والاحتيال المالي":
             "Specialized Consultations in Forensic Linguistics and Financial Fraud",
@@ -120,7 +120,8 @@
           "جهة حكومية": "Government Entity",
           "جهة خاصة": "Private Entity",
           "تفاصيل إضافية": "Additional Details",
-          "تحليل تقليد أو انتحال الشعارات، النصوص الدعائية، أو العلامات التجارية.": "Analyzing imitation or plagiarism of logos, advertising texts, or trademarks.",
+          "تحليل تقليد أو انتحال الشعارات، النصوص الدعائية، أو العلامات التجارية.":
+            "Analyzing imitation or plagiarism of logos, advertising texts, or trademarks.",
           "أخبرنا أكثر عن احتياجاتك...": "Tell us more about your needs...",
           "إرسال الطلب": "Submit Request",
           "تم إرسال طلبك بنجاح!": "Your request was sent successfully!",
