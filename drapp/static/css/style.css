@@ -34,8 +34,14 @@
             color: var(--gray-800);
             min-height: 100vh;
             overflow-x: hidden;
+            padding-inline-start: 40px;
+            padding-inline-end: 40px;
         }
-
+/* 👇 علشان العناصر اللي بتستخدم auto-align تفضل وسط أو بعيدة عن الحافة */
+        .auto-align {
+        text-align: start;
+        margin-inline: 20px; /* margin-inline = بداية ونهاية الاتجاه */
+        }
         /* خلفية متحركة */
         body::before {
             content: '';
@@ -1126,3 +1132,9 @@ html[dir="ltr"], body[dir="ltr"] {
   .auto-align { text-align: start; } /* start يتكيّف حسب dir */
   /* ضمان أن العناصر inline مثل buttons/inputs تظهر بشكل مناسب */
   input, textarea { direction: inherit; text-align: inherit; }
+
+  /* 👇 لو عندك أقسام كبيرة زي hero أو header */
+header, .hero-section, footer {
+  padding-inline-start: 40px;
+  padding-inline-end: 40px;
+}

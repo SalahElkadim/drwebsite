@@ -387,3 +387,24 @@ background: linear-gradient(135deg,
     margin-bottom: -5px;
   }
 }
+html[dir="rtl"], body[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+html[dir="ltr"], body[dir="ltr"] {
+    direction: ltr;
+    text-align: left;
+}
+
+  
+
+    /* لو عندك عناصر تحتاج محاذاة محددة */
+  .auto-align { text-align: start; } /* start يتكيّف حسب dir */
+  /* ضمان أن العناصر inline مثل buttons/inputs تظهر بشكل مناسب */
+  input, textarea { direction: inherit; text-align: inherit; }
+
+  /* 👇 لو عندك أقسام كبيرة زي hero أو header */
+header, .hero-section, footer {
+  padding-inline-start: 40px;
+  padding-inline-end: 40px;
+}
