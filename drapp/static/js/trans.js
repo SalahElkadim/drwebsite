@@ -382,28 +382,52 @@
             "Practical training in reasoning and logical analysis of texts to support legal decisions and judicial investigations.",
         };
 
-        // دمج الترجمات من الصفحات الفردية مع الترجمات الأساسية
-        const allTranslations = window.translations ? {...baseTranslations, ...window.translations} : baseTranslations;
+// دمج الترجمات من الصفحات الفردية مع الترجمات الأساسية
+const allTranslations = window.translations ? {...baseTranslations, ...window.translations} : baseTranslations;
 
-        function switchLanguage(lang) {
-            const elements = document.querySelectorAll('[data-key]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (lang === 'en') {
-                    if (allTranslations[key]) {
-                        el.innerHTML = allTranslations[key];
-                    }
-                } else {
-                    el.innerHTML = key; // يرجع للنص العربي
-                }
-            });
-
+function switchLanguage(lang) {
+    const elements = document.querySelectorAll('[data-key]');
+    // تغيير نصوص العناصر
+    elements.forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (lang === 'en') {
+            if (allTranslations[key]) {
+                el.innerHTML = allTranslations[key];
+            }
+        } else {
+            el.innerHTML = key; // يرجع للنص العربي
         }
+    });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const enBtn = document.getElementById("en-btn");
-            const arBtn = document.getElementById("ar-btn");
-            
-            if (enBtn) enBtn.addEventListener("click", () => switchLanguage("en"));
-            if (arBtn) arBtn.addEventListener("click", () => switchLanguage("ar"));
-        });
+    // تغيير اتجاه الصفحة واللغة في الوسم <html>
+    const html = document.documentElement;
+    if (lang === 'en') {
+        html.lang = 'en';
+        html.dir = 'ltr';
+        document.body.classList.remove('rtl');
+        document.body.classList.add('ltr');
+    } else {
+        html.lang = 'ar';
+        html.dir = 'rtl';
+        document.body.classList.remove('ltr');
+        document.body.classList.add('rtl');
+    }
+
+    // عناصر معينة لو عايز تغيّر محاذاتها يدوياً (اختياري)
+    const alignables = document.querySelectorAll('.auto-align, [data-key]');
+    alignables.forEach(el => {
+        el.style.textAlign = (html.dir === 'ltr') ? 'left' : 'right';
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.style.direction = html.dir;
+        }
+    });
+}
+
+// تشغيل الدالة عند الضغط على أزرار اللغة
+document.addEventListener('DOMContentLoaded', function() {
+    const enBtn = document.getElementById("en-btn");
+    const arBtn = document.getElementById("ar-btn");
+    
+    if (enBtn) enBtn.addEventListener("click", () => switchLanguage("en"));
+    if (arBtn) arBtn.addEventListener("click", () => switchLanguage("ar"));
+});
