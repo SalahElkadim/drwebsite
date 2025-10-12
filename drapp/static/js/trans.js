@@ -437,10 +437,4 @@ document.addEventListener('DOMContentLoaded', function() {
     if (enBtn) enBtn.addEventListener("click", () => switchLanguage("en"));
     if (arBtn) arBtn.addEventListener("click", () => switchLanguage("ar"));
 })
-const enBtn = document.getElementById("en-btn");
-const arBtn = document.getElementById("ar-btn");
 
-if (enBtn && arBtn) {
-  enBtn.innerHTML = "EN";
-  arBtn.innerHTML = "AR";
-};
