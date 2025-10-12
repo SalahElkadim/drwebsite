@@ -148,6 +148,9 @@ background: linear-gradient(135deg,
         margin-bottom: 30px;
     }
 
+    .services h2 {
+  flex-basis: 100%; /* يعني ياخد صف لوحده */
+}
     .form-group {
         margin-bottom: 20px;
     }
@@ -271,7 +274,6 @@ background: linear-gradient(135deg,
   @media (max-width: 500px) {
 
   .services-page {
-    padding: 40px 20px;
     line-height: 1.6;
   }
 
