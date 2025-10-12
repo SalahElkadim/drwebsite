@@ -407,3 +407,22 @@ header, .hero-section, footer {
   padding-inline-start: 40px;
   padding-inline-end: 40px;
 }
+/* لما اللغة تكون إنجليزية (LTR) */
+html[dir="ltr"] .services-page header,
+html[dir="ltr"] .intro,
+html[dir="ltr"] .services,
+html[dir="ltr"] .cta {
+    text-align: left;
+    margin-right: 0;
+    margin-left: 40px;
+}
+
+html[dir="ltr"] .service ul {
+    padding-left: 40px;
+    padding-right: 0;
+}
+
+/* عشان ترتيب العناصر */
+html[dir="ltr"] .services {
+    justify-content: left;
+}
