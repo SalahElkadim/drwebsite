@@ -40,7 +40,6 @@
     max-width: 1000px;
     margin-bottom: 40px;
     text-align: start;
-    margin-inline-start: 40px; /* بدل margin-right */
     color: #e0e0e0;
     font-size: 1.1rem;
 }
