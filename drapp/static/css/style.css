@@ -1133,7 +1133,7 @@ html[dir="ltr"], body[dir="ltr"] {
   input, textarea { direction: inherit; text-align: inherit; }
 
   /* 👇 لو عندك أقسام كبيرة زي hero أو header */
-header, .hero-section, footer {
+.hero-section, footer {
   padding-inline-start: 40px;
   padding-inline-end: 40px;
 }
