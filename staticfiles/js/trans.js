@@ -20,8 +20,10 @@
           "جميع الحقوق محفوظة © 2025 | سبر - التحليل اللغوي الجنائي":
             "All Rights Reserved &copy; 2025 | Sabr - Forensic Linguistic Analysis",
           "التحليل اللغوي الجنائي": "Forensic Linguistic Analysis",
-          "كيان سعودي متخصص في التحليل اللغوي الجنائي (Forensic Linguistics)، يكافح الجريمة اللغوية بأنواعها...":
-            "A Saudi entity specialized in forensic linguistics, dedicated to combating linguistic crimes of all kinds...",
+
+          "كيان سعودي متخصص في التحليل اللغوي الجنائي (Forensic Linguistics)، يهدف إلى مكافحة الجريمة اللغوية بمختلف أنواعها، والكشف عن الاحتيال والانتحال، من خلال تقديم أدلة نوعية وتقارير فنية علمية موجهة للجهات القضائية والأمنية، ولمكاتب المحاماة، والمؤسسات، والأفراد. يعتمد الكيان في أعماله على منهجيات علمية دقيقة وأدلة رقمية معتمدة، بما يتوافق مع متطلبات التحول الرقمي العدلي ونظام الإثبات السعودي الصادر بالمرسوم الملكي رقم (م/43) بتاريخ 26/5/1443 هـ، الذي نصّ على اعتبار الدليل الرقمي حجة معتبرة في الإثبات.":
+            "A Saudi entity specialized in Forensic Linguistics, dedicated to combating linguistic crimes of all kinds and detecting fraud and plagiarism. It provides qualitative evidence and scientific expert reports to judicial and security authorities, as well as to law firms, institutions, and individuals. The entity relies on rigorous scientific methodologies and accredited digital evidence, in alignment with the Judicial Digital Transformation and the Saudi Evidence Law issued by Royal Decree No. (M/43) dated 26/05/1443 AH, which recognizes digital evidence as a valid means of proof.",
+
           "تواصل معنا": "Contact Us",
           "استشارات متخصصة في اللغويات الجنائية والاحتيال المالي":
             "Specialized Consultations in Forensic Linguistics and Financial Fraud",
@@ -253,8 +255,8 @@
           "اتصل بنا": "Call Us",
           راسلنا: "Email Us",
           واتساب: "WhatsApp",
-          "الخدمات اللغوية والتحليل الجنائي اللغوي":
-            "Linguistic & Forensic Language Services",
+          "الخدمات اللغوية والتحليل اللغوي الجنائي ":
+            "Forensic & Linguistic Language Services",
           "تحليل احترافي للنصوص والمراسلات والوثائق لدعم التحقيقات وكشف الغموض والاحتيال":
             "Professional analysis of texts, communications, and documents to support investigations and uncover ambiguity and fraud",
           "في سبر، نقدّم مجموعة متقدمة من الخدمات المتخصصة في اللغويات الجنائية، تستند إلى أسس علمية دقيقة، وتخدم الجهات القانونية، القضائية، الرقابية، والمحامين، لفحص الأدلة النصية وتقديم تقارير خبيرة ذات موثوقية عالية في السياقات القضائية والتحقيقية.":
