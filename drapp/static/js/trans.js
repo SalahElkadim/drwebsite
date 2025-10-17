@@ -389,7 +389,6 @@ const allTranslations = window.translations ? {...baseTranslations, ...window.tr
 
 function switchLanguage(lang) {
   const elements = document.querySelectorAll("[data-key]");
-
   // تغيير نصوص العناصر
   elements.forEach((el) => {
     const key = el.getAttribute("data-key");
