@@ -73,59 +73,50 @@
         });
 
         // تأثير الكتابة المتدرجة
-        // متغيرات عامة للتحكم في الكتابة
-window.typewriterTimeout = null;
-window.isTyping = false;
-
-// تأثير الكتابة المتدرجة
-function typeWriter(element, text, speed = 100) {
-    // إلغاء أي كتابة سابقة
-    if (window.typewriterTimeout) {
-        clearTimeout(window.typewriterTimeout);
-    }
-    
-    let i = 0;
-    element.innerHTML = '';
-    element.style.borderLeft = '3px solid white';
-    window.isTyping = true;
-    
-    function type() {
-        if (i < text.length && window.isTyping) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            window.typewriterTimeout = setTimeout(type, speed);
-        } else {
-            // إخفاء المؤشر بعد انتهاء الكتابة
-            window.typewriterTimeout = setTimeout(() => {
-                element.style.borderLeft = 'none';
-                window.isTyping = false;
-            }, 1000);
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            element.style.borderLeft = '3px solid white';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    // إخفاء المؤشر بعد انتهاء الكتابة
+                    setTimeout(() => {
+                        element.style.borderLeft = 'none';
+                    }, 1000);
+                }
+            }
+            type();
         }
-    }
-    type();
-}
 
-// دالة لإيقاف الكتابة
-window.stopTypewriter = function() {
-    if (window.typewriterTimeout) {
-        clearTimeout(window.typewriterTimeout);
-        window.typewriterTimeout = null;
-    }
-    window.isTyping = false;
-}
+        document.addEventListener("DOMContentLoaded", function () {
+          const typewriterElement = document.querySelector(".typewriter");
+          if (typewriterElement) {
+            const originalText = typewriterElement.textContent;
+            typewriterElement.textContent = ""; // إخفاء النص فورًا
+            typewriterElement.classList.remove("typewriter");
 
-document.addEventListener("DOMContentLoaded", function () {
-    const typewriterElement = document.querySelector(".typewriter");
-    if (typewriterElement) {
-        const originalText = typewriterElement.textContent;
-        typewriterElement.textContent = "";
-        typewriterElement.classList.remove("typewriter");
-        
-        setTimeout(() => {
-            typeWriter(typewriterElement, originalText, 40);
-        }, 500);
-    }
-});
+            setTimeout(() => {
+              typeWriter(typewriterElement, originalText, 40); // سرعة الكتابة أسرع (من 80 إلى 40)
+            }, 500); // تقليل وقت الانتظار
+          }
+        });
+
+        function typeWriter(element, text, delay) {
+          let i = 0;
+          function writeChar() {
+            if (i < text.length) {
+              element.textContent += text.charAt(i);
+              i++;
+              setTimeout(writeChar, delay);
+            }
+          }
+          writeChar();
+        }
 
         // تأثيرات إضافية للتفاعل
         document.querySelectorAll('.floating-btn').forEach(btn => {

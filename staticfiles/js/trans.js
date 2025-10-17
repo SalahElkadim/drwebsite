@@ -383,57 +383,26 @@
           "تدريب عملي على الاستدلال والتحليل المنطقي من النصوص لدعم القرارات القانونية والتحقيقات القضائية.":
             "Practical training in reasoning and logical analysis of texts to support legal decisions and judicial investigations.",
         };
-const allTranslations = window.translations
-  ? { ...baseTranslations, ...window.translations }
-  : baseTranslations;
+
+// دمج الترجمات من الصفحات الفردية مع الترجمات الأساسية
+const allTranslations = window.translations ? {...baseTranslations, ...window.translations} : baseTranslations;
 
 function switchLanguage(lang) {
-  // ✅ إيقاف الكتابة المتدرجة إذا كانت شغالة
-  if (typeof window.stopTypewriter === "function") {
-    window.stopTypewriter();
-  }
-
   const elements = document.querySelectorAll("[data-key]");
 
   // تغيير نصوص العناصر
   elements.forEach((el) => {
     const key = el.getAttribute("data-key");
 
-    // استثناء أزرار اللغة من الترجمة
+    // ✅ استثناء أزرار اللغة من الترجمة
     if (el.id === "en-btn" || el.id === "ar-btn") return;
 
     if (lang === "en") {
       if (allTranslations[key]) {
-        // ✅ إذا كان العنصر له كتابة متدرجة
-        if (
-          el.classList.contains("typewriter-target") ||
-          el.hasAttribute("data-typewriter")
-        ) {
-          // بدء الكتابة المتدرجة بالنص المترجم
-          if (typeof typeWriter === "function") {
-            typeWriter(el, allTranslations[key], 40);
-          } else {
-            el.innerHTML = allTranslations[key];
-          }
-        } else {
-          el.innerHTML = allTranslations[key];
-        }
+        el.innerHTML = allTranslations[key];
       }
     } else {
-      // ✅ الرجوع للنص العربي
-      if (
-        el.classList.contains("typewriter-target") ||
-        el.hasAttribute("data-typewriter")
-      ) {
-        // بدء الكتابة المتدرجة بالنص العربي
-        if (typeof typeWriter === "function") {
-          typeWriter(el, key, 40);
-        } else {
-          el.innerHTML = key;
-        }
-      } else {
-        el.innerHTML = key;
-      }
+      el.innerHTML = key; // يرجع للنص العربي
     }
   });
 
@@ -451,7 +420,7 @@ function switchLanguage(lang) {
     document.body.classList.add("rtl");
   }
 
-  // ضبط المحاذاة
+  // ✅ ضبط المحاذاة (auto-align + العناصر اللي فيها data-key)
   const alignables = document.querySelectorAll(".auto-align, [data-key]");
   alignables.forEach((el) => {
     el.style.textAlign = html.dir === "ltr" ? "left" : "right";
@@ -461,10 +430,11 @@ function switchLanguage(lang) {
   });
 }
 
+
 // تشغيل الدالة عند الضغط على أزرار اللغة
-document.addEventListener("DOMContentLoaded", function () {
-  const enBtn = document.getElementById("en-btn");
-  const arBtn = document.getElementById("ar-btn");
-  if (enBtn) enBtn.addEventListener("click", () => switchLanguage("en"));
-  if (arBtn) arBtn.addEventListener("click", () => switchLanguage("ar"));
-});
+document.addEventListener('DOMContentLoaded', function() {
+    const enBtn = document.getElementById("en-btn");
+    const arBtn = document.getElementById("ar-btn");
+    if (enBtn) enBtn.addEventListener("click", () => switchLanguage("en"));
+    if (arBtn) arBtn.addEventListener("click", () => switchLanguage("ar"));
+})
