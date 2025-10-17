@@ -72,6 +72,52 @@
             });
         });
 
+        // تأثير الكتابة المتدرجة
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            element.style.borderLeft = '3px solid white';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    // إخفاء المؤشر بعد انتهاء الكتابة
+                    setTimeout(() => {
+                        element.style.borderLeft = 'none';
+                    }, 1000);
+                }
+            }
+            type();
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const typewriterElement = document.querySelector(".typewriter");
+          if (typewriterElement) {
+            const originalText = typewriterElement.textContent;
+            typewriterElement.textContent = ""; // إخفاء النص فورًا
+            typewriterElement.classList.remove("typewriter");
+
+            setTimeout(() => {
+              typeWriter(typewriterElement, originalText, 40); // سرعة الكتابة أسرع (من 80 إلى 40)
+            }, 500); // تقليل وقت الانتظار
+          }
+        });
+
+        function typeWriter(element, text, delay) {
+          let i = 0;
+          function writeChar() {
+            if (i < text.length) {
+              element.textContent += text.charAt(i);
+              i++;
+              setTimeout(writeChar, delay);
+            }
+          }
+          writeChar();
+        }
+
         // تأثيرات إضافية للتفاعل
         document.querySelectorAll('.floating-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {

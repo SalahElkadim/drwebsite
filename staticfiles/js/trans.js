@@ -383,84 +383,44 @@
           "تدريب عملي على الاستدلال والتحليل المنطقي من النصوص لدعم القرارات القانونية والتحقيقات القضائية.":
             "Practical training in reasoning and logical analysis of texts to support legal decisions and judicial investigations.",
         };
+
 // دمج الترجمات من الصفحات الفردية مع الترجمات الأساسية
-const allTranslations = window.translations ? { ...baseTranslations, ...window.translations } : baseTranslations;
+const allTranslations = window.translations ? {...baseTranslations, ...window.translations} : baseTranslations;
 
-// 🟩 دالة تأثير الكتابة المتدرجة (مع دعم الإيقاف)
-function startTypewriter(element, text, speed = 50) {
-  // لو في كتابة جارية نوقفها أولاً
-  if (element._typewriter && element._typewriter.cancel) {
-    element._typewriter.cancel();
-  }
-
-  element.textContent = ""; // افراغ النص فوراً
-  element.style.borderLeft = "3px solid white";
-
-  let i = 0;
-  let timerId = null;
-
-  function type() {
-    if (i < text.length) {
-      element.textContent += text.charAt(i);
-      i++;
-      timerId = setTimeout(type, speed);
-    } else {
-      // بعد ما يخلص الكتابة يشيل المؤشر بعد ثانية
-      timerId = setTimeout(() => {
-        element.style.borderLeft = "none";
-        delete element._typewriter;
-      }, 1000);
-    }
-  }
-
-  element._typewriter = {
-    cancel: function () {
-      if (this.timer) clearTimeout(this.timer);
-      element.style.borderLeft = "none";
-      delete element._typewriter;
-    },
-    timer: timerId,
-  };
-
-  type();
-  return element._typewriter;
-}
-
-// 🟩 دالة التبديل بين اللغات
 function switchLanguage(lang) {
-  localStorage.setItem("selectedLanguage", lang);
   const elements = document.querySelectorAll("[data-key]");
-  const html = document.documentElement;
 
+  // تغيير نصوص العناصر
   elements.forEach((el) => {
     const key = el.getAttribute("data-key");
 
-    // استثناء أزرار اللغة
+    // ✅ استثناء أزرار اللغة من الترجمة
     if (el.id === "en-btn" || el.id === "ar-btn") return;
 
-    // اختيار النص الجديد حسب اللغة
-    const newText =
-      lang === "en"
-        ? allTranslations[key] || key
-        : key;
-
-    // لو العنصر عنده class typewriter-text نعيد الكتابة من البداية
-    if (el.classList.contains("typewriter-text")) {
-      if (el._typewriter && el._typewriter.cancel) el._typewriter.cancel();
-      startTypewriter(el, newText, 40);
+    if (lang === "en") {
+      if (allTranslations[key]) {
+        el.innerHTML = allTranslations[key];
+      }
     } else {
-      // غير كده غيّر النص مباشرة
-      el.innerHTML = newText;
+      el.innerHTML = key; // يرجع للنص العربي
     }
   });
 
-  // تغيير الاتجاه (RTL/LTR)
-  html.lang = lang;
-  html.dir = lang === "en" ? "ltr" : "rtl";
-  document.body.classList.toggle("ltr", lang === "en");
-  document.body.classList.toggle("rtl", lang === "ar");
+  // تغيير اتجاه الصفحة
+  const html = document.documentElement;
+  if (lang === "en") {
+    html.lang = "en";
+    html.dir = "ltr";
+    document.body.classList.remove("rtl");
+    document.body.classList.add("ltr");
+  } else {
+    html.lang = "ar";
+    html.dir = "rtl";
+    document.body.classList.remove("ltr");
+    document.body.classList.add("rtl");
+  }
 
-  // ضبط المحاذاة التلقائية
+  // ✅ ضبط المحاذاة (auto-align + العناصر اللي فيها data-key)
   const alignables = document.querySelectorAll(".auto-align, [data-key]");
   alignables.forEach((el) => {
     el.style.textAlign = html.dir === "ltr" ? "left" : "right";
@@ -470,25 +430,12 @@ function switchLanguage(lang) {
   });
 }
 
-// 🟩 عند تحميل الصفحة
-document.addEventListener("DOMContentLoaded", () => {
-  const enBtn = document.getElementById("en-btn");
-  const arBtn = document.getElementById("ar-btn");
-  if (enBtn) enBtn.addEventListener("click", () => switchLanguage("en"));
-  if (arBtn) arBtn.addEventListener("click", () => switchLanguage("ar"));
 
-  // استرجاع اللغة السابقة أو العربية افتراضيًا
-  const savedLang = localStorage.getItem("selectedLanguage") || "ar";
-  switchLanguage(savedLang);
+// تشغيل الدالة عند الضغط على أزرار اللغة
+document.addEventListener('DOMContentLoaded', function() {
+    const enBtn = document.getElementById("en-btn");
+    const arBtn = document.getElementById("ar-btn");
+    if (enBtn) enBtn.addEventListener("click", () => switchLanguage("en"));
+    if (arBtn) arBtn.addEventListener("click", () => switchLanguage("ar"));
+})
 
-  // تفعيل تأثير الكتابة لأول مرة
-  const typewriterElements = document.querySelectorAll(".typewriter-text[data-key]");
-  typewriterElements.forEach((el) => {
-    const key = el.getAttribute("data-key");
-    const text =
-      savedLang === "en"
-        ? allTranslations[key] || key
-        : key;
-    startTypewriter(el, text, 40);
-  });
-});
