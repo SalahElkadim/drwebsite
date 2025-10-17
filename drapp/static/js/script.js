@@ -73,50 +73,142 @@
         });
 
         // تأثير الكتابة المتدرجة
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            element.style.borderLeft = '3px solid white';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                } else {
-                    // إخفاء المؤشر بعد انتهاء الكتابة
+        // متغيرات عامة لتتبع حالة الكتابة
+let isTyping = false;
+let typingTimeout = null;
+let currentTypingElement = null;
+
+// دمج الترجمات من الصفحات الفردية مع الترجمات الأساسية
+const allTranslations = window.translations ? {...baseTranslations, ...window.translations} : baseTranslations;
+
+function typeWriter(element, text, speed = 100) {
+    // إيقاف أي كتابة سابقة
+    if (typingTimeout) {
+        clearTimeout(typingTimeout);
+    }
+    
+    let i = 0;
+    element.innerHTML = '';
+    element.style.borderLeft = '3px solid white';
+    isTyping = true;
+    currentTypingElement = element;
+    
+    function type() {
+        if (i < text.length && isTyping) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            typingTimeout = setTimeout(type, speed);
+        } else {
+            // إخفاء المؤشر بعد انتهاء الكتابة
+            setTimeout(() => {
+                element.style.borderLeft = 'none';
+                isTyping = false;
+                currentTypingElement = null;
+            }, 1000);
+        }
+    }
+    type();
+}
+
+// دالة لإيقاف تأثير الكتابة
+function stopTypewriter() {
+    if (isTyping && typingTimeout) {
+        isTyping = false;
+        clearTimeout(typingTimeout);
+        typingTimeout = null;
+        if (currentTypingElement) {
+            currentTypingElement.style.borderLeft = 'none';
+            currentTypingElement.innerHTML = '';
+        }
+    }
+}
+
+function switchLanguage(lang) {
+    // إيقاف أي تأثير typewriter نشط
+    stopTypewriter();
+    
+    const elements = document.querySelectorAll("[data-key]");
+
+    // تغيير نصوص العناصر
+    elements.forEach((el) => {
+        const key = el.getAttribute("data-key");
+
+        // استثناء أزرار اللغة من الترجمة
+        if (el.id === "en-btn" || el.id === "ar-btn") return;
+
+        // التحقق إذا كان العنصر له تأثير typewriter
+        const hasTypewriter = el.hasAttribute('data-original-text');
+        
+        if (lang === "en") {
+            if (allTranslations[key]) {
+                if (hasTypewriter) {
+                    // بدء تأثير الكتابة بالنص الإنجليزي
                     setTimeout(() => {
-                        element.style.borderLeft = 'none';
-                    }, 1000);
+                        typeWriter(el, allTranslations[key], 40);
+                    }, 100);
+                } else {
+                    el.innerHTML = allTranslations[key];
                 }
             }
-            type();
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-          const typewriterElement = document.querySelector(".typewriter");
-          if (typewriterElement) {
-            const originalText = typewriterElement.textContent;
-            typewriterElement.textContent = ""; // إخفاء النص فورًا
-            typewriterElement.classList.remove("typewriter");
-
-            setTimeout(() => {
-              typeWriter(typewriterElement, originalText, 40); // سرعة الكتابة أسرع (من 80 إلى 40)
-            }, 500); // تقليل وقت الانتظار
-          }
-        });
-
-        function typeWriter(element, text, delay) {
-          let i = 0;
-          function writeChar() {
-            if (i < text.length) {
-              element.textContent += text.charAt(i);
-              i++;
-              setTimeout(writeChar, delay);
+        } else {
+            const arabicText = key;
+            if (hasTypewriter) {
+                // بدء تأثير الكتابة بالنص العربي
+                setTimeout(() => {
+                    typeWriter(el, arabicText, 40);
+                }, 100);
+            } else {
+                el.innerHTML = arabicText;
             }
-          }
-          writeChar();
         }
+    });
+
+    // تغيير اتجاه الصفحة
+    const html = document.documentElement;
+    if (lang === "en") {
+        html.lang = "en";
+        html.dir = "ltr";
+        document.body.classList.remove("rtl");
+        document.body.classList.add("ltr");
+    } else {
+        html.lang = "ar";
+        html.dir = "rtl";
+        document.body.classList.remove("ltr");
+        document.body.classList.add("rtl");
+    }
+
+    // ضبط المحاذاة
+    const alignables = document.querySelectorAll(".auto-align, [data-key]");
+    alignables.forEach((el) => {
+        el.style.textAlign = html.dir === "ltr" ? "left" : "right";
+        if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+            el.style.direction = html.dir;
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const typewriterElement = document.querySelector(".typewriter");
+    if (typewriterElement) {
+        const originalText = typewriterElement.textContent;
+        
+        // حفظ النص الأصلي في data attribute
+        typewriterElement.setAttribute('data-original-text', originalText);
+        
+        typewriterElement.textContent = "";
+        typewriterElement.classList.remove("typewriter");
+
+        setTimeout(() => {
+            typeWriter(typewriterElement, originalText, 40);
+        }, 500);
+    }
+    
+    // تشغيل الدالة عند الضغط على أزرار اللغة
+    const enBtn = document.getElementById("en-btn");
+    const arBtn = document.getElementById("ar-btn");
+    if (enBtn) enBtn.addEventListener("click", () => switchLanguage("en"));
+    if (arBtn) arBtn.addEventListener("click", () => switchLanguage("ar"));
+});
 
         // تأثيرات إضافية للتفاعل
         document.querySelectorAll('.floating-btn').forEach(btn => {
