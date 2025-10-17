@@ -254,7 +254,7 @@
           "اتصل بنا": "Call Us",
           راسلنا: "Email Us",
           واتساب: "WhatsApp",
-          "الخدمات اللغوية والتحليل اللغوي الجنائي ":
+          "الخدمات اللغوية والتحليل اللغوي الجنائي":
             "Forensic & Linguistic Language Services",
           "تحليل احترافي للنصوص والمراسلات والوثائق لدعم التحقيقات وكشف الغموض والاحتيال":
             "Professional analysis of texts, communications, and documents to support investigations and uncover ambiguity and fraud",
