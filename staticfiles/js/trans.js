@@ -21,8 +21,7 @@
             "All Rights Reserved &copy; 2025 | Sabr - Forensic Linguistic Analysis",
           "التحليل اللغوي الجنائي": "Forensic Linguistic Analysis",
 
-          "كيان سعودي متخصص في التحليل اللغوي الجنائي (Forensic Linguistics)، يهدف إلى مكافحة الجريمة اللغوية بمختلف أنواعها، والكشف عن الاحتيال والانتحال، من خلال تقديم أدلة نوعية وتقارير فنية علمية موجهة للجهات القضائية والأمنية، ولمكاتب المحاماة، والمؤسسات، والأفراد. يعتمد الكيان في أعماله على منهجيات علمية دقيقة وأدلة رقمية معتمدة، بما يتوافق مع متطلبات التحول الرقمي العدلي ونظام الإثبات السعودي الصادر بالمرسوم الملكي رقم (م/43) بتاريخ 26/5/1443 هـ، الذي نصّ على اعتبار الدليل الرقمي حجة معتبرة في الإثبات.":
-            "A Saudi entity specialized in Forensic Linguistics, dedicated to combating linguistic crimes of all kinds and detecting fraud and plagiarism. It provides qualitative evidence and scientific expert reports to judicial and security authorities, as well as to law firms, institutions, and individuals. The entity relies on rigorous scientific methodologies and accredited digital evidence, in alignment with the Judicial Digital Transformation and the Saudi Evidence Law issued by Royal Decree No. (M/43) dated 26/05/1443 AH, which recognizes digital evidence as a valid means of proof.",
+          "hometext":"A Saudi entity specialized in Forensic Linguistics, dedicated to combating linguistic crimes of all kinds and detecting fraud and plagiarism. It provides qualitative evidence and scientific expert reports to judicial and security authorities, as well as to law firms, institutions, and individuals. The entity relies on rigorous scientific methodologies and accredited digital evidence, in alignment with the Judicial Digital Transformation and the Saudi Evidence Law issued by Royal Decree No. (M/43) dated 26/05/1443 AH, which recognizes digital evidence as a valid means of proof.",
 
           "تواصل معنا": "Contact Us",
           "استشارات متخصصة في اللغويات الجنائية والاحتيال المالي":
@@ -389,7 +388,6 @@ const allTranslations = window.translations ? {...baseTranslations, ...window.tr
 
 function switchLanguage(lang) {
   const elements = document.querySelectorAll("[data-key]");
-
   // تغيير نصوص العناصر
   elements.forEach((el) => {
     const key = el.getAttribute("data-key");
