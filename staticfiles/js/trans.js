@@ -1,4 +1,47 @@
-        const baseTranslations = {
+        
+// متغير عام لتتبع حالة الكتابة المتدرجة
+let typewriterTimeout = null;
+let isTyping = false;
+
+// دالة الكتابة المتدرجة المحسّنة
+function typeWriter(element, text, speed = 100) {
+  // إلغاء أي كتابة سابقة
+  if (typewriterTimeout) {
+    clearTimeout(typewriterTimeout);
+  }
+  
+  let i = 0;
+  element.innerHTML = '';
+  element.style.borderLeft = '3px solid white';
+  isTyping = true;
+  
+  function type() {
+    if (i < text.length && isTyping) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      typewriterTimeout = setTimeout(type, speed);
+    } else {
+      // إخفاء المؤشر بعد انتهاء الكتابة
+      typewriterTimeout = setTimeout(() => {
+        element.style.borderLeft = 'none';
+        isTyping = false;
+      }, 1000);
+    }
+  }
+  type();
+}
+
+// دالة لإيقاف الكتابة المتدرجة
+function stopTypewriter() {
+  if (typewriterTimeout) {
+    clearTimeout(typewriterTimeout);
+    typewriterTimeout = null;
+  }
+  isTyping = false;
+}
+
+// الترجمات الأساسية
+const baseTranslations = {
           الرئيسية: "Home",
           "استشارات لغوية جنائية": "Forensic Linguistic Consultations",
           "سبر أكاديميا": "Sabr Academia",
@@ -384,25 +427,44 @@
             "Practical training in reasoning and logical analysis of texts to support legal decisions and judicial investigations.",
         };
 
-// دمج الترجمات من الصفحات الفردية مع الترجمات الأساسية
-const allTranslations = window.translations ? {...baseTranslations, ...window.translations} : baseTranslations;
+// دمج الترجمات
+const allTranslations = window.translations 
+  ? {...baseTranslations, ...window.translations} 
+  : baseTranslations;
 
+// دالة الترجمة المحسّنة
 function switchLanguage(lang) {
+  // إيقاف أي كتابة متدرجة جارية
+  stopTypewriter();
+  
   const elements = document.querySelectorAll("[data-key]");
+  const typewriterElements = document.querySelectorAll(".typewriter, [data-typewriter]");
 
   // تغيير نصوص العناصر
   elements.forEach((el) => {
     const key = el.getAttribute("data-key");
 
-    // ✅ استثناء أزرار اللغة من الترجمة
+    // استثناء أزرار اللغة من الترجمة
     if (el.id === "en-btn" || el.id === "ar-btn") return;
 
     if (lang === "en") {
       if (allTranslations[key]) {
-        el.innerHTML = allTranslations[key];
+        // إذا كان العنصر يحتوي على كتابة متدرجة
+        if (el.classList.contains("typewriter") || el.hasAttribute("data-typewriter")) {
+          // بدء الكتابة المتدرجة بالنص المترجم
+          typeWriter(el, allTranslations[key], 40);
+        } else {
+          el.innerHTML = allTranslations[key];
+        }
       }
     } else {
-      el.innerHTML = key; // يرجع للنص العربي
+      // الرجوع للنص العربي
+      if (el.classList.contains("typewriter") || el.hasAttribute("data-typewriter")) {
+        // بدء الكتابة المتدرجة بالنص العربي
+        typeWriter(el, key, 40);
+      } else {
+        el.innerHTML = key;
+      }
     }
   });
 
@@ -420,7 +482,7 @@ function switchLanguage(lang) {
     document.body.classList.add("rtl");
   }
 
-  // ✅ ضبط المحاذاة (auto-align + العناصر اللي فيها data-key)
+  // ضبط المحاذاة
   const alignables = document.querySelectorAll(".auto-align, [data-key]");
   alignables.forEach((el) => {
     el.style.textAlign = html.dir === "ltr" ? "left" : "right";
@@ -430,12 +492,27 @@ function switchLanguage(lang) {
   });
 }
 
-
 // تشغيل الدالة عند الضغط على أزرار اللغة
 document.addEventListener('DOMContentLoaded', function() {
-    const enBtn = document.getElementById("en-btn");
-    const arBtn = document.getElementById("ar-btn");
-    if (enBtn) enBtn.addEventListener("click", () => switchLanguage("en"));
-    if (arBtn) arBtn.addEventListener("click", () => switchLanguage("ar"));
-})
+  const enBtn = document.getElementById("en-btn");
+  const arBtn = document.getElementById("ar-btn");
+  
+  if (enBtn) {
+    enBtn.addEventListener("click", () => switchLanguage("en"));
+  }
+  
+  if (arBtn) {
+    arBtn.addEventListener("click", () => switchLanguage("ar"));
+  }
 
+  // بدء الكتابة المتدرجة للنص الأولي
+  const typewriterElement = document.querySelector(".typewriter, [data-typewriter]");
+  if (typewriterElement) {
+    const originalText = typewriterElement.textContent;
+    typewriterElement.textContent = "";
+    
+    setTimeout(() => {
+      typeWriter(typewriterElement, originalText, 40);
+    }, 500);
+  }
+});
