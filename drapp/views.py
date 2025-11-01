@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail
 from django.conf import settings
 import json
-from .models import ConsultationRequest, seminarrequest, Visitor
+from .models import ConsultationRequest, seminarrequest
 from django.utils import timezone
 from datetime import timedelta
 from django.db.models import Count
@@ -106,26 +106,6 @@ def submit_seminar(request):
     return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
 
 
-
-def visitor_stats(request):
-    # الزوار اليوم
-    today = timezone.now().date()
-    visitors_today = Visitor.objects.filter(timestamp__date=today)
-    
-    # الزوار حسب البلد
-    visitors_by_country = Visitor.objects.filter(timestamp__date=today).values('country').annotate(count=models.Count('id'))
-    
-    # عناوين IP اليوم
-    ip_addresses_today = visitors_today.values_list('ip_address', flat=True).distinct()
-    
-    context = {
-        'visitors_today': visitors_today.count(),
-        'visitors_by_country': visitors_by_country,
-        'ip_addresses_today': ip_addresses_today,
-        'today': today,
-    }
-    
-    return render(request, 'drapp/visitor.html', context)
 
 
 from django.shortcuts import render, get_object_or_404
