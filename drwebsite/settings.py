@@ -3,7 +3,9 @@
 from pathlib import Path
 import os
 import dj_database_url
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -13,7 +15,29 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-asc=zfl)y0xveh57ocuh0-=^xot#dx)a2rg5ri-rmd$_$=8rur'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+
+CLOUDINARY_CLOUD_NAME: 'dju8u4ip8'
+CLOUDINARY_API_KEY: '349748856246324'
+CLOUDINARY_API_SECRET: 'eg1MLfSh7Da974hOoBI1RWPGYw4'
+USE_L10N = False
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dju8u4ip8',
+    'API_KEY': '349748856246324',
+    'API_SECRET': 'eg1MLfSh7Da974hOoBI1RWPGYw4'
+}
+
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+cloudinary.config(
+    cloud_name='dju8u4ip8',
+    api_key= '349748856246324',
+    api_secret='eg1MLfSh7Da974hOoBI1RWPGYw4'
+)
 
 
 ALLOWED_HOSTS = ['web-production-c7bea.up.railway.app',
@@ -139,19 +163,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-MEDIA_URL = '/media/'  # URL لخدمة الملفات
-MEDIA_ROOT = '/data/media'  # المسار المحلي لتخزين الملفات
-
 # إذا كنت تستخدم Railway للرفع
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-CLOUDINARY_STORAGE = {
-    'CLOUDINARY_CLOUD_NAME': 'dju8u4ip8',
-    'CLOUDINARY_API_KEY': '349748856246324',
-    'CLOUDINARY_API_SECRET': 'eg1MLfSh7Da974hOoBI1RWPGYw4',
-}
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #ارسال الاستمارة للايميل
