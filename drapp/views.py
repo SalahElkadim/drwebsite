@@ -9,7 +9,7 @@ from datetime import timedelta
 from django.db.models import Count
 from django.db import models
 import json
-
+from django.contrib.auth.decorators import user_passes_test
 from .models import ConsultationRequest, seminarrequest, News,Newsen
 
 # ==============================
@@ -141,7 +141,7 @@ def submit_seminar(request):
 # ==============================
 # الأخبار
 # ==============================
-
+@user_passes_test(lambda u: u.is_superuser)
 def news_dashboard(request):
     return render(request, 'drapp/dashboard.html')
 
@@ -225,7 +225,7 @@ def news_public_page_en(request):
 # ==============================
 # الأخبار
 # ==============================
-
+@user_passes_test(lambda u: u.is_superuser)
 def news_dashboard_en(request):
     return render(request, 'drapp/en/dashboard.html')
 
