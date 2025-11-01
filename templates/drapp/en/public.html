@@ -687,12 +687,12 @@ Latest updates and news from Sabr Forensic Linguistics and Consulting
                         <i class="far fa-calendar-alt" style="margin-right: 5px;"></i>
                         {{ item.created_at|date:"F d, Y" }}
                     </div>
-                    <h2 class="news-title">{{ item.title_en }}</h2>
+                    <h2 class="news-title">{{ item.title }}</h2>
                     <p class="news-text">
-                        {% if item.paragraph_en|length > 180 %}
-                            {{ item.paragraph_en|slice:":180" }}...
+                        {% if item.paragraph|length > 180 %}
+                            {{ item.paragraph|slice:":180" }}...
                         {% else %}
-                            {{ item.paragraph_en }}
+                            {{ item.paragraph}}
                         {% endif %}
                     </p>
                     <a class="read-more" onclick="openModal({{ item.id }})">
@@ -742,8 +742,8 @@ Latest updates and news from Sabr Forensic Linguistics and Consulting
     const newsData = {
         {% for item in news %}
         {{ item.id }}: {
-            title: "{{ item.title_en|escapejs }}",
-            paragraph: "{{ item.paragraph_en|escapejs }}",
+            title: "{{ item.title|escapejs }}",
+            paragraph: "{{ item.paragraph|escapejs }}",
             image: "{% if item.image %}{{ item.image.url }}{% endif %}",
             date: "{{ item.created_at|date:'F d, Y' }}"
         }{% if not forloop.last %},{% endif %}
