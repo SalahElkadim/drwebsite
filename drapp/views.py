@@ -219,7 +219,7 @@ def news_public_page(request):
     return render(request, 'drapp/public.html', {'news': news})
 
 def news_public_page_en(request):
-    news = News.objects.all()
+    news = Newsen.objects.all()
     return render(request, 'drapp/en/public.html', {'news': news})
 
 # ==============================

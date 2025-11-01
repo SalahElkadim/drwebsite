@@ -185,7 +185,7 @@
 
         async function loadNews() {
             try {
-                const response = await fetch('/api/news/');
+                const response = await fetch('/en/api/news/');
                 const data = await response.json();
                 displayNews(data.news);
                 document.getElementById('totalNews').textContent = data.news.length;
@@ -249,7 +249,7 @@
 
         async function showEditModal(id) {
             try {
-                const response = await fetch(`/api/news/${id}/`);
+                const response = await fetch(`/en/api/news/${id}/`);
                 const news = await response.json();
                 
                 document.getElementById('modalTitle').textContent = 'Edit Article';
@@ -276,8 +276,8 @@
             const newsId = document.getElementById('newsId').value;
             
             const url = newsId ? 
-                `/api/news/${newsId}/update/` : 
-                '/api/news/create/';
+                `/en/api/news/${newsId}/update/` : 
+                '/en/api/news/create/';
             
             try {
                 const response = await fetch(url, {
@@ -310,7 +310,7 @@
             }
             
             try {
-                const response = await fetch(`/api/news/${id}/delete/`, {
+                const response = await fetch(`/en/api/news/${id}/delete/`, {
                     method: 'POST',
                     headers: {
                         'X-CSRFToken': getCookie('csrftoken')
