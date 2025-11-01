@@ -46,6 +46,16 @@ urlpatterns = [
     path('api/news/<int:pk>/update/', views.update_news, name='news_update'),
     path('api/news/<int:pk>/delete/', views.delete_news, name='news_delete'),
 
+    # ==============================
+    # الأخبار
+    # ==============================
+    path('en/dashboard/', views.news_dashboard_en, name='dashboard_en'),
+    path('en/api/news/', views.get_news_list_en, name='news_list_en'),
+    path('en/api/news/<int:pk>/', views.get_news_detail_en, name='news_detail_en'),
+    path('en/api/news/create/', views.create_news_en, name='news_create'),
+    path('en/api/news/<int:pk>/update/', views.update_news_en, name='news_update_en'),
+    path('en/api/news/<int:pk>/delete/', views.delete_news_en, name='news_delete_en'),
+
     # الصفحة العامة للأخبار
     path('news_public', views.news_public_page, name='news_public'),
     path('en/news_public', views.news_public_page_en, name='news_public_en'),

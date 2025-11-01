@@ -10,7 +10,7 @@ from django.db.models import Count
 from django.db import models
 import json
 
-from .models import ConsultationRequest, seminarrequest, News
+from .models import ConsultationRequest, seminarrequest, News,Newsen
 
 # ==============================
 # النسخة العربية
@@ -221,3 +221,79 @@ def news_public_page(request):
 def news_public_page_en(request):
     news = News.objects.all()
     return render(request, 'drapp/en/public.html', {'news': news})
+
+# ==============================
+# الأخبار
+# ==============================
+
+def news_dashboard_en(request):
+    return render(request, 'drapp/en/dashboard.html')
+
+def get_news_list_en(request):
+    news = Newsen.objects.all()
+    news_list = [{
+        'id': item.id,
+        'title': item.title,
+        'paragraph': item.paragraph,
+        'image': item.image.url if item.image else None,
+        'created_at': item.created_at.strftime('%Y-%m-%d %H:%M')
+    } for item in news]
+    return JsonResponse({'news': news_list})
+
+def get_news_detail_en(request, pk):
+    news = get_object_or_404(Newsen, pk=pk)
+    return JsonResponse({
+        'id': news.id,
+        'title': news.title,
+        'paragraph': news.paragraph,
+        'image': news.image.url if news.image else None,
+        'created_at': news.created_at.strftime('%Y-%m-%d %H:%M')
+    })
+
+@require_http_methods(["POST"])
+def create_news_en(request):
+    try:
+        title = request.POST.get('title')
+        paragraph = request.POST.get('paragraph')
+        image = request.FILES.get('image')
+        
+        news = Newsen.objects.create(
+            title=title,
+            paragraph=paragraph,
+            image=image
+        )
+        return JsonResponse({
+            'success': True,
+            'message': 'تم إضافة الخبر بنجاح',
+            'news': {
+                'id': news.id,
+                'title': news.title,
+                'paragraph': news.paragraph,
+                'image': news.image.url if news.image else None,
+                'created_at': news.created_at.strftime('%Y-%m-%d %H:%M')
+            }
+        })
+    except Exception as e:
+        return JsonResponse({'success': False, 'message': str(e)}, status=400)
+
+@require_http_methods(["POST"])
+def update_news_en(request, pk):
+    try:
+        news = get_object_or_404(Newsen, pk=pk)
+        news.title = request.POST.get('title', news.title)
+        news.paragraph = request.POST.get('paragraph', news.paragraph)
+        if request.FILES.get('image'):
+            news.image = request.FILES.get('image')
+        news.save()
+        return JsonResponse({'success': True, 'message': 'تم تعديل الخبر بنجاح'})
+    except Exception as e:
+        return JsonResponse({'success': False, 'message': str(e)}, status=400)
+
+@require_http_methods(["POST"])
+def delete_news_en(request, pk):
+    try:
+        news = get_object_or_404(Newsen, pk=pk)
+        news.delete()
+        return JsonResponse({'success': True, 'message': 'تم حذف الخبر بنجاح'})
+    except Exception as e:
+        return JsonResponse({'success': False, 'message': str(e)}, status=400)
