@@ -1,0 +1,486 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}  آخر الأخبار   | المركز الاعلامي {% endblock %}
+{% block meta_keywords %}
+آخر الاخبار والمستجدات الخاصة بموقع سبر للاستشارات الجنائية
+{% endblock %}
+{% block style %}<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* خلفية علم اللغة الجنائي */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(20,20,20,0.9) 100%),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(255,193,7,0.03) 0px,
+                    transparent 1px,
+                    transparent 40px,
+                    rgba(255,193,7,0.03) 41px
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(255,193,7,0.03) 0px,
+                    transparent 1px,
+                    transparent 40px,
+                    rgba(255,193,7,0.03) 41px
+                );
+            z-index: -1;
+        }
+
+        /* أنماط متقدمة للخلفية */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,193,7,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,193,7,0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255,193,7,0.06) 0%, transparent 40%);
+            z-index: -1;
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* عناصر خلفية إضافية */
+        .bg-element {
+            position: fixed;
+            font-size: 150px;
+            color: rgba(255,193,7,0.02);
+            z-index: 0;
+            font-weight: 900;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .bg-element.el-1 {
+            top: 10%;
+            right: 5%;
+            transform: rotate(-15deg);
+        }
+
+        .bg-element.el-2 {
+            bottom: 15%;
+            left: 5%;
+            transform: rotate(15deg);
+        }
+
+        .bg-element.el-3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-5deg);
+            font-size: 200px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,193,7,0.2);
+            padding: 30px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .header h1 {
+            font-weight: 900;
+            font-size: 2.5rem;
+            color: #ffffff;
+            text-shadow: 2px 2px 10px rgba(255,193,7,0.3);
+            letter-spacing: -1px;
+        }
+
+        .header .subtitle {
+            color: #ffc107;
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-top: 5px;
+            letter-spacing: 2px;
+        }
+
+        .header .accent {
+            display: inline-block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #ffc107 0%, transparent 100%);
+            margin-top: 15px;
+        }
+
+        /* Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 3px;
+            padding: 25px;
+            margin-bottom: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ffc107;
+            text-shadow: 0 0 20px rgba(255,193,7,0.4);
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+            margin-top: 5px;
+            font-weight: 300;
+        }
+
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+        }
+
+        /* News Card */
+        .news-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 3px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,193,7,0.03) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255,193,7,0.3);
+            box-shadow: 0 15px 40px rgba(255,193,7,0.15);
+        }
+
+        .news-card:hover::before {
+            opacity: 1;
+        }
+
+        .news-image-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .news-image-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            z-index: 2;
+        }
+
+        .news-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .news-card:hover .news-image {
+            transform: scale(1.1);
+        }
+
+        .news-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(255,193,7,0.1) 0%, rgba(255,193,7,0.05) 100%);
+        }
+
+        .news-placeholder i {
+            font-size: 4rem;
+            color: rgba(255,193,7,0.3);
+        }
+
+        .news-content {
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .news-date {
+            display: inline-block;
+            background: rgba(255,193,7,0.15);
+            color: #ffc107;
+            padding: 6px 14px;
+            border-radius: 2px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,193,7,0.2);
+        }
+
+        .news-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            letter-spacing: -0.5px;
+        }
+
+        .news-text {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            color: #ffc107;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .read-more i {
+            margin-right: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #ffffff;
+            transform: translateX(-5px);
+        }
+
+        .read-more:hover i {
+            transform: translateX(-3px);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 100px 20px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .empty-state i {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            color: rgba(255,193,7,0.2);
+        }
+
+        .empty-state h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(255,255,255,0.02);
+            border-top: 1px solid rgba(255,193,7,0.2);
+            padding: 40px 0;
+            margin-top: 80px;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .bg-element {
+                font-size: 100px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .news-card {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .news-card:nth-child(1) { animation-delay: 0.1s; }
+        .news-card:nth-child(2) { animation-delay: 0.2s; }
+        .news-card:nth-child(3) { animation-delay: 0.3s; }
+        .news-card:nth-child(4) { animation-delay: 0.4s; }
+        .news-card:nth-child(5) { animation-delay: 0.5s; }
+        .news-card:nth-child(6) { animation-delay: 0.6s; }
+    </style> {% endblock %}
+    
+{% block content %}
+
+
+    <!-- عناصر الخلفية -->
+    <div class="bg-element el-1">محاكمة</div>
+    <div class="bg-element el-2">عدالة</div>
+    <div class="bg-element el-3">قانون</div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>
+                <i class="fas fa-gavel" style="color: #ffc107; margin-left: 15px;"></i>
+                علم اللغة الجنائي
+            </h1>
+            <div class="subtitle">آخر الأخبار والمستجدات</div>
+            <div class="accent"></div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="row">
+                <div class="col-md-4 stat-item">
+                    <div class="stat-number">{{ news.count }}</div>
+                    <div class="stat-label">إجمالي الأخبار</div>
+                </div>
+                <div class="col-md-4 stat-item">
+                    <div class="stat-number">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="stat-label">تحديثات مستمرة</div>
+                </div>
+                <div class="col-md-4 stat-item">
+                    <div class="stat-number">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="stat-label">العدالة اللغوية</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- News Grid -->
+        {% if news %}
+        <div class="news-grid">
+            {% for item in news %}
+            <article class="news-card">
+                <div class="news-image-container">
+                    {% if item.image %}
+                        <img src="{{ item.image.url }}" alt="{{ item.title }}" class="news-image">
+                    {% else %}
+                        <div class="news-placeholder">
+                            <i class="fas fa-scroll"></i>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="news-content">
+                    <div class="news-date">
+                        <i class="far fa-calendar-alt" style="margin-left: 5px;"></i>
+                        {{ item.created_at|date:"d F Y" }}
+                    </div>
+                    <h2 class="news-title">{{ item.title }}</h2>
+                    <p class="news-text">
+                        {% if item.paragraph|length > 180 %}
+                            {{ item.paragraph|slice:":180" }}...
+                        {% else %}
+                            {{ item.paragraph }}
+                        {% endif %}
+                    </p>
+                    <a href="#" class="read-more">
+                        <i class="fas fa-arrow-left"></i>
+                        اقرأ المزيد
+                    </a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <i class="fas fa-inbox"></i>
+            <h3>لا توجد أخبار في الوقت الحالي</h3>
+            <p>تابعنا للحصول على آخر المستجدات</p>
+        </div>
+        {% endif %}
+    </div>
+
+    {% endblock %}

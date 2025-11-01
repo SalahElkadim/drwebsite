@@ -15,7 +15,9 @@
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% block style %} {% endblock %}
 </head>
 <body>
     <!-- شريط التنقل -->
@@ -40,9 +42,9 @@
             <li><a href="{% url 'academic' %}" class="translatable" data-key="سبر أكاديميا"> سبر أكاديميا</a></li>
             <li><a href="{% url 'consult' %}" class="translatable" data-key="احجز استشارة">احجز استشارة</a></li>
             <li><a href="{% url 'about' %}" class="translatable" data-key="من نحن">من نحن</a></li>
-            <li><a href="{% url 'job_list' %}" class="translatable" data-key="التوظيف">التوظيف</a></li>
+            <li><a href="{% url 'news_public' %}" class="translatable" data-key="المركز الاعلامي">المركز الاعلامي</a></li>
             {% if user.is_superuser %}
-            <li><a href="{% url 'dashboard_home' %}" class="translatable" data-translate="dashboard_home" data-key="لوحة التحكم">لوحة التحكم</a></li>
+            <li><a href="{% url 'dashboard' %}" class="translatable" data-translate="dashboard_home" data-key="لوحة التحكم">لوحة التحكم</a></li>
             {% endif %}
         </ul>
         

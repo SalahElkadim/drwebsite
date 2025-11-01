@@ -33,9 +33,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'drapp',
-    'jobs',
     'accounts',
     'django.contrib.sitemaps',
+    'cloudinary',
+    'cloudinary_storage',
 
 
 
@@ -144,8 +145,13 @@ MEDIA_URL = '/media/'  # URL لخدمة الملفات
 MEDIA_ROOT = '/data/media'  # المسار المحلي لتخزين الملفات
 
 # إذا كنت تستخدم Railway للرفع
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'  # لـ AWS S3
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dju8u4ip8',
+    'API_KEY': '349748856246324',
+    'API_SECRET': 'eg1MLfSh7Da974hOoBI1RWPGYw4',
+}
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #ارسال الاستمارة للايميل

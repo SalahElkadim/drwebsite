@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - إدارة الأخبار</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Cairo', sans-serif;
+        }
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 15px;
+        }
+        .header {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 10px;
+        }
+        .news-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .news-item:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .news-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .modal-content {
+            border-radius: 15px;
+        }
+        .form-control, .form-select {
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            padding: 12px;
+        }
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        .badge {
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        .btn-action {
+            padding: 8px 15px;
+            border-radius: 8px;
+            margin: 0 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="mb-1"><i class="fas fa-newspaper text-primary"></i> لوحة التحكم</h1>
+                    <p class="text-muted mb-0">إدارة الأخبار والمقالات</p>
+                </div>
+                <button class="btn btn-primary btn-lg" onclick="showAddModal()">
+                    <i class="fas fa-plus-circle"></i> إضافة خبر جديد
+                </button>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card text-center p-4">
+                    <h3 class="text-primary mb-2"><i class="fas fa-newspaper"></i></h3>
+                    <h2 id="totalNews" class="mb-1">0</h2>
+                    <p class="text-muted mb-0">إجمالي الأخبار</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- News List -->
+        <div class="card p-4">
+            <h3 class="mb-4"><i class="fas fa-list"></i> قائمة الأخبار</h3>
+            <div id="newsList">
+                <div class="text-center py-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">جاري التحميل...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Modal -->
+    <div class="modal fade" id="newsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">إضافة خبر جديد</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="newsForm" enctype="multipart/form-data">
+                        <input type="hidden" id="newsId" name="newsId">
+                        
+                        <div class="mb-3">
+                            <label class="form-label">عنوان الخبر *</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">نص الخبر *</label>
+                            <textarea class="form-control" id="paragraph" name="paragraph" rows="6" required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">صورة الخبر</label>
+                            <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                            <div id="currentImage" class="mt-2"></div>
+                        </div>
+
+                        <div class="alert alert-danger d-none" id="errorMessage"></div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                    <button type="button" class="btn btn-primary" onclick="saveNews()">
+                        <i class="fas fa-save"></i> حفظ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const modal = new bootstrap.Modal(document.getElementById('newsModal'));
+        const csrfToken = '{{ csrf_token }}';
+
+        // Load news on page load
+        document.addEventListener('DOMContentLoaded', loadNews);
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        async function loadNews() {
+            try {
+                const response = await fetch('/api/news/');
+                const data = await response.json();
+                displayNews(data.news);
+                document.getElementById('totalNews').textContent = data.news.length;
+            } catch (error) {
+                console.error('Error loading news:', error);
+            }
+        }
+
+        function displayNews(newsList) {
+            const container = document.getElementById('newsList');
+            
+            if (newsList.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-5">
+                        <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                        <p class="text-muted">لا توجد أخبار حالياً</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = newsList.map(news => `
+                <div class="news-item">
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            ${news.image ? 
+                                `<img src="${news.image}" class="news-image" alt="${news.title}">` :
+                                `<div class="news-image bg-light d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-image fa-2x text-muted"></i>
+                                </div>`
+                            }
+                        </div>
+                        <div class="col-md-7">
+                            <h5 class="mb-2">${news.title}</h5>
+                            <p class="text-muted mb-2">${news.paragraph.substring(0, 150)}...</p>
+                            <small class="text-muted">
+                                <i class="fas fa-clock"></i> ${news.created_at}
+                            </small>
+                        </div>
+                        <div class="col-md-3 text-end">
+                            <button class="btn btn-info btn-action text-white" onclick="showEditModal(${news.id})">
+                                <i class="fas fa-edit"></i> تعديل
+                            </button>
+                            <button class="btn btn-danger btn-action" onclick="deleteNews(${news.id})">
+                                <i class="fas fa-trash"></i> حذف
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showAddModal() {
+            document.getElementById('modalTitle').textContent = 'إضافة خبر جديد';
+            document.getElementById('newsForm').reset();
+            document.getElementById('newsId').value = '';
+            document.getElementById('currentImage').innerHTML = '';
+            document.getElementById('errorMessage').classList.add('d-none');
+            modal.show();
+        }
+
+        async function showEditModal(id) {
+            try {
+                const response = await fetch(`/api/news/${id}/`);
+                const news = await response.json();
+                
+                document.getElementById('modalTitle').textContent = 'تعديل الخبر';
+                document.getElementById('newsId').value = news.id;
+                document.getElementById('title').value = news.title;
+                document.getElementById('paragraph').value = news.paragraph;
+                
+                if (news.image) {
+                    document.getElementById('currentImage').innerHTML = `
+                        <img src="${news.image}" class="img-thumbnail" style="max-width: 200px;">
+                        <p class="text-muted mt-2">الصورة الحالية</p>
+                    `;
+                }
+                
+                modal.show();
+            } catch (error) {
+                console.error('Error loading news:', error);
+            }
+        }
+
+        async function saveNews() {
+            const form = document.getElementById('newsForm');
+            const formData = new FormData(form);
+            const newsId = document.getElementById('newsId').value;
+            
+            const url = newsId ? 
+                `/api/news/${newsId}/update/` : 
+                '/api/news/create/';
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    modal.hide();
+                    loadNews();
+                    showAlert(data.message, 'success');
+                } else {
+                    document.getElementById('errorMessage').textContent = data.message;
+                    document.getElementById('errorMessage').classList.remove('d-none');
+                }
+            } catch (error) {
+                console.error('Error saving news:', error);
+                showAlert('حدث خطأ أثناء الحفظ', 'danger');
+            }
+        }
+
+        async function deleteNews(id) {
+            if (!confirm('هل أنت متأكد من حذف هذا الخبر؟')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/news/${id}/delete/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': getCookie('csrftoken')
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    loadNews();
+                    showAlert(data.message, 'success');
+                }
+            } catch (error) {
+                console.error('Error deleting news:', error);
+                showAlert('حدث خطأ أثناء الحذف', 'danger');
+            }
+        }
+
+        function showAlert(message, type) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`;
+            alertDiv.style.zIndex = '9999';
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.body.appendChild(alertDiv);
+            
+            setTimeout(() => alertDiv.remove(), 3000);
+        }
+    </script>
+</body>
+</html>

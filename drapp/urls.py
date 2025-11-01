@@ -24,6 +24,15 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('visitor-stats', views.visitor_stats, name='visitor_stats'),
     path('contact/', views.contact_view, name='contact'),
+    path('dashboard/', views.news_dashboard, name='dashboard'),
+    path('api/news/', views.get_news_list, name='news_list'),
+    path('api/news/<int:pk>/', views.get_news_detail, name='news_detail'),
+    path('api/news/create/', views.create_news, name='news_create'),
+    path('api/news/<int:pk>/update/', views.update_news, name='news_update'),
+    path('api/news/<int:pk>/delete/', views.delete_news, name='news_delete'),
+    path('news_public', views.news_public_page, name='news_public'),
+
+
 
 
 

@@ -11,7 +11,6 @@ from django.db.models import Count
 from django.db import models
 
 
-
 def home (request):
     return render(request, 'drapp/home.html')
 
@@ -127,3 +126,111 @@ def visitor_stats(request):
     }
     
     return render(request, 'drapp/visitor.html', context)
+
+
+from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
+from .models import News
+import json
+
+def news_dashboard(request):
+    """صفحة الداشبورد الرئيسية"""
+    return render(request, 'drapp/dashboard.html')
+
+def get_news_list(request):
+    """جلب قائمة الأخبار"""
+    news = News.objects.all()
+    news_list = []
+    for item in news:
+        news_list.append({
+            'id': item.id,
+            'title': item.title,
+            'paragraph': item.paragraph,
+            'image': item.image.url if item.image else None,
+            'created_at': item.created_at.strftime('%Y-%m-%d %H:%M')
+        })
+    return JsonResponse({'news': news_list})
+
+def get_news_detail(request, pk):
+    """جلب تفاصيل خبر معين"""
+    news = get_object_or_404(News, pk=pk)
+    return JsonResponse({
+        'id': news.id,
+        'title': news.title,
+        'paragraph': news.paragraph,
+        'image': news.image.url if news.image else None,
+        'created_at': news.created_at.strftime('%Y-%m-%d %H:%M')
+    })
+
+@require_http_methods(["POST"])
+def create_news(request):
+    """إضافة خبر جديد"""
+    try:
+        title = request.POST.get('title')
+        paragraph = request.POST.get('paragraph')
+        image = request.FILES.get('image')
+        
+        news = News.objects.create(
+            title=title,
+            paragraph=paragraph,
+            image=image
+        )
+        
+        return JsonResponse({
+            'success': True,
+            'message': 'تم إضافة الخبر بنجاح',
+            'news': {
+                'id': news.id,
+                'title': news.title,
+                'paragraph': news.paragraph,
+                'image': news.image.url if news.image else None,
+                'created_at': news.created_at.strftime('%Y-%m-%d %H:%M')
+            }
+        })
+    except Exception as e:
+        return JsonResponse({'success': False, 'message': str(e)}, status=400)
+
+@require_http_methods(["POST"])
+def update_news(request, pk):
+    """تعديل خبر"""
+    try:
+        news = get_object_or_404(News, pk=pk)
+        
+        news.title = request.POST.get('title', news.title)
+        news.paragraph = request.POST.get('paragraph', news.paragraph)
+        
+        if request.FILES.get('image'):
+            news.image = request.FILES.get('image')
+        
+        news.save()
+        
+        return JsonResponse({
+            'success': True,
+            'message': 'تم تعديل الخبر بنجاح',
+            'news': {
+                'id': news.id,
+                'title': news.title,
+                'paragraph': news.paragraph,
+                'image': news.image.url if news.image else None,
+                'created_at': news.created_at.strftime('%Y-%m-%d %H:%M')
+            }
+        })
+    except Exception as e:
+        return JsonResponse({'success': False, 'message': str(e)}, status=400)
+
+@require_http_methods(["POST"])
+def delete_news(request, pk):
+    """حذف خبر"""
+    try:
+        news = get_object_or_404(News, pk=pk)
+        news.delete()
+        return JsonResponse({'success': True, 'message': 'تم حذف الخبر بنجاح'})
+    except Exception as e:
+        return JsonResponse({'success': False, 'message': str(e)}, status=400)
+    
+def news_public_page(request):
+    """صفحة عرض الأخبار للمستخدمين"""
+    news = News.objects.all()
+    return render(request, 'drapp/public.html', {'news': news})
