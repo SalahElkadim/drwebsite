@@ -1,0 +1,787 @@
+
+{% extends "base_en.html" %}
+{% load static %}
+{% block title %} Latest News | Media Center {% endblock %}
+{% block meta_keywords %}
+Latest updates and news from Sabr Forensic Linguistics and Consulting
+{% endblock %}
+{% block style %}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* خلفية علم اللغة الجنائي */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(20,20,20,0.9) 100%),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(255,193,7,0.03) 0px,
+                    transparent 1px,
+                    transparent 40px,
+                    rgba(255,193,7,0.03) 41px
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(255,193,7,0.03) 0px,
+                    transparent 1px,
+                    transparent 40px,
+                    rgba(255,193,7,0.03) 41px
+                );
+            z-index: -1;
+        }
+
+        /* أنماط متقدمة للخلفية */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,193,7,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,193,7,0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255,193,7,0.06) 0%, transparent 40%);
+            z-index: -1;
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* عناصر خلفية إضافية */
+        .bg-element {
+            position: fixed;
+            font-size: 150px;
+            color: rgba(255,193,7,0.02);
+            z-index: 0;
+            font-weight: 900;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .bg-element.el-1 {
+            top: 10%;
+            right: 5%;
+            transform: rotate(-15deg);
+        }
+
+        .bg-element.el-2 {
+            bottom: 15%;
+            left: 5%;
+            transform: rotate(15deg);
+        }
+
+        .bg-element.el-3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-5deg);
+            font-size: 200px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,193,7,0.2);
+            padding: 30px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .header h1 {
+            font-weight: 900;
+            font-size: 2.5rem;
+            color: #ffffff;
+            text-shadow: 2px 2px 10px rgba(255,193,7,0.3);
+            letter-spacing: -1px;
+        }
+
+        .header .subtitle {
+            color: #ffc107;
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-top: 5px;
+            letter-spacing: 2px;
+        }
+
+        .header .accent {
+            display: inline-block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #ffc107 0%, transparent 100%);
+            margin-top: 15px;
+        }
+
+        /* Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 3px;
+            padding: 25px;
+            margin-bottom: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ffc107;
+            text-shadow: 0 0 20px rgba(255,193,7,0.4);
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+            margin-top: 5px;
+            font-weight: 300;
+        }
+
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+        }
+
+        /* News Card */
+        .news-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 3px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,193,7,0.03) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255,193,7,0.3);
+            box-shadow: 0 15px 40px rgba(255,193,7,0.15);
+        }
+
+        .news-card:hover::before {
+            opacity: 1;
+        }
+
+        .news-image-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .news-image-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            z-index: 2;
+        }
+
+        .news-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .news-card:hover .news-image {
+            transform: scale(1.1);
+        }
+
+        .news-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(255,193,7,0.1) 0%, rgba(255,193,7,0.05) 100%);
+        }
+
+        .news-placeholder i {
+            font-size: 4rem;
+            color: rgba(255,193,7,0.3);
+        }
+
+        .news-content {
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .news-date {
+            display: inline-block;
+            background: rgba(255,193,7,0.15);
+            color: #ffc107;
+            padding: 6px 14px;
+            border-radius: 2px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,193,7,0.2);
+        }
+
+        .news-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            letter-spacing: -0.5px;
+        }
+
+        .news-text {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            color: #ffc107;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .read-more i {
+            margin-right: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #ffffff;
+            transform: translateX(-5px);
+        }
+
+        .read-more:hover i {
+            transform: translateX(-3px);
+        }
+
+        /* Modal Styles */
+        .news-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .news-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content-wrapper {
+            background: rgba(20, 20, 20, 0.98);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 3px;
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 20px 60px rgba(255, 193, 7, 0.2);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 193, 7, 0.2);
+            border: 1px solid rgba(255, 193, 7, 0.4);
+            border-radius: 2px;
+            color: #ffc107;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 193, 7, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-image-container {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .modal-image-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(20,20,20,0.98), transparent);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(255,193,7,0.15) 0%, rgba(255,193,7,0.05) 100%);
+        }
+
+        .modal-placeholder i {
+            font-size: 5rem;
+            color: rgba(255,193,7,0.4);
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .modal-date {
+            display: inline-block;
+            background: rgba(255,193,7,0.15);
+            color: #ffc107;
+            padding: 8px 16px;
+            border-radius: 2px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,193,7,0.2);
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 25px;
+            line-height: 1.3;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 10px rgba(255,193,7,0.2);
+        }
+
+        .modal-text {
+            color: rgba(255,255,255,0.85);
+            line-height: 2;
+            font-size: 1.1rem;
+            font-weight: 300;
+            text-align: justify;
+            white-space: pre-wrap;
+        }
+
+        .modal-divider {
+            height: 2px;
+            background: linear-gradient(90deg, #ffc107, transparent);
+            margin: 30px 0;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 100px 20px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .empty-state i {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            color: rgba(255,193,7,0.2);
+        }
+
+        .empty-state h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .bg-element {
+                font-size: 100px;
+            }
+
+            .modal-content-wrapper {
+                margin: 20px;
+            }
+
+            .modal-image-container {
+                height: 250px;
+            }
+
+            .modal-body {
+                padding: 25px;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+
+            .modal-text {
+                font-size: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .news-card {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .news-card:nth-child(1) { animation-delay: 0.1s; }
+        .news-card:nth-child(2) { animation-delay: 0.2s; }
+        .news-card:nth-child(3) { animation-delay: 0.3s; }
+        .news-card:nth-child(4) { animation-delay: 0.4s; }
+        .news-card:nth-child(5) { animation-delay: 0.5s; }
+        .news-card:nth-child(6) { animation-delay: 0.6s; }
+
+        /* تعديل شكل المودال ليكون أكثر أناقة وأقل تغطية */
+.news-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content-wrapper {
+    background: rgba(20, 20, 20, 0.97);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    border-radius: 10px;
+    max-width: 850px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(255, 193, 7, 0.25);
+    position: relative;
+    animation: slideUp 0.4s ease;
+}
+
+/* الصورة داخل المودال */
+.modal-image-container {
+    height: 300px;
+    border-bottom: 1px solid rgba(255,193,7,0.15);
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px 10px 0 0;
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.modal-image-container:hover .modal-image {
+    transform: scale(1.05);
+}
+
+/* محتوى النص */
+.modal-body {
+    padding: 30px;
+}
+
+.modal-footer {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* زر العودة */
+.back-button {
+    background: linear-gradient(90deg, #ffc107, #ffb300);
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-button:hover {
+    background: linear-gradient(90deg, #ffca28, #ffb300);
+    transform: translateY(-2px);
+}
+
+/* في الموبايل */
+@media (max-width: 768px) {
+    .modal-content-wrapper {
+        width: 100%;
+        height: 90vh;
+        border-radius: 10px;
+        margin: auto;
+    }
+
+    .modal-image-container {
+        height: 220px;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .back-button {
+        width: 100%;
+    }
+}
+
+    </style> 
+{% endblock %}
+    
+{% block content %}
+    <!-- Background Elements -->
+    <div class="bg-element el-1">Sabr</div>
+    <div class="bg-element el-2">Consulting</div>
+    <div class="bg-element el-3">Forensic Linguistics</div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>
+                <i class="fas fa-gavel" style="color: #ffc107; margin-right: 15px;"></i>
+                Forensic Linguistics
+            </h1>
+            <div class="subtitle">Latest News & Updates</div>
+            <div class="accent"></div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        {% if news %}
+        <div class="news-grid">
+            {% for item in news %}
+            <article class="news-card">
+                <div class="news-image-container">
+                    {% if item.image %}
+                        <img src="{{ item.image.url }}" alt="{{ item.title }}" class="news-image">
+                    {% else %}
+                        <div class="news-placeholder">
+                            <i class="fas fa-scroll"></i>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="news-content">
+                    <div class="news-date">
+                        <i class="far fa-calendar-alt" style="margin-right: 5px;"></i>
+                        {{ item.created_at|date:"F d, Y" }}
+                    </div>
+                    <h2 class="news-title">{{ item.title_en }}</h2>
+                    <p class="news-text">
+                        {% if item.paragraph_en|length > 180 %}
+                            {{ item.paragraph_en|slice:":180" }}...
+                        {% else %}
+                            {{ item.paragraph_en }}
+                        {% endif %}
+                    </p>
+                    <a class="read-more" onclick="openModal({{ item.id }})">
+                        <i class="fas fa-arrow-right"></i>
+                        Read More
+                    </a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <i class="fas fa-inbox"></i>
+            <h3>No news available at the moment</h3>
+            <p>Stay tuned for future updates</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Modal -->
+<div class="news-modal" id="newsModal">
+    <div class="modal-content-wrapper">
+        <button class="modal-close" onclick="closeModal()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="modal-image-container" id="modalImageContainer"></div>
+
+        <div class="modal-body">
+            <div class="modal-date" id="modalDate"></div>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <div class="modal-divider"></div>
+            <p class="modal-text" id="modalText"></p>
+
+            <div class="modal-footer">
+                <button class="back-button" onclick="closeModal()">
+                    <i class="fas fa-arrow-left"></i> Back to News
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const newsData = {
+        {% for item in news %}
+        {{ item.id }}: {
+            title: "{{ item.title_en|escapejs }}",
+            paragraph: "{{ item.paragraph_en|escapejs }}",
+            image: "{% if item.image %}{{ item.image.url }}{% endif %}",
+            date: "{{ item.created_at|date:'F d, Y' }}"
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    };
+
+    function openModal(newsId) {
+        const news = newsData[newsId];
+        const modal = document.getElementById('newsModal');
+        
+        document.getElementById('modalTitle').textContent = news.title;
+        document.getElementById('modalText').textContent = news.paragraph;
+        document.getElementById('modalDate').innerHTML = '<i class="far fa-calendar-alt" style="margin-right: 5px;"></i> ' + news.date;
+        
+        const imageContainer = document.getElementById('modalImageContainer');
+        if (news.image) {
+            imageContainer.innerHTML = `<img src="${news.image}" alt="${news.title}" class="modal-image">`;
+        } else {
+            imageContainer.innerHTML = `<div class="modal-placeholder"><i class="fas fa-scroll"></i></div>`;
+        }
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('newsModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('newsModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+    });
+</script>
+{% endblock %}

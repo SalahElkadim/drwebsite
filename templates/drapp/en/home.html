@@ -1,0 +1,270 @@
+{% extends "base_en.html" %}
+{% load static %}
+
+{% block title %}Home | Sabr Consult{% endblock %}
+
+{% block meta_description %}
+<meta name="description" content="Sabr Consult: Saudi forensic linguistics experts providing text analysis, threat detection, authorship identification, and legal consultation.">
+{% endblock %}
+
+{% block meta_keywords %}
+<meta name="keywords" content="forensic linguistics, text analysis, authorship identification, fraud detection, document verification, legal consulting">
+{% endblock %}
+
+{% block og_title %}
+<meta property="og:title" content="Sabr Consult | Forensic Linguistics & Fraud Detection Experts">
+{% endblock %}
+
+{% block og_description %}
+<meta property="og:description" content="Sabr Consult – Experts in forensic linguistics, plagiarism detection, document fraud analysis, and official expert reports for legal and security entities.">
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/home_en.css' %}">
+
+<!-- Hero Section -->
+<section class="hero-section reveal-item" dir="ltr">
+  <div class="hero-content">
+    <h1 class="hero-title">Forensic Linguistic Analysis</h1>
+    <p class="hero-subtitle">
+      A Saudi entity specialized in Forensic Linguistics, aiming to combat linguistic crime in all its forms and uncover fraud and plagiarism through precise analytical reports and linguistic evidence tailored for judicial, security, and legal institutions, law firms, organizations, and individuals.
+      Our work relies on scientific methodologies and accredited digital evidence, aligned with Saudi Arabia’s Evidence Law (Royal Decree No. M/43 dated 26/5/1443H), which recognizes digital evidence as valid proof in legal proceedings.
+    </p>
+    <div class="hero-buttons" style="margin-top: 2rem;">
+      <a href="{% url 'contact' %}" class="btn" style="background: linear-gradient(135deg, var(--primary-white), var(--gray-200)); color: var(--primary-black); margin: 0 1rem; padding: 1rem 2rem; font-weight: bold;">
+        Contact Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Consultation Section -->
+<section class="consultation-section reveal-item" dir="ltr">
+  <div class="container">
+    <div class="consultation-content">
+      <p class="consultation-subtitle">
+        Specialized consultations in forensic linguistics and financial fraud analysis
+      </p>
+      <div class="consultation-buttons">
+        <a href="{% url 'consult' %}" class="consultation-btn primary-btn reveal-item" id="consultBtn">
+          <i class="fas fa-user-tie"></i>
+          Get a Free Consultation from Sabr Experts
+        </a>
+        <a href="{% url 'seminar' %}" class="consultation-btn secondary-btn reveal-item" id="consultBtn1">
+          <i class="fas fa-calendar-alt"></i>
+          Book Seminars for Government and Private Entities
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="decorative-divider reveal-item"></div>
+
+<!-- Services Section -->
+<section class="services-section reveal-item" id="servicesection" dir="ltr">
+  <div>
+    <h2>Sabr Forensic & Linguistic Consulting</h2>
+    <p>
+      Sabr Consult provides specialized solutions in text and document analysis, linguistic pattern recognition, and authorship identification to assist in uncovering criminal or fraudulent activity and supporting investigations. Our experts apply linguistic and digital methodologies to connect anonymous communications to their potential authors.
+    </p>
+  </div>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+    <div class="service-card reveal-item">
+      <i class="fas fa-search"></i>
+      <h3>Forensic Linguistic Analysis</h3>
+      <p>Supporting judicial and security entities with expert linguistic analysis of written materials.</p>
+    </div>
+    
+    <div class="service-card reveal-item">
+      <i class="fas fa-exclamation-triangle"></i>
+      <h3>Threat Analysis</h3>
+      <p>Linguistic analysis of threats, extortion, defamation, and other cybercrime communications.</p>
+    </div>
+    
+    <div class="service-card reveal-item">
+      <i class="fas fa-user-secret"></i>
+      <h3>Authorship Identification</h3>
+      <p>Determining the linguistic fingerprint of authors under investigation or suspicion.</p>
+    </div>
+
+    <div class="service-card reveal-item">
+      <i class="fas fa-shield-alt"></i>
+      <h3>Anonymous Message Profiling</h3>
+      <p>Analyzing anonymous texts to identify writer traits such as age, gender, and education level.</p>
+    </div>
+
+    <div class="service-card reveal-item">
+      <i class="fas fa-file-alt"></i>
+      <h3>Written Evidence Evaluation</h3>
+      <p>Assessing written evidence in legal disputes to support or refute claims.</p>
+    </div>
+
+    <div class="service-card reveal-item">
+      <i class="fas fa-trademark"></i>
+      <h3>Trademark & Brand Analysis</h3>
+      <p>Linguistic and semiotic analysis to protect intellectual property and ensure legal compliance.</p>
+    </div>
+
+    <div class="service-card reveal-item">
+      <i class="fas fa-microphone-alt"></i>
+      <h3>Forensic Voice Analysis</h3>
+      <p>Identifying speakers through unique vocal fingerprints and analyzing audio threats or extortion cases.</p>
+    </div>
+  </div>
+</section>
+
+<div class="decorative-divider reveal-item"></div>
+
+<!-- Partners Section -->
+<section class="partners-section reveal-item" dir="ltr">
+  <div class="container">
+    <div class="partners-header">
+      <h2 class="section-title">Our Strategic Partners</h2>
+      <p class="section-subtitle">Proud to be trusted by governmental and private institutions across Saudi Arabia.</p>
+    </div>
+    
+    <div class="partners-grid">
+      <a href="https://www.moi.gov.sa" target="_blank" class="partner-card reveal-item">
+        <div class="partner-logo">
+          <img src="{% static 'image/2.png' %}" alt="Ministry of Interior Logo">
+        </div>
+        <div class="partner-info">
+          <h3>Ministry of Interior</h3>
+          <p>Strategic Partner in Crime Prevention</p>
+        </div>
+      </a>
+
+      <a href="https://www.moj.gov.sa" target="_blank" class="partner-card reveal-item">
+        <div class="partner-logo">
+          <img src="{% static 'image/1.png' %}" alt="Ministry of Justice Logo">
+        </div>
+        <div class="partner-info">
+          <h3>Ministry of Justice</h3>
+          <p>Collaboration in Judicial Expertise</p>
+        </div>
+      </a>
+
+      <a href="https://www.kku.edu.sa" target="_blank" class="partner-card reveal-item">
+        <div class="partner-logo">
+          <img src="{% static 'image/3.png' %}" alt="King Khalid University Logo">
+        </div>
+        <div class="partner-info">
+          <h3>King Khalid University</h3>
+          <p>Research and Academic Collaboration</p>
+        </div>
+      </a>
+
+      <a href="https://tvtc.gov.sa" target="_blank" class="partner-card reveal-item">
+        <div class="partner-logo">
+          <img src="{% static 'image/4.png' %}" alt="Technical and Vocational Training Logo">
+        </div>
+        <div class="partner-info">
+          <h3>Technical & Vocational Training Corporation</h3>
+          <p>Developing Specialized Workforce</p>
+        </div>
+      </a>
+
+      <a href="https://www.hrsd.gov.sa/" target="_blank" class="partner-card reveal-item">
+        <div class="partner-logo">
+          <img src="{% static 'image/6.png' %}" alt="Ministry of Human Resources Logo">
+        </div>
+        <div class="partner-info">
+          <h3>Ministry of Human Resources</h3>
+          <p>Professional Development & Training</p>
+        </div>
+      </a>
+
+      <a href="https://ccsa.org.sa/" target="_blank" class="partner-card reveal-item">
+        <div class="partner-logo">
+          <img src="{% static 'image/7.png' %}" alt="Nonprofit Associations Logo">
+        </div>
+        <div class="partner-info">
+          <h3>Nonprofit Associations</h3>
+          <p>Community Service & Awareness</p>
+        </div>
+      </a>
+
+      <a href="https://ccsa.org.sa/" target="_blank" class="partner-card reveal-item">
+        <div class="partner-logo">
+          <img src="{% static 'image/8.png' %}" alt="Ministry of Foreign Affairs Logo">
+        </div>
+        <div class="partner-info">
+          <h3>Ministry of Foreign Affairs</h3>
+          <p>International Cooperation & Expertise Exchange</p>
+        </div>
+      </a>
+
+      <a href="https://ccsa.org.sa/" target="_blank" class="partner-card reveal-item">
+        <div class="partner-logo">
+          <img src="{% static 'image/9.webp' %}" alt="Ministry of Investment Logo">
+        </div>
+        <div class="partner-info">
+          <h3>Ministry of Investment</h3>
+          <p>Encouraging Legal-Tech Investments</p>
+        </div>
+      </a>
+
+      <a href="https://ccsa.org.sa/" target="_blank" class="partner-card reveal-item">
+        <div class="partner-logo">
+          <img src="{% static 'image/10.jpeg' %}" alt="Experts Observatory Logo">
+        </div>
+        <div class="partner-info">
+          <h3>Experts Observatory</h3>
+          <p>Developing Analytical and Research Tools</p>
+        </div>
+      </a>
+
+      <a href="https://ccsa.org.sa/" target="_blank" class="partner-card reveal-item">
+        <div class="partner-logo">
+          <img src="{% static 'image/11.png' %}" alt="Aston University Logo">
+        </div>
+        <div class="partner-info">
+          <h3>Aston University - UK</h3>
+          <p>Academic Collaboration in Forensic Linguistics</p>
+        </div>
+      </a>
+
+      <a href="https://ccsa.org.sa/" target="_blank" class="partner-card reveal-item">
+        <div class="partner-logo">
+          <img src="{% static 'image/12.png' %}" alt="Krems University Logo">
+        </div>
+        <div class="partner-info">
+          <h3>University of Krems - Austria</h3>
+          <p>Partnership in Higher Education & Applied Training</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- Law Offices -->
+    <div class="law-offices-section">
+      <h3 class="subsection-title">Partner Law Firms</h3>
+      <div class="law-offices-grid">
+        <a href="https://g.co/kgs/8zdykQy" target="_blank" class="law-office-card reveal-item">
+          <div class="office-avatar">
+            <img src="{% static 'image/5.jpg' %}" alt="Lawyer Abdulrahim Al-Shahrani Office">
+          </div>
+          <div class="office-details">
+            <h4>Lawyer & Notary Office</h4>
+            <p>Abdulrahim Al-Shahrani</p>
+            <span class="specialization">Legal Consulting & Notarization</span>
+          </div>
+        </a>
+
+        <a href="https://www.tiktok.com/@abu_rand?_t=ZS-8vLSEIUQRsn&_r=1" target="_blank" class="law-office-card reveal-item">
+          <div class="office-avatar">
+            <img src="{% static 'image/5.jpg' %}" alt="Lawyer Ahmad Abu Zayfa Office">
+          </div>
+          <div class="office-details">
+            <h4>Lawyer Office</h4>
+            <p>Ahmad Abu Zayfa</p>
+            <span class="specialization">Criminal and Civil Cases</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

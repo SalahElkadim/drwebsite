@@ -1,53 +1,89 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
 from django.core.mail import send_mail
 from django.conf import settings
-import json
-from .models import ConsultationRequest, seminarrequest
 from django.utils import timezone
 from datetime import timedelta
 from django.db.models import Count
 from django.db import models
+import json
 
+from .models import ConsultationRequest, seminarrequest, News
 
-def home (request):
+# ==============================
+# النسخة العربية
+# ==============================
+
+def home(request):
     return render(request, 'drapp/home.html')
 
-def about (request):
+def about(request):
     return render(request, 'drapp/about.html')
 
-def consult (request):
+def consult(request):
     return render(request, 'drapp/consultation.html')
 
-def privacy (request):
+def privacy(request):
     return render(request, 'drapp/privacy.html')
 
-def helpcenter (request):
+def helpcenter(request):
     return render(request, 'drapp/helpcenter.html')
 
-def forensic (request):
+def forensic(request):
     return render(request, 'drapp/forensic.html')
 
-
-def academic (request):
+def academic(request):
     return render(request, 'drapp/academic.html')
 
-def seminar (request):
+def seminar(request):
     return render(request, 'drapp/seminar.html')
 
 def contact_view(request):
     return render(request, 'drapp/connect.html')
-# views.py
 
 
+# ==============================
+# النسخة الإنجليزية
+# ==============================
+
+def home_en(request):
+    return render(request, 'drapp/en/home.html')
+
+def about_en(request):
+    return render(request, 'drapp/en/about.html')
+
+def consult_en(request):
+    return render(request, 'drapp/en/consultation.html')
+
+def privacy_en(request):
+    return render(request, 'drapp/en/privacy.html')
+
+def helpcenter_en(request):
+    return render(request, 'drapp/en/helpcenter.html')
+
+def forensic_en(request):
+    return render(request, 'drapp/en/forensic.html')
+
+def academic_en(request):
+    return render(request, 'drapp/en/academic.html')
+
+def seminar_en(request):
+    return render(request, 'drapp/en/seminar.html')
+
+def contact_en(request):
+    return render(request, 'drapp/en/connect.html')
+
+
+# ==============================
+# طلبات المستخدم (العربي والإنجليزي سواسية)
+# ==============================
 
 @csrf_exempt
 def submit_consultation(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-
-        # حفظ البيانات في قاعدة البيانات
         consultation = ConsultationRequest.objects.create(
             name=data.get('name'),
             email=data.get('email'),
@@ -56,7 +92,6 @@ def submit_consultation(request):
             message=data.get('message'),
         )
 
-        # إرسال بريد لمقدم الخدمة
         send_mail(
             subject='استشارة جديدة من الموقع',
             message=f"""
@@ -67,7 +102,7 @@ def submit_consultation(request):
                 التفاصيل: {consultation.message}
             """,
             from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=['M.abuzaifah@gmail.com'],  # ← غيّر البريد
+            recipient_list=['M.abuzaifah@gmail.com'],
         )
 
         return JsonResponse({'status': 'success'})
@@ -78,8 +113,6 @@ def submit_consultation(request):
 def submit_seminar(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-
-        # حفظ البيانات في قاعدة البيانات
         consultation = seminarrequest.objects.create(
             name=data.get('name'),
             email=data.get('email'),
@@ -88,7 +121,6 @@ def submit_seminar(request):
             message=data.get('message'),
         )
 
-        # إرسال بريد لمقدم الخدمة
         send_mail(
             subject='طلب حجز ندوة',
             message=f"""
@@ -99,42 +131,32 @@ def submit_seminar(request):
                 التفاصيل: {consultation.message}
             """,
             from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=['M.abuzaifah@gmail.com'],  # ← غيّر البريد
+            recipient_list=['M.abuzaifah@gmail.com'],
         )
 
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
 
 
-
-
-from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_http_methods
-from .models import News
-import json
+# ==============================
+# الأخبار
+# ==============================
 
 def news_dashboard(request):
-    """صفحة الداشبورد الرئيسية"""
     return render(request, 'drapp/dashboard.html')
 
 def get_news_list(request):
-    """جلب قائمة الأخبار"""
     news = News.objects.all()
-    news_list = []
-    for item in news:
-        news_list.append({
-            'id': item.id,
-            'title': item.title,
-            'paragraph': item.paragraph,
-            'image': item.image.url if item.image else None,
-            'created_at': item.created_at.strftime('%Y-%m-%d %H:%M')
-        })
+    news_list = [{
+        'id': item.id,
+        'title': item.title,
+        'paragraph': item.paragraph,
+        'image': item.image.url if item.image else None,
+        'created_at': item.created_at.strftime('%Y-%m-%d %H:%M')
+    } for item in news]
     return JsonResponse({'news': news_list})
 
 def get_news_detail(request, pk):
-    """جلب تفاصيل خبر معين"""
     news = get_object_or_404(News, pk=pk)
     return JsonResponse({
         'id': news.id,
@@ -146,7 +168,6 @@ def get_news_detail(request, pk):
 
 @require_http_methods(["POST"])
 def create_news(request):
-    """إضافة خبر جديد"""
     try:
         title = request.POST.get('title')
         paragraph = request.POST.get('paragraph')
@@ -157,7 +178,6 @@ def create_news(request):
             paragraph=paragraph,
             image=image
         )
-        
         return JsonResponse({
             'success': True,
             'message': 'تم إضافة الخبر بنجاح',
@@ -174,43 +194,30 @@ def create_news(request):
 
 @require_http_methods(["POST"])
 def update_news(request, pk):
-    """تعديل خبر"""
     try:
         news = get_object_or_404(News, pk=pk)
-        
         news.title = request.POST.get('title', news.title)
         news.paragraph = request.POST.get('paragraph', news.paragraph)
-        
         if request.FILES.get('image'):
             news.image = request.FILES.get('image')
-        
         news.save()
-        
-        return JsonResponse({
-            'success': True,
-            'message': 'تم تعديل الخبر بنجاح',
-            'news': {
-                'id': news.id,
-                'title': news.title,
-                'paragraph': news.paragraph,
-                'image': news.image.url if news.image else None,
-                'created_at': news.created_at.strftime('%Y-%m-%d %H:%M')
-            }
-        })
+        return JsonResponse({'success': True, 'message': 'تم تعديل الخبر بنجاح'})
     except Exception as e:
         return JsonResponse({'success': False, 'message': str(e)}, status=400)
 
 @require_http_methods(["POST"])
 def delete_news(request, pk):
-    """حذف خبر"""
     try:
         news = get_object_or_404(News, pk=pk)
         news.delete()
         return JsonResponse({'success': True, 'message': 'تم حذف الخبر بنجاح'})
     except Exception as e:
         return JsonResponse({'success': False, 'message': str(e)}, status=400)
-    
+
 def news_public_page(request):
-    """صفحة عرض الأخبار للمستخدمين"""
     news = News.objects.all()
     return render(request, 'drapp/public.html', {'news': news})
+
+def news_public_page_en(request):
+    news = News.objects.all()
+    return render(request, 'drapp/en/public.html', {'news': news})

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Help Center | Sabr Consult{% endblock %}
+{% block meta_description %}
+Sabr Consult Help Center: Find answers to frequently asked questions about forensic linguistics, fraud detection, account management, and consultation booking.
+{% endblock %}
+{% block meta_keywords %}
+Help Center, Support, Forensic Linguistics, Fraud Detection, Consultations, Account Management, Official Reports, FAQ, Language Services
+{% endblock %}
+{% block og_title %}Help Center | Sabr Consult{% endblock %}
+{% block og_description %}Sabr Consult Help Center – Answers to FAQs about forensic linguistics, document verification, and account management.{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/help_en.css' %}">
+
+<div class="background-pattern"></div>
+
+<div class="floating-elements">
+    <div class="floating-dot"></div>
+    <div class="floating-dot"></div>
+    <div class="floating-dot"></div>
+    <div class="floating-dot"></div>
+    <div class="floating-dot"></div>
+</div>
+
+<header>
+    <h1>Help Center</h1>
+    <p>Welcome to our support center – Experts in forensic linguistics, fraud detection, and document analysis.</p>
+</header>
+
+<div class="search-bar">
+    <div class="search-container">
+        <input type="text" placeholder="Search for a question, service or topic..." id="searchInput">
+        <i class="fas fa-search search-icon"></i>
+    </div>
+</div>
+
+<section class="categories">
+    <h2>Categories</h2>
+    <div class="category">
+        <h2>Forensic Linguistic Services</h2>
+        <p>Learn more about text analysis, linguistic comparison, and plagiarism investigation services.</p>
+    </div>
+    <div class="category">
+        <h2>Forgery and Fraud Detection</h2>
+        <p>Understand how we detect document forgery, signature manipulation, and authenticity issues.</p>
+    </div>
+    <div class="category">
+        <h2>Account and Settings</h2>
+        <p>Manage your account, update personal information, and enable notifications.</p>
+    </div>
+    <div class="category">
+        <h2>Reports and Consultations</h2>
+        <p>Learn how to request official reports or book a session with a forensic linguistics expert.</p>
+    </div>
+</section>
+
+<section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <h3>What is forensic linguistics?</h3>
+        <p>It is the application of linguistics to analyze written or spoken texts for investigative or judicial purposes.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>How can I request a text analysis service?</h3>
+        <p>You can submit a request through the "Quick WhatsApp button" or the "Consultation Request" page, and we’ll respond within 24 hours.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>Can digital document forgery be detected?</h3>
+        <p>Yes, we use advanced tools and linguistic techniques to analyze the language and structure of digital documents.</p>
+    </div>
+
+    <div class="contact-links">
+        <h2>Need additional assistance?</h2>
+        <a href="tel:+966500819191"><i class="fas fa-phone"></i> <span>Call Us</span></a>
+        <a href="mailto:info@SabrConsult.com"><i class="fas fa-envelope"></i> <span>Email Us</span></a>
+        <a href="https://wa.me/966500819191"><i class="fab fa-whatsapp"></i> <span>WhatsApp</span></a>
+    </div>
+</section>
+{% endblock %}

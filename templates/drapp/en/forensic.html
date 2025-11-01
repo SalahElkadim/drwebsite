@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Forensic Linguistic Consultations | Sabr Consult {% endblock %}
+{% block meta_description %}
+Discover Sabr’s services in forensic linguistics and language analysis: plagiarism detection, authorship identification, contract and correspondence analysis, financial fraud detection, intellectual property cases, legal translation, and consultations for foreign investors.
+{% endblock %}
+{% block meta_keywords %}
+forensic linguistic services, text analysis, linguistic comparison, plagiarism detection, language experts, linguistic evidence, Sabr Consult
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/about_en.css' %}">
+<div class="services-page">
+    <header>
+        <h1>Forensic Linguistics and Language Analysis</h1>
+        <p>
+            Professional analysis of texts, correspondence, and documents to support investigations and uncover deception or fraud.
+        </p>
+    </header>
+
+    <div class="intro">
+        <p>
+            At <strong>Sabr</strong>, we offer a wide range of specialized forensic linguistic services, grounded in scientific methodologies. 
+            We serve legal, judicial, and regulatory entities, as well as lawyers, to examine textual evidence and provide expert, reliable reports for use in investigative and judicial contexts.
+        </p>
+    </div>
+
+    <section class="services">
+        <h2>Our Services</h2>
+
+        <div class="service">
+            <h3>Legal Wording and Contract Dispute Analysis</h3>
+            <ul>
+                <li>Identifying deliberate ambiguity or linguistic manipulation in contracts and official documents.</li>
+                <li>Analyzing contract clauses to detect loopholes or multiple interpretations that could be exploited legally.</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>Plagiarism Detection and Authorship Identification (Linguistic Fingerprinting)</h3>
+            <ul>
+                <li>Analyzing texts and correspondence to determine if they were written by the same person or impersonated.</li>
+                <li>Supporting cases related to defamation or plagiarism in legal and media contexts.</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>Fraud and Corporate Misconduct Investigations through Language</h3>
+            <ul>
+                <li>Analyzing emails and internal communications to identify suspicious linguistic patterns.</li>
+                <li>Detecting manipulation or deceit intentions based on writing style and linguistic context.</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>Intellectual Property and Trademark Case Analysis</h3>
+            <ul>
+                <li>Examining imitation or plagiarism of slogans, marketing texts, or trademarks.</li>
+                <li>Preparing expert linguistic reports to be presented as evidence in infringement and plagiarism cases.</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>Legal and Advertising Language Review</h3>
+            <ul>
+                <li>Reviewing marketing content to detect legally misleading or deceptive phrases.</li>
+                <li>Simplifying legal language to make it clear and understandable without compromising accuracy.</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>Verification of Suspicious Documents</h3>
+            <ul>
+                <li>Examining invoices, permits, and contracts to detect forgery or linguistic manipulation.</li>
+                <li>Analyzing documents suspected to be linked to commercial concealment or legal violations.</li>
+            </ul>
+        </div>
+
+        <div class="service">
+            <h3>Language Consulting for Foreign Investors</h3>
+            <ul>
+                <li>Providing drafting and proofreading services for contracts and communications in compliance with Saudi law.</li>
+                <li>Offering professional legal translation that accurately conveys meaning within the local legal context.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Need a specialized service in forensic linguistics or text evidence analysis?</h2>
+        <a href="{% url 'contact' %}">Contact Us Now</a>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sabr{% endblock %}</title>
+    <link rel="icon" href="{% static 'image/favicon.png' %}" type="image/png">
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Sabr{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}A detailed description of this article about forensic linguistics...{% endblock %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style_en.css' %}">
+    {% block style %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="dropdown">
+            <button class="dropdown-btn">AR</button>
+            <div class="dropdown-content">
+                <a href="{% url 'home' %}" id="ar-btn">AR</a>
+                <a href="{% url 'home_en' %}" id="en-btn">EN</a>
+            </div>
+        </div>
+
+        <div class="nav-menu" id="navMenu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+
+        <ul class="nav-list" id="navList">
+            <li><a href="{% url 'home_en' %}">Home</a></li>
+            <li><a href="{% url 'forensic_en' %}">Forensic Linguistic Consulting</a></li>
+            <li><a href="{% url 'academic_en' %}">Sabr Academia</a></li>
+            <li><a href="{% url 'consult_en' %}">Book a Consultation</a></li>
+            <li><a href="{% url 'about_en' %}">About Us</a></li>
+            <li><a href="{% url 'news_public_en' %}">Media Center</a></li>
+            {% if user.is_superuser %}
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            {% endif %}
+        </ul>
+
+        <div class="auth-buttons">
+            <a href="{% url 'login' %}" class="btn login-btn">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+        </div>
+
+        <img src="{% static 'image/logo.png' %}" alt="Sabr Consult - Forensic Linguistics Saudi Arabia" class="logo">
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="{% url 'consult_en' %}" class="floating-btn consult-btn" id="consultBtn" title="Request Consultation">
+            <i class="fas fa-headset"></i>
+        </a>
+        <div class="floating-btn whatsapp-btn" id="whatsappBtn" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+    </div>
+
+    <!-- WhatsApp Chat -->
+    <div class="whatsapp-chat" id="whatsappChat">
+        <div class="chat-header">
+            Contact Us
+        </div>
+        <div class="chat-body">
+            <p>Hello, how can I help you?</p>
+            <a href="https://wa.me/+966545392992" target="_blank">
+                Start Chat
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <h3>Contact Us Now</h3>
+        <p>For professional consultations or services</p>
+
+        <div class="social-links">
+            <a href="https://x.com/SabrConsults" title="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/mohammed-shahrani-phd-ceo-645a11252" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:CEO@sabrConsult.com" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://snapchat.com/t/mYvKbfn4" title="Snapchat">
+                <i class="fab fa-snapchat"></i>
+            </a>
+        </div>
+
+        <ul class="footer-links">
+            <li><a href="{% url 'helpcenter_en' %}">Help Center</a></li>
+            <li><a href="{% url 'privacy_en' %}">Privacy Policy</a></li>
+            <li><a href="{% url 'about_en' %}">About Us</a></li>
+            <li><a href="https://wa.me/+97472261770">Contact Us</a></li>
+        </ul>
+
+        <p style="margin-top: 2rem; color: var(--gray-400);">
+            All rights reserved &copy; 2025 | Sabr - Forensic Linguistic Analysis
+        </p>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
