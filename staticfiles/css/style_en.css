@@ -114,6 +114,8 @@
             transition: all 0.3s ease;
             position: relative;
             font-weight: 500;
+            font-size: .8rem;
+
         }
 
         .nav-list li a::before {
