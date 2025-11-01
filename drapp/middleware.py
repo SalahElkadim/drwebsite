@@ -1,7 +1,6 @@
 from .models import Visitor
 from django.utils import timezone
 from django_user_agents.utils import get_user_agent
-import geoip2.database
 import os
 from django.conf import settings
 
@@ -36,13 +35,3 @@ class VisitorMiddleware:
         else:
             ip = request.META.get('REMOTE_ADDR')
         return ip
-
-    def get_country(self, ip_address):
-        try:
-            # تأكد من وجود ملف GeoLite2-Country.mmbe في المسار الصحيح
-            geoip_path = os.path.join(settings.BASE_DIR, 'GeoLite2-Country.mmdb')
-            with geoip2.database.Reader(geoip_path) as reader:
-                response = reader.country(ip_address)
-                return response.country.name
-        except:
-            return None
