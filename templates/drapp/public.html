@@ -549,6 +549,102 @@
         .news-card:nth-child(4) { animation-delay: 0.4s; }
         .news-card:nth-child(5) { animation-delay: 0.5s; }
         .news-card:nth-child(6) { animation-delay: 0.6s; }
+
+        /* تعديل شكل المودال ليكون أكثر أناقة وأقل تغطية */
+.news-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content-wrapper {
+    background: rgba(20, 20, 20, 0.97);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    border-radius: 10px;
+    max-width: 850px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(255, 193, 7, 0.25);
+    position: relative;
+    animation: slideUp 0.4s ease;
+}
+
+/* الصورة داخل المودال */
+.modal-image-container {
+    height: 300px;
+    border-bottom: 1px solid rgba(255,193,7,0.15);
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px 10px 0 0;
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.modal-image-container:hover .modal-image {
+    transform: scale(1.05);
+}
+
+/* محتوى النص */
+.modal-body {
+    padding: 30px;
+}
+
+.modal-footer {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* زر العودة */
+.back-button {
+    background: linear-gradient(90deg, #ffc107, #ffb300);
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-button:hover {
+    background: linear-gradient(90deg, #ffca28, #ffb300);
+    transform: translateY(-2px);
+}
+
+/* في الموبايل */
+@media (max-width: 768px) {
+    .modal-content-wrapper {
+        width: 100%;
+        height: 90vh;
+        border-radius: 10px;
+        margin: auto;
+    }
+
+    .modal-image-container {
+        height: 220px;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .back-button {
+        width: 100%;
+    }
+}
+
     </style> 
 {% endblock %}
     
@@ -617,33 +713,34 @@
     </div>
 
     <!-- Modal -->
-    <div class="news-modal" id="newsModal">
-        <div class="modal-content-wrapper">
-            <button class="modal-close" onclick="closeModal()">
-                <i class="fas fa-times"></i>
-            </button>
+<div class="news-modal" id="newsModal">
+    <div class="modal-content-wrapper">
+        <button class="modal-close" onclick="closeModal()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="modal-image-container" id="modalImageContainer">
+            <!-- الصورة -->
+        </div>
+
+        <div class="modal-body">
+            <div class="modal-date" id="modalDate"></div>
             
-            <div class="modal-image-container" id="modalImageContainer">
-                <!-- الصورة ستظهر هنا -->
-            </div>
+            <h2 class="modal-title" id="modalTitle"></h2>
 
-            <div class="modal-body">
-                <div class="modal-date" id="modalDate">
-                    <!-- التاريخ -->
-                </div>
-                
-                <h2 class="modal-title" id="modalTitle">
-                    <!-- العنوان -->
-                </h2>
+            <div class="modal-divider"></div>
 
-                <div class="modal-divider"></div>
+            <p class="modal-text" id="modalText"></p>
 
-                <p class="modal-text" id="modalText">
-                    <!-- النص الكامل -->
-                </p>
+            <div class="modal-footer">
+                <button class="back-button" onclick="closeModal()">
+                    <i class="fas fa-arrow-right"></i> العودة إلى الأخبار
+                </button>
             </div>
         </div>
     </div>
+</div>
+
 
     <!-- News Data (Hidden) -->
 
