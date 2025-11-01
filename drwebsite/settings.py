@@ -53,8 +53,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
-    'drapp.middleware.VisitorMiddleware',
-    
 ]
 USER_AGENTS_CACHE = 'default'
 
