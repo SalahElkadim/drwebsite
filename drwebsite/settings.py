@@ -144,11 +144,13 @@ MEDIA_ROOT = '/data/media'  # المسار المحلي لتخزين الملف�
 
 # إذا كنت تستخدم Railway للرفع
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dju8u4ip8',
-    'API_KEY': '349748856246324',
-    'API_SECRET': 'eg1MLfSh7Da974hOoBI1RWPGYw4',
+    'CLOUDINARY_CLOUD_NAME': 'dju8u4ip8',
+    'CLOUDINARY_API_KEY': '349748856246324',
+    'CLOUDINARY_API_SECRET': 'eg1MLfSh7Da974hOoBI1RWPGYw4',
 }
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
