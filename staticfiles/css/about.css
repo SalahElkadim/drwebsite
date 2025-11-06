@@ -390,7 +390,7 @@
 
     .services-page header {
         margin-inline-start: 0;
-        text-align: center;
+        text-align: start;
     }
 
     .services-page header h1 {
@@ -404,7 +404,7 @@
     .intro {
         font-size: 1rem;
         margin-inline-start: 0;
-        text-align: center;
+        text-align: start;
     }
 
     .services {

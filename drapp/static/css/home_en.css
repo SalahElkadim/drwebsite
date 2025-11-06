@@ -163,7 +163,7 @@
 }
 
 .hero-content {
-    text-align: center;
+    text-align: left;
     position: relative;
     z-index: 3;
     max-width: 800px;
