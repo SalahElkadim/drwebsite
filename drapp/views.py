@@ -241,6 +241,7 @@ def get_news_list_en(request):
         'title': item.title,
         'paragraph': item.paragraph,
         'image': item.image.url if item.image else None,
+        'is_pinned': item.is_pinned,
         'created_at': item.created_at.strftime('%Y-%m-%d %H:%M')
     } for item in news]
     return JsonResponse({'news': news_list})
@@ -252,6 +253,7 @@ def get_news_detail_en(request, pk):
         'title': news.title,
         'paragraph': news.paragraph,
         'image': news.image.url if news.image else None,
+        'is_pinned': news.is_pinned,
         'created_at': news.created_at.strftime('%Y-%m-%d %H:%M')
     })
 
@@ -261,20 +263,23 @@ def create_news_en(request):
         title = request.POST.get('title')
         paragraph = request.POST.get('paragraph')
         image = request.FILES.get('image')
+        is_pinned = request.POST.get('is_pinned') == 'true'
         
         news = Newsen.objects.create(
             title=title,
             paragraph=paragraph,
-            image=image
+            image=image,
+            is_pinned=is_pinned
         )
         return JsonResponse({
             'success': True,
-            'message': 'تم إضافة الخبر بنجاح',
+            'message': 'Article added successfully',
             'news': {
                 'id': news.id,
                 'title': news.title,
                 'paragraph': news.paragraph,
                 'image': news.image.url if news.image else None,
+                'is_pinned': news.is_pinned,
                 'created_at': news.created_at.strftime('%Y-%m-%d %H:%M')
             }
         })
@@ -287,10 +292,11 @@ def update_news_en(request, pk):
         news = get_object_or_404(Newsen, pk=pk)
         news.title = request.POST.get('title', news.title)
         news.paragraph = request.POST.get('paragraph', news.paragraph)
+        news.is_pinned = request.POST.get('is_pinned') == 'true'
         if request.FILES.get('image'):
             news.image = request.FILES.get('image')
         news.save()
-        return JsonResponse({'success': True, 'message': 'تم تعديل الخبر بنجاح'})
+        return JsonResponse({'success': True, 'message': 'Article updated successfully'})
     except Exception as e:
         return JsonResponse({'success': False, 'message': str(e)}, status=400)
 
@@ -299,6 +305,6 @@ def delete_news_en(request, pk):
     try:
         news = get_object_or_404(Newsen, pk=pk)
         news.delete()
-        return JsonResponse({'success': True, 'message': 'تم حذف الخبر بنجاح'})
+        return JsonResponse({'success': True, 'message': 'Article deleted successfully'})
     except Exception as e:
         return JsonResponse({'success': False, 'message': str(e)}, status=400)

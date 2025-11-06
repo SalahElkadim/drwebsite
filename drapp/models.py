@@ -61,16 +61,20 @@ class News(models.Model):
     def __str__(self):
         return self.title
     
+from django.db import models
+from cloudinary.models import CloudinaryField
+
 class Newsen(models.Model):
-    title = models.CharField(max_length=255, verbose_name="عنوان الخبر")
-    paragraph = models.TextField(verbose_name="نص الخبر")
-    image = CloudinaryField("صورة الخبر", blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاريخ الإضافة")
+    title = models.CharField(max_length=255, verbose_name="Article Title")
+    paragraph = models.TextField(verbose_name="Article Content")
+    image = CloudinaryField("Article Image", blank=True, null=True)
+    is_pinned = models.BooleanField(default=False, verbose_name="Pinned Article")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Created At")
 
     class Meta:
-        verbose_name = "خبر"
-        verbose_name_plural = "الأخبار"
-        ordering = ['-created_at']
+        verbose_name = "News Article"
+        verbose_name_plural = "News Articles"
+        ordering = ['-is_pinned', '-created_at']  # Pinned first, then by date
 
     def __str__(self):
         return self.title

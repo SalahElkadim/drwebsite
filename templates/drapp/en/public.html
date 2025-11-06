@@ -644,6 +644,47 @@ Latest updates and news from Sabr Forensic Linguistics and Consulting
     .back-button {
         width: 100%;
     }
+    /* Pinned Badge */
+.pinned-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: linear-gradient(135deg, #ffc107, #ff9800);
+    color: #000;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 3;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+    animation: pulse-pin 2s ease-in-out infinite;
+}
+
+@keyframes pulse-pin {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.pinned-badge i {
+    font-size: 1rem;
+}
+
+/* Pinned card style */
+.news-card.pinned {
+    border-color: rgba(255, 193, 7, 0.5);
+    background: rgba(255, 193, 7, 0.05);
+}
+
+.news-card.pinned::before {
+    opacity: 0.3;
+}
 }
 
     </style> 
@@ -668,49 +709,56 @@ Latest updates and news from Sabr Forensic Linguistics and Consulting
     </header>
 
     <!-- Main Container -->
-    <div class="main-container">
-        {% if news %}
-        <div class="news-grid">
-            {% for item in news %}
-            <article class="news-card">
-                <div class="news-image-container">
-                    {% if item.image %}
-                        <img src="{{ item.image.url }}" alt="{{ item.title }}" class="news-image">
-                    {% else %}
-                        <div class="news-placeholder">
-                            <i class="fas fa-scroll"></i>
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="news-content">
-                    <div class="news-date">
-                        <i class="far fa-calendar-alt" style="margin-right: 5px;"></i>
-                        {{ item.created_at|date:"F d, Y" }}
+<div class="main-container">
+    {% if news %}
+    <div class="news-grid">
+        {% for item in news %}
+        <article class="news-card {% if item.is_pinned %}pinned{% endif %}">
+            {% if item.is_pinned %}
+            <div class="pinned-badge">
+                <i class="fas fa-thumbtack"></i>
+                <span>Pinned</span>
+            </div>
+            {% endif %}
+            
+            <div class="news-image-container">
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="{{ item.title }}" class="news-image">
+                {% else %}
+                    <div class="news-placeholder">
+                        <i class="fas fa-scroll"></i>
                     </div>
-                    <h2 class="news-title">{{ item.title }}</h2>
-                    <p class="news-text">
-                        {% if item.paragraph|length > 180 %}
-                            {{ item.paragraph|slice:":180" }}...
-                        {% else %}
-                            {{ item.paragraph}}
-                        {% endif %}
-                    </p>
-                    <a class="read-more" onclick="openModal({{ item.id }})">
-                        <i class="fas fa-arrow-right"></i>
-                        Read More
-                    </a>
+                {% endif %}
+            </div>
+            <div class="news-content">
+                <div class="news-date">
+                    <i class="far fa-calendar-alt" style="margin-right: 5px;"></i>
+                    {{ item.created_at|date:"F d, Y" }}
                 </div>
-            </article>
-            {% endfor %}
-        </div>
-        {% else %}
-        <div class="empty-state">
-            <i class="fas fa-inbox"></i>
-            <h3>No news available at the moment</h3>
-            <p>Stay tuned for future updates</p>
-        </div>
-        {% endif %}
+                <h2 class="news-title">{{ item.title }}</h2>
+                <p class="news-text">
+                    {% if item.paragraph|length > 180 %}
+                        {{ item.paragraph|slice:":180" }}...
+                    {% else %}
+                        {{ item.paragraph }}
+                    {% endif %}
+                </p>
+                <a class="read-more" onclick="openModal({{ item.id }})">
+                    <i class="fas fa-arrow-right"></i>
+                    Read More
+                </a>
+            </div>
+        </article>
+        {% endfor %}
     </div>
+    {% else %}
+    <div class="empty-state">
+        <i class="fas fa-inbox"></i>
+        <h3>No news available at the moment</h3>
+        <p>Stay tuned for future updates</p>
+    </div>
+    {% endif %}
+</div>
 
     <!-- Modal -->
 <div class="news-modal" id="newsModal">
@@ -740,15 +788,16 @@ Latest updates and news from Sabr Forensic Linguistics and Consulting
 {% block extra_js %}
 <script>
     const newsData = {
-        {% for item in news %}
-        {{ item.id }}: {
-            title: "{{ item.title|escapejs }}",
-            paragraph: "{{ item.paragraph|escapejs }}",
-            image: "{% if item.image %}{{ item.image.url }}{% endif %}",
-            date: "{{ item.created_at|date:'F d, Y' }}"
-        }{% if not forloop.last %},{% endif %}
-        {% endfor %}
-    };
+    {% for item in news %}
+    {{ item.id }}: {
+        title: "{{ item.title|escapejs }}",
+        paragraph: "{{ item.paragraph|escapejs }}",
+        image: "{% if item.image %}{{ item.image.url }}{% endif %}",
+        date: "{{ item.created_at|date:'F d, Y' }}",
+        is_pinned: {{ item.is_pinned|lower }}
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+};
 
     function openModal(newsId) {
         const news = newsData[newsId];

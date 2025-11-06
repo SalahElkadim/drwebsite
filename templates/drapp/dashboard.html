@@ -46,9 +46,29 @@
             margin-bottom: 20px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
+            position: relative;
         }
         .news-item:hover {
             box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .news-item.pinned {
+            border: 2px solid #ffc107;
+            background: linear-gradient(to right, rgba(255, 193, 7, 0.05), white);
+        }
+        .pinned-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: linear-gradient(135deg, #ffc107, #ff9800);
+            color: #000;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 8px rgba(255, 193, 7, 0.4);
         }
         .news-image {
             width: 120px;
@@ -78,6 +98,35 @@
             border-radius: 8px;
             margin: 0 3px;
         }
+        
+        /* Custom Checkbox Style */
+        .custom-checkbox-wrapper {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.05));
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .form-check-input {
+            width: 1.5em;
+            height: 1.5em;
+            border: 2px solid #ffc107;
+            cursor: pointer;
+        }
+        .form-check-input:checked {
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
+        .form-check-label {
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .pin-icon {
+            color: #ffc107;
+            margin-left: 8px;
+        }
     </style>
 </head>
 <body>
@@ -102,6 +151,13 @@
                     <h3 class="text-primary mb-2"><i class="fas fa-newspaper"></i></h3>
                     <h2 id="totalNews" class="mb-1">0</h2>
                     <p class="text-muted mb-0">إجمالي الأخبار</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center p-4">
+                    <h3 class="text-warning mb-2"><i class="fas fa-thumbtack"></i></h3>
+                    <h2 id="pinnedNews" class="mb-1">0</h2>
+                    <p class="text-muted mb-0">الأخبار المثبتة</p>
                 </div>
             </div>
         </div>
@@ -147,6 +203,21 @@
                             <div id="currentImage" class="mt-2"></div>
                         </div>
 
+                        <!-- Pinned Checkbox -->
+                        <div class="custom-checkbox-wrapper">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="isPinned" name="is_pinned">
+                                <label class="form-check-label" for="isPinned">
+                                    <i class="fas fa-thumbtack pin-icon"></i>
+                                    تثبيت هذا الخبر في أعلى الصفحة
+                                </label>
+                            </div>
+                            <small class="text-muted d-block mt-2 mr-4">
+                                <i class="fas fa-info-circle"></i>
+                                الأخبار المثبتة ستظهر دائماً في أعلى قائمة الأخبار
+                            </small>
+                        </div>
+
                         <div class="alert alert-danger d-none" id="errorMessage"></div>
                     </form>
                 </div>
@@ -189,6 +260,10 @@
                 const data = await response.json();
                 displayNews(data.news);
                 document.getElementById('totalNews').textContent = data.news.length;
+                
+                // Count pinned news
+                const pinnedCount = data.news.filter(news => news.is_pinned).length;
+                document.getElementById('pinnedNews').textContent = pinnedCount;
             } catch (error) {
                 console.error('Error loading news:', error);
             }
@@ -208,7 +283,13 @@
             }
 
             container.innerHTML = newsList.map(news => `
-                <div class="news-item">
+                <div class="news-item ${news.is_pinned ? 'pinned' : ''}">
+                    ${news.is_pinned ? `
+                        <div class="pinned-badge">
+                            <i class="fas fa-thumbtack"></i>
+                            <span>مثبت</span>
+                        </div>
+                    ` : ''}
                     <div class="row align-items-center">
                         <div class="col-md-2">
                             ${news.image ? 
@@ -243,6 +324,7 @@
             document.getElementById('newsForm').reset();
             document.getElementById('newsId').value = '';
             document.getElementById('currentImage').innerHTML = '';
+            document.getElementById('isPinned').checked = false;
             document.getElementById('errorMessage').classList.add('d-none');
             modal.show();
         }
@@ -256,6 +338,7 @@
                 document.getElementById('newsId').value = news.id;
                 document.getElementById('title').value = news.title;
                 document.getElementById('paragraph').value = news.paragraph;
+                document.getElementById('isPinned').checked = news.is_pinned;
                 
                 if (news.image) {
                     document.getElementById('currentImage').innerHTML = `
@@ -274,6 +357,9 @@
             const form = document.getElementById('newsForm');
             const formData = new FormData(form);
             const newsId = document.getElementById('newsId').value;
+            
+            // Add is_pinned value explicitly
+            formData.set('is_pinned', document.getElementById('isPinned').checked);
             
             const url = newsId ? 
                 `/api/news/${newsId}/update/` : 
