@@ -144,7 +144,6 @@ def submit_seminar(request):
 @user_passes_test(lambda u: u.is_superuser)
 def news_dashboard(request):
     return render(request, 'drapp/dashboard.html')
-
 def get_news_list(request):
     news = News.objects.all()
     news_list = [{
@@ -152,6 +151,7 @@ def get_news_list(request):
         'title': item.title,
         'paragraph': item.paragraph,
         'image': item.image.url if item.image else None,
+        'is_pinned': item.is_pinned,
         'created_at': item.created_at.strftime('%Y-%m-%d %H:%M')
     } for item in news]
     return JsonResponse({'news': news_list})
@@ -163,6 +163,7 @@ def get_news_detail(request, pk):
         'title': news.title,
         'paragraph': news.paragraph,
         'image': news.image.url if news.image else None,
+        'is_pinned': news.is_pinned,
         'created_at': news.created_at.strftime('%Y-%m-%d %H:%M')
     })
 
@@ -172,11 +173,13 @@ def create_news(request):
         title = request.POST.get('title')
         paragraph = request.POST.get('paragraph')
         image = request.FILES.get('image')
+        is_pinned = request.POST.get('is_pinned') == 'true'
         
         news = News.objects.create(
             title=title,
             paragraph=paragraph,
-            image=image
+            image=image,
+            is_pinned=is_pinned
         )
         return JsonResponse({
             'success': True,
@@ -186,6 +189,7 @@ def create_news(request):
                 'title': news.title,
                 'paragraph': news.paragraph,
                 'image': news.image.url if news.image else None,
+                'is_pinned': news.is_pinned,
                 'created_at': news.created_at.strftime('%Y-%m-%d %H:%M')
             }
         })
@@ -198,6 +202,7 @@ def update_news(request, pk):
         news = get_object_or_404(News, pk=pk)
         news.title = request.POST.get('title', news.title)
         news.paragraph = request.POST.get('paragraph', news.paragraph)
+        news.is_pinned = request.POST.get('is_pinned') == 'true'
         if request.FILES.get('image'):
             news.image = request.FILES.get('image')
         news.save()

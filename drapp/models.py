@@ -43,16 +43,20 @@ class Visitor(models.Model):
 from django.db import models
 from cloudinary.models import CloudinaryField
 
+from django.db import models
+from cloudinary.models import CloudinaryField
+
 class News(models.Model):
     title = models.CharField(max_length=255, verbose_name="عنوان الخبر")
     paragraph = models.TextField(verbose_name="نص الخبر")
     image = CloudinaryField("صورة الخبر", blank=True, null=True)
+    is_pinned = models.BooleanField(default=False, verbose_name="خبر مثبت")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاريخ الإضافة")
 
     class Meta:
         verbose_name = "خبر"
         verbose_name_plural = "الأخبار"
-        ordering = ['-created_at']
+        ordering = ['-is_pinned', '-created_at']  # الأخبار المثبتة أولاً ثم حسب التاريخ
 
     def __str__(self):
         return self.title
