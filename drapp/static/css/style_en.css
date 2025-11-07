@@ -326,7 +326,7 @@
             font-size: 1.2rem;
             color: var(--gray-300);
             margin-bottom: 2rem;
-            max-width: 600px;
+            max-width: 800px;
             margin-right: auto;
             text-align: justify;
             line-height: 1.8;
@@ -449,13 +449,13 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: rgb(253, 211, 44);
-            text-align: left;
+            text-align: center;
         }
 
         .services-section p {
             color: white;
             font-size: 1.1rem;
-            text-align: left;
+            text-align: center;
             margin-bottom: 3rem;
         }
 
@@ -837,7 +837,10 @@
             }
 
             .hero-title {
-                font-size: 1.3rem;
+                font-size: 1.6rem;
+            }
+            .hero-subtitle {
+                font-size: 12px;
             }
 
             .floating-buttons {
@@ -904,7 +907,7 @@
 
             .services-section p {
                 font-size: 14px;
-                text-align: left;
+                text-align: center;
                 line-height: 1.8;
                 text-justify: inter-word;
             }
@@ -920,6 +923,8 @@
             .service-card {
                 padding: 4px;
                 width: 20rem;
+                margin-left: auto;
+                margin-right: auto;
             }
 
             .partners-header h2 {
@@ -1029,7 +1034,7 @@
 
             .services-section p {
                 font-size: 14px;
-                text-align: left;
+                text-align: center;
                 line-height: 1.8;
                 text-justify: inter-word;
             }
