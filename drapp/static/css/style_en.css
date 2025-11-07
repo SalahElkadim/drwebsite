@@ -315,7 +315,7 @@
             font-size: 3rem;
             font-weight: bold;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary-white), var(--gray-300));
+            background: linear-gradient(135deg, #b5a51a, #f7eea4);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -327,7 +327,6 @@
             color: var(--gray-300);
             margin-bottom: 2rem;
             max-width: 600px;
-            margin-left: auto;
             margin-right: auto;
             text-align: justify;
             line-height: 1.8;
@@ -450,13 +449,13 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: rgb(253, 211, 44);
-            text-align: center;
+            text-align: left;
         }
 
         .services-section p {
             color: white;
             font-size: 1.1rem;
-            text-align: center;
+            text-align: left;
             margin-bottom: 3rem;
         }
 
@@ -718,7 +717,7 @@
         }
 
         .about header {
-            text-align: center;
+            text-align: left;
             margin-bottom: 40px;
         }
 
@@ -865,6 +864,20 @@
         }
 
         @media (max-width: 485px) {
+            .about header h1 {
+                font-size: 1.5rem;
+            }
+            .about header p {
+                font-size: 1rem;
+            }
+            .about-section h2 {
+                font-size: 1.2rem;
+            }
+            .about-section h2 {
+                font-size: 1rem;
+            }
+
+
             .logo {
                 width: 3rem;
             }
@@ -874,7 +887,7 @@
             }
 
             .hero-title {
-                font-size: 18px;
+                font-size: 20px;
             }
 
             .hero-subtitle {
@@ -891,7 +904,7 @@
 
             .services-section p {
                 font-size: 14px;
-                text-align: justify;
+                text-align: left;
                 line-height: 1.8;
                 text-justify: inter-word;
             }
@@ -1016,7 +1029,7 @@
 
             .services-section p {
                 font-size: 14px;
-                text-align: justify;
+                text-align: left;
                 line-height: 1.8;
                 text-justify: inter-word;
             }

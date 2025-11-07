@@ -163,13 +163,13 @@
 }
 
 .hero-content {
-    text-align: left;
+    text-align: right;
     position: relative;
     z-index: 3;
     max-width: 800px;
 }
 .hero-subtitle {
-    text-align: left;
+    text-align: right;
     word-spacing: normal;
 }
 
